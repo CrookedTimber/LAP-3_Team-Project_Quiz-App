@@ -1,12 +1,16 @@
-import { Lobby } from '../../components';
+import { Lobby, OngoingMatch } from '../../components';
+import { useSelector } from 'react-redux';
+
 
 export default function Match() {
+
+  const gameStarted = useSelector((state) => state.match.gameStart);
+
   return (
     <>
       <h3>Here goes the username</h3>
-      <h1>This is the Match Page</h1>
-
-      <Lobby />
+      {!gameStarted && <Lobby />}
+      {gameStarted && <OngoingMatch />}
     </>
   );
 }

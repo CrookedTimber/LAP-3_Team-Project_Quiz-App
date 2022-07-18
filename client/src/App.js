@@ -8,21 +8,12 @@ import { userActions, matchActions } from './reducers/userReducer';
 import './App.css';
 
 function App() {
-  const dispatch = useDispatch();
-
-  const username = useSelector((state) => state.username);
-
-  dispatch(userActions.setUsername('Edgar'));
   return (
-    <>    
-      <API/>
-      <MatchLogic/>
-
+    <>
       <Header />
-      <h1>{username}</h1>
 
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Match />}></Route>
         <Route path="rules" element={<Instructions />}></Route>
         <Route path="leaderboard" element={<Leaderboard />}></Route>
       </Routes>

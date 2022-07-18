@@ -1,8 +1,12 @@
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { matchActions } from '../../reducers';
+import axios from 'axios';
 
 export default function Lobby() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const categories = [
     { code: 9, name: 'General Knowledge' },
@@ -19,9 +23,39 @@ export default function Lobby() {
     navigate('/');
   };
 
+  const getData = async (target) => {
+    try {
+      const result = await axios.get(
+        `https://opentdb.com/api.php?amount=${target.questionsNumber.value}&category=${target.category.value}&difficulty=${target.difficulty.value}&type=multiple`
+      );
+      const data = await result.data;
+      return data;
+    } catch (error) {
+      console.warn(error.message);
+    }
+  };
+
   const startGame = async (e) => {
     e.preventDefault();
-    console.log('Game Started!');
+    let apiQuestions = await getData(e.target);
+
+    let restructuredQuestions = [];
+
+    apiQuestions.results.map((item) => {
+      return restructuredQuestions.push({
+        question: item.question,
+        answers: [
+          { isCorrect: true, answer: item.correct_answer },
+          { isCorrect: false, answer: item.incorrect_answers[0] },
+          { isCorrect: false, answer: item.incorrect_answers[1] },
+          { isCorrect: false, answer: item.incorrect_answers[2] },
+        ],
+      });
+    });
+
+    dispatch(matchActions.updateQuestionsArray(restructuredQuestions));
+
+    dispatch(matchActions.updateGameStart());
   };
 
   return (
