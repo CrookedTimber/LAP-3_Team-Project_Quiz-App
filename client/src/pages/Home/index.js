@@ -20,7 +20,7 @@ export default function Home() {
 <br></br>
 <br></br>
                     <form class="form">
-      <label>Enter your name: <br></br>
+      <label>Enter a username: <br></br>
         <input type="text" />
       </label>
     </form>
