@@ -1,8 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+import { Header } from './components';
+import { Home, Instructions, Leaderboard, Match } from './pages/';
+import { OngoingMatch } from './components';
+import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from './reducers/userReducer';
-import { useSelector } from 'react-redux';
+
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -10,14 +13,17 @@ function App() {
   const username = useSelector((state) => state.username);
 
   dispatch(userActions.setUsername('Edgar'));
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>{username}</h1>
-      </header>
-    </div>
+    <>
+      <Header />
+      <h1>{username}</h1>
+
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="rules" element={<Instructions />}></Route>
+        <Route path="leaderboard" element={<Leaderboard />}></Route>
+      </Routes>
+    </>
   );
 }
 
