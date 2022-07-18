@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components';
 import { Home, Instructions, Leaderboard, Match } from './pages/';
-import { OngoingMatch } from './components';
+import { OngoingMatch, Lobby } from './components';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from './reducers/userReducer';
 
