@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import "./Home.css";
 import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import Button from 'react-bootstrap/Button';
 
 
 export default function Home() {
@@ -41,3 +42,13 @@ function MyForm() {
   
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(<MyForm />);
+
+  function startBtn() {
+    return (
+      <>
+        <Button variant="primary">Primary</Button>{'Start'}
+      </>
+    );
+  }
+  
+//   export default startBtn;
