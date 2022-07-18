@@ -17,7 +17,7 @@ export default function Home() {
                     <Container className="quiz-logo-container">
                         <img className="quiz-logo" src={QuizLogo} alt="quiz logo"></img>
                     </Container>
-                    <Container className="username-form-container">
+                    <Container>
                         <UserForm />
                     </Container>
                 </Container>

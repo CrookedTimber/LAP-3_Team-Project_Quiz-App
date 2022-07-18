@@ -1,0 +1,32 @@
+.dash-container {
+    position: absolute;
+    height: 90vh;
+    width: 100%;
+    margin: 0;
+    z-index: 0;
+    opacity: 1;
+}
+
+.dash-mid-container {
+    opacity: 0.8;
+}
+
+.dash-inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #CFF3F3;
+    height: auto;
+    width: 90%;
+    padding: 20px;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#welcome-username {
+    color: #fff;
+}
+
+.selections {
+    opacity: 1;
+}

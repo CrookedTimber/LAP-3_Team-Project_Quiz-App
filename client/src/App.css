@@ -1,14 +1,21 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
+.parallax {
+  /* The image used */
+  background-image: url("./assets/neon-bg.jpg");
 
+  /* Full height */
+  height: 100%;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+

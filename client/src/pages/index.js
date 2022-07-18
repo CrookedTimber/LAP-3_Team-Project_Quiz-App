@@ -4,3 +4,5 @@ export { default as Leaderboard } from "./Leaderboard";
 export { default as NotFound } from "./Error";
 export { default as Dashboard } from "./Dashboard";
 export { default as Match } from "./Match";
+export { default as Lobby } from "./Lobby";
+export { default as LocalGame } from "./LocalGame";

@@ -6,20 +6,6 @@
     z-index: 0;
 }
 
-.parallax {
-    /* The image used */
-    background-image: url("../../assets/quiz-bg.png");
-  
-    /* Full height */
-    height: 100%;
-  
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
 .home-inner-container {
     position: relative;
     display: flex;
@@ -31,11 +17,10 @@
     padding: 20px;
     margin: 2% auto;
     border-radius: 20px;
-    z-index: 10;
 }
 
 .welcome-div {
-    padding: 10px;
+    padding: 10px 0 0 0;
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
 }
@@ -73,10 +58,15 @@
 
 .quiz-logo-container {
     display: flex;
-    margin: auto;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 15px;    
+    z-index: 1000;
+    opacity: 1;
 }
 
 .quiz-logo {
+    position: relative;
     display: flex;
     margin: 20px auto;
     animation-name: logo-spin;
@@ -84,6 +74,9 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
     height: 200px;
+   
+    
+    
 }
 
 @keyframes logo-spin {

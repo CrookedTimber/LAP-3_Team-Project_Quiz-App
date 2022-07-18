@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { Header } from './components';
-import { Dashboard, Home, Instructions, Leaderboard } from './pages/';
+import { PageWrapper } from './components';
+import { Dashboard, Home, Instructions, Leaderboard, Lobby, LocalGame, Match, NotFound } from './pages/';
 
 
 import './App.css';
@@ -9,13 +9,25 @@ function App() {
   
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="dashboard" element={<Dashboard />}></Route>
-        <Route path="rules" element={<Instructions />}></Route>
-        <Route path="leaderboard" element={<Leaderboard />}></Route>
-      </Routes>
+    <div className="App parallax">
+      
+        <Routes>
+          <Route path="/" element={<PageWrapper />}>
+            <Route path="/">
+              <Route path="/" element={<Home />}></Route>
+                <Route path=":dashboard" element={<Dashboard />}>
+                  <Route path="::localgame" element={<LocalGame />}></Route>
+                  <Route path="::lobby" element={<Lobby />}></Route>
+                  <Route path="::joingame" element={<Match />}></Route>
+                </Route>
+            </Route>
+            <Route path="rules" element={<Instructions />}></Route>
+            <Route path="leaderboard" element={<Leaderboard />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Route>
+        </Routes>
+      
+    </div>
     </>
   );
 }
