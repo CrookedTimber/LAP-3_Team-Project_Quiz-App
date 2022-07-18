@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components';
 import { Home, Instructions, Leaderboard, Match } from './pages/';
-import { OngoingMatch, Lobby } from './components';
+import { OngoingMatch, Lobby, API, MatchLogic } from './components';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from './reducers/userReducer';
+import { userActions, matchActions } from './reducers/userReducer';
 
 import './App.css';
 
@@ -14,7 +14,10 @@ function App() {
 
   dispatch(userActions.setUsername('Edgar'));
   return (
-    <>
+    <>    
+      <API/>
+      <MatchLogic/>
+
       <Header />
       <h1>{username}</h1>
 
