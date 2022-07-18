@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { matchActions } from "../../reducers";
 
 
-function API(category = 9, amount = 10, difficulty = medium){
+function API(category = 9, amount = 10, difficulty = 'medium'){
     const dispatch = useDispatch();
 
     useEffect(() => {
