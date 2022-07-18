@@ -5,7 +5,8 @@ const initialState = {
     currentRoundNum: 0, //current round in game
     totalRounds: 10, //ammount of rounds being played
     roundTimeLimit: 10, //time limit in seconds for each round
-    timeOut: false, // is true when time limit is reached and false on new round
+    gameStart: false, //once lobby has been setup and game is ready to begin, gameStart is true through out every round
+    timeout: false, // is true when time limit is reached and false on new round
     roundStart: false, // is true once answers appear and false upon transitioning to new question
 }
 
@@ -24,9 +25,13 @@ const matchSlice = createSlice({
         state.questionsArray = [];
       },
 
+      //set value of gameStart
+      updateGameStart(state, action){
+        state.gameStart = action.payload;
+      },
       //set value of timeOut
-      declareTimeOut(state, action){
-        state.timeOut = action.payload;
+      declareTimeout(state, action){
+        state.timeout = action.payload;
       },
 
       //set value of roundStart

@@ -10,7 +10,9 @@ function API(category = 9, amount = 10, difficulty = 'medium'){
     useEffect(() => {
         try {
             async function getData(){
-                const url = `https://opentdb.com/api.php?${amount}&${category}&${difficulty}&type=multiple`;
+                // const url = `https://opentdb.com/api.php?${amount}&${category}&${difficulty}&type=multiple`;
+
+                const url = `https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`;
             
                 const response = await axios.get(url);
                 //populate questions array
