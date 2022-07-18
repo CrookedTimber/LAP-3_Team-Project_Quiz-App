@@ -13,7 +13,7 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Match />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="rules" element={<Instructions />}></Route>
         <Route path="leaderboard" element={<Leaderboard />}></Route>
       </Routes>
