@@ -1,0 +1,39 @@
+.nav {
+    display: flex;
+    background-color: #6D6EE6;
+    height: auto;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    font-family: 'Press Start 2P', cursive;
+    color: #F9FD0F;
+    letter-spacing: 2px;
+    margin: auto;
+}
+
+.nav-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.nav-link:hover {
+    color: #fff;
+}
+
+.nav-link-home {
+    color: #75FDDF;
+}
+
+.nav-link-rules {
+    color: #C7FC1A;
+}
+
+.nav-link-leaderboard {
+    color: #63E2FA;
+}
