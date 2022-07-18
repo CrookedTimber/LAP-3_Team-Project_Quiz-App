@@ -17,38 +17,52 @@ export default function Home() {
                         <h2 className="home-h2b">and there's a time for ...</h2>
                         <h1 className="home-h1">Risky Quizness!</h1>
                     </div>
+<br></br>
+<br></br>
+                    <form class="form">
+      <label>Enter your name: <br></br>
+        <input type="text" />
+      </label>
+    </form>
+    <br></br>
+    <br></br>
+    <button class="startbtn">Start</button>
                 </Container>
             </article>
+            
         </>
+
+    
     )
 }
 
 
-function MyForm() {
-    const [name, setName] = useState("");
-  
-    return (
-      <form>
-        <label>Enter your name:
-          <input
-            type="text" 
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-      </form>
-    )
-  }
-  
-  const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(<MyForm />);
 
-  function startBtn() {
-    return (
-      <>
-        <Button variant="primary">Primary</Button>{'Start'}
-      </>
-    );
-  }
+// function MyForm() {
+//     const [name, setName] = useState("");
+  
+//     return (
+//       <form>
+//         <label>Enter your name:
+//           <input
+//             type="text" 
+//             value={name}
+//             onChange={(e) => setName(e.target.value)}
+//           />
+//         </label>
+//       </form>
+//     )
+//   }
+  
+//   const root = ReactDOM.createRoot(document.getElementById('root'));
+//   root.render(<MyForm />);
+
+//   function startBtn() {
+//     return (
+//       <>
+//         <Button variant="primary">Primary</Button>{'Start'}
+//       </>
+//     );
+//   }
   
 //   export default startBtn;
