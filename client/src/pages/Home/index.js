@@ -1,11 +1,12 @@
 import QuizLogo from "../../assets/quiz-logo.png";
 import { Container } from "react-bootstrap";
 import "./Home.css";
+import UserForm from "../../components/Forms/UserForm";
 
 export default function Home() {
     return (
         <>
-            <article className="home-container">
+            <article className="home-container parallax">
                 
                 <Container className="home-inner-container">
                     <Container className="welcome-div">
@@ -15,6 +16,9 @@ export default function Home() {
                     </Container>
                     <Container className="quiz-logo-container">
                         <img className="quiz-logo" src={QuizLogo} alt="quiz logo"></img>
+                    </Container>
+                    <Container className="username-form-container">
+                        <UserForm />
                     </Container>
                 </Container>
             </article>

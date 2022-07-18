@@ -1,0 +1,32 @@
+.username-form-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+
+.username-form-header {
+    font-family: 'Share Tech Mono', monospace;
+    color: red;
+    text-shadow: 2px 2px black;
+    text-align: center;
+}
+
+.user-form {
+    display: flex;
+    margin: auto;
+}
+
+.user-form > input {
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1.5px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+}
+
+#username-button {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: yellow;
+    font-weight: bold;
+    border-radius: 0 10px 10px 0;
+}
