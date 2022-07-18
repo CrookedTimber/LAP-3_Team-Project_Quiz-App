@@ -38,7 +38,7 @@ function MatchLogic(){
                     <answersComponent votes={testVotes}/> //display what people voted for
 
                     //prepare for next round after 5 seconds
-                    setTimeout(newRound(roundEndTimeout), 5000);
+                    setTimeout(newRound(), 5000);
                 }
                 
             }
@@ -48,7 +48,7 @@ function MatchLogic(){
         
         
         //prepare for next round
-        function newRound(x){
+        function newRound(){
             let nextRoundNum = currentRoundNum + 1;
             dispatch(matchActions.declareRoundStart(false));
             dispatch(matchActions.setCurrentRound(nextRoundNum));
