@@ -13,10 +13,13 @@ const matchSlice = createSlice({
     name: 'match',
     initialState: initialState,
     reducers: {
+
+      //populate array with data
       updateQuestionsArray(state, action) {
         state.questionsArray = action.payload;
       },
 
+      //clear array of data
       clearQuestionsArray(state) {
         state.questionsArray = [];
       },
@@ -29,6 +32,16 @@ const matchSlice = createSlice({
       //set value of roundStart
       declareRoundStart(state, action){
         state.roundStart = action.payload;
+      },
+
+      //update current round number
+      setCurrentRound(state, action){
+        state.currentRoundNum = action.payload;
+      },
+
+      //set current round number back to its initial state
+      resetCurrentRound(state){
+        state.currentRoundNum = initialState.currentRoundNum;
       }
 
     },

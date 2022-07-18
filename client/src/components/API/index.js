@@ -13,6 +13,7 @@ function API(){
                 const url = `https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`;
             
                 const response = await axios.get(url);
+                //populate questions array
                 dispatch(matchActions.updateQuestionsArray(response.data.results));
             };
             getData()
