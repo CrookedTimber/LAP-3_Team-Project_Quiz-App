@@ -9,7 +9,8 @@ const initialState = {
   timeout: false, // is true when time limit is reached and false on new round
   roundStart: false, // is true once answers appear and false upon transitioning to new question
   showResults: false,
-  playersInGame: []
+  playersInGame: [],
+  roomNum: null,
 };
 
 const matchSlice = createSlice({
@@ -24,6 +25,16 @@ const matchSlice = createSlice({
     //clear array of data
     clearQuestionsArray(state) {
       state.questionsArray = [];
+    },
+
+    //track current room number
+    setRoomNum(state, action){
+      state.roomNum = action.payload;
+    },
+
+    //refresh current room num
+    clearRoomNum(state){
+      state.roomNum = initialState.roomNum;
     },
 
     //set value of gameStart
@@ -54,11 +65,13 @@ const matchSlice = createSlice({
     resetCurrentRound(state) {
       state.currentRoundNum = initialState.currentRoundNum;
     },
+
     setShowResults(state) {
       state.showResults = true;
     },
+
     resetMatch: () => initialState,
-  },
+    },
 });
 
 export const matchActions = matchSlice.actions;

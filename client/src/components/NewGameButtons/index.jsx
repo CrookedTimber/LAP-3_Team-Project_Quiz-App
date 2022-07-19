@@ -20,6 +20,7 @@ export default function NewGameButtons() {
 
   function startMatch() {
     navigate('/match');
+    dispatch(userActions.setHost());
   }
 
   return (

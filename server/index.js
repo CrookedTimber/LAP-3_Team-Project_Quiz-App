@@ -14,28 +14,17 @@ const io = new Server(server, {
     },
 });
 
-/*
-    --- client emission ---
-    socket.emit('SendMessage', {message: 'hello'});
-
-    useEffect(() => {
-        socket.on('recieveMessage', (data) => {
-            alert(data.message)
-        })
-    }, [socket])
-
-    --- server listener ---
-    io.on('SendMessage', (data) => {
-        console.log(data);
-        socket.broadcast.emit('recieveMessage');
-    })
-*/
-
 io.on("connection", (socket) => {
-    console.log(socket.id);
+    console.log('user connected: ', socket.id);
+
+    socket.on('join_room', (data) => {
+        socket.join(data);
+        console.log('room created: ', data)
+    })
 
     socket.on('send_message', (data) => {
-        socket.broadcast.emit('recieve_message', data);
+        console.log(`${data.message} ${data.socketID}`);
+        socket.to(data.room).emit('recieve_message', data);
     })
 })
 
