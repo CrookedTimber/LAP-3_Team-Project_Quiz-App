@@ -1,24 +1,23 @@
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { matchActions } from '../../reducers';
+import { matchActions, userActions } from '../../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function JoinRoomModal() {
   const showJoinRoom = useSelector((state) => state.match.showJoinRoom);
   const dispatch = useDispatch();
-  const [roomInput, setRoomInput] = useState('')
+  const navigate = useNavigate();
 
   const handleClose = () => dispatch(matchActions.toggleShowJoinRoomModal());
+  const test = useSelector((state) => state.user.requestedRoom);
 
-
-  function updateRoomInput(e) {
-    setRoomInput(e.target.value);
-  }
   const handleJoinRoom = (e) => {
     e.preventDefault();
-    console.log(roomInput)
+    dispatch(userActions.setRequestedRoom(e.target['room-number'].value));
+    navigate('/match');
   };
 
   return (
@@ -36,7 +35,7 @@ export default function JoinRoomModal() {
           <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Room Number</Form.Label>
-              <Form.Control onChange={updateRoomInput} type="number" placeholder="0000" autoFocus />
+              <Form.Control type="number" name="room-number" placeholder="0000" autoFocus />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

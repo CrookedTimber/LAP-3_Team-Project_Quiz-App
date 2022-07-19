@@ -73,6 +73,17 @@ const matchSlice = createSlice({
     toggleShowJoinRoomModal(state) {
       state.showJoinRoom = !state.showJoinRoom;
     },
+
+     //push player to array
+    addPlayer(state, action) {
+      state.playersInGame.push(action.payload);
+    },
+
+    //cut player from array
+    removePlayer(state, action) {
+      state.playersInGame.push(action.payload);
+    },
+
     resetMatch: () => initialState,
   },
  
