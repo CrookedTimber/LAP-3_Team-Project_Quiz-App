@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
 
-export default function Lobby({roomNum}) {
+export default function Lobby({roomNum, isHost}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -79,7 +79,10 @@ export default function Lobby({roomNum}) {
       <Button onClick={backToMainButton}>Main Menu</Button>
       <h1>This is the lobby</h1>
       <h2>{`Room Number: ${roomNum}`}</h2>
-      <Form onSubmit={startGame}>
+
+      {
+        isHost ?
+        <Form onSubmit={startGame}>
         <Form.Group className="mb-3">
           <Form.Label htmlFor="category">Category</Form.Label>
           <Form.Select id="category" name="category">
@@ -106,6 +109,8 @@ export default function Lobby({roomNum}) {
 
         <Button type="submit">Start Game</Button>
       </Form>
+        : null
+      }
     </>
   );
 }

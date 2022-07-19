@@ -7,6 +7,7 @@ import { userActions } from '../../reducers';
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
 
+  const players = useSelector((state) => state.match.players);
   const username = useSelector((state) => state.user.username);
   const isHost = useSelector((state) => state.user.host);
   const requestedRoom = useSelector((state) => state.user.requestedRoom);
@@ -51,7 +52,7 @@ export default function Match() {
   return (
     <>
       <h3>{`Username: ${username}`}</h3>
-      {!gameStarted && <Lobby roomNum={roomNum}/>}
+      {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost}/>}
       {gameStarted && <OngoingMatch />}
       <button onClick={testFunc}>Test</button>
     </>
