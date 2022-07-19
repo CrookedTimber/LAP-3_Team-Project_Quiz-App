@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Lobby, OngoingMatch } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import io from 'socket.io-client'
-import { userActions } from '../../reducers';
+// import Player from '../../Player';
+// import { userActions } from '../../reducers';
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
