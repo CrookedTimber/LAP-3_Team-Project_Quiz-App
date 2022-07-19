@@ -19,12 +19,12 @@ io.on("connection", (socket) => {
 
     socket.on('join_room', (data) => {
         socket.join(data);
-        console.log('room created: ', data)
+        console.log('room joined: ', data)
     })
 
     socket.on('send_message', (data) => {
-        console.log(`${data.message} ${data.socketID}`);
-        socket.to(data.room).emit('recieve_message', data);
+        console.log("message sent from: ", data.room)
+        socket.to(data.room).emit('recieve_message', data.message);
     })
 })
 
