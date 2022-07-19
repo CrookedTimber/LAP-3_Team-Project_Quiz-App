@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 export default function JoinRoomModal() {
-  const showJoinRoom = useSelector((state) => state.match.showJoinRoom);
+  const showJoinRoom = useSelector((state) => state.match.showJoinRoomModal);
   const dispatch = useDispatch();
   const [roomInput, setRoomInput] = useState('')
 

@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   username: localStorage.getItem('username') || null,
   host: false,
+  currentScore: 0,
+  currentAnswer: '',
 };
 
 const userSlice = createSlice({
@@ -10,6 +12,13 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUsername(state, action) {
+      state.username = action.payload;
+    },
+
+    increaseScore(state) {
+      state.currentScore++;
+    },
+    setCurrentAnswer(state, action) {
       state.username = action.payload;
     },
     resetUser: () => initialState,
