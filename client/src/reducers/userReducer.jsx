@@ -3,8 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   username: localStorage.getItem('username') || null,
   host: false,
+
+  currentScore: 0,
+  currentAnswer: '',
+
   id: null,
   requestedRoom: null,
+
 };
 
 const userSlice = createSlice({
@@ -13,6 +18,13 @@ const userSlice = createSlice({
 
   reducers: {
     setUsername(state, action) {
+      state.username = action.payload;
+    },
+
+    increaseScore(state) {
+      state.currentScore++;
+    },
+    setCurrentAnswer(state, action) {
       state.username = action.payload;
     },
 
@@ -27,6 +39,7 @@ const userSlice = createSlice({
     setRequestedRoom(state, action) {
       state.requestedRoom = action.payload;
     },
+
 
     resetUser: () => initialState,
   },
