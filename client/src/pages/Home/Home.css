@@ -61,6 +61,18 @@
 }
 
 
+.form {
+    text-align: center;
+   
+}
+
+.startbtn {
+    width: 100px;
+    margin-left: 400px;
+}
+
+
+
 .quiz-logo {
     display: flex;
     margin: 20px auto;
@@ -104,3 +116,4 @@
   .home-h1::after {
     opacity: 1;
   }
+

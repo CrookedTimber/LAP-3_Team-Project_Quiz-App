@@ -1,3 +1,4 @@
+
 import QuizLogo from '../../assets/quiz-logo.png';
 import { Container } from 'react-bootstrap';
 import './Home.css';
@@ -35,8 +36,18 @@ export default function Home() {
           <Container className="quiz-logo-container">
             <img className="quiz-logo" src={QuizLogo} alt="quiz logo"></img>
           </Container>
+          
+          <form class="form">
+      <label>Enter a username: <br></br>
+        <input type="text" />
+      </label>
+    </form>
+    <br></br>
+    <br></br>
+    <button class="startbtn">Start</button>
         </Container>
       </article>
     </>
   );
 }
+
