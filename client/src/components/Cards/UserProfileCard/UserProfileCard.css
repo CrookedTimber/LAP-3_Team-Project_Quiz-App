@@ -14,11 +14,7 @@
     font-weight: bold;
 }
 
-.table {
-    display: flex;
-    margin: auto;
-}
-
 td {
-    height: 25px;
+    font-style: italic;
+    font-weight: bold;
 }

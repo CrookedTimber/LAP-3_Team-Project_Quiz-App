@@ -1,12 +1,10 @@
-import Lobby from '../Lobby';
+import Lobby from '../../components/Lobby';
 import { OngoingMatch } from "../../components";
-import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { OngoingMatch } from '../../components';
 import { useSelector, useDispatch} from 'react-redux';
 import io from 'socket.io-client'
-// import Player from '../../Player';
-// import { userActions } from '../../reducers';
+import Player from '../../Player';
+import { matchActions } from '../../reducers';
 
 export default function Match() {
   const dispatch = useDispatch();

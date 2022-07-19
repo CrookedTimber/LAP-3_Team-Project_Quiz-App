@@ -15,18 +15,10 @@ export default function NewGameButtons() {
     navigate("/");
     }
 
-  const handleLocal = () => {
-    navigate("../../../pages/LocalGame");
-  }
+  const localGame = "/LocalGame";
+  const hostGame = "/Lobby";
+  const joinGame = "/Match";
 
-  const handleHost = () => {
-    dispatch(userActions.localGame());
-  }
-  const handleJoin = () => {
-    dispatch(userActions.joinGame());
-  };
-
-  
   return (
     <>
       <article className="dash-container">
@@ -37,20 +29,18 @@ export default function NewGameButtons() {
                     <label htmlFor="exit-btn"></label>
                     <input id="exit-btn" type="submit" value="BACK HOME"></input>
                 </Form>
-               
-                <Form className="form shadow" onSubmit={handleLocal}>
+                <Form className="form shadow">
                     <label htmlFor="local-game-btn"></label>
-                    <input id="local-game-btn" type="submit" value="LOCAL GAME"></input>
+                    <a id="local-game-btn" href={localGame}>Local Game</a>
                 </Form>
-                
-                <Form className="form shadow" onSubmit={handleHost}>
+                <Form className="form shadow">
                     <label htmlFor="host-game-btn"></label>
-                    <input id="host-game-btn" type="submit" value="HOST ONLINE"></input>
+                    <a id="host-game-btn" href={hostGame}>Host a Game</a>
                 </Form>
                 
-                <Form className="form shadow" onSubmit={handleJoin}>
+                <Form className="form shadow">
                     <label htmlFor="join-game-btn"></label>
-                    <input id="join-game-btn" type="submit" value="JOIN A GAME"></input>
+                    <a id="join-game-btn" href={joinGame}>Join a Game</a>
                 </Form>              
             </Container>
         <Outlet />
