@@ -6,7 +6,7 @@ import UserForm from "../../components/Forms/UserForm";
 export default function Home() {
     return (
         <>
-            <article className="home-container parallax">
+            <article className="home-container">
                 
                 <Container className="home-inner-container">
                     <Container className="welcome-div">

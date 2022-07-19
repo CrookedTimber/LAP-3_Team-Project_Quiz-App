@@ -1,9 +1,10 @@
-import { Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 // import { OngoingMatch, Lobby } from './components';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../reducers/userReducer';
 import DashboardForm from "../../components/Forms/DashboardForm";
 import "./Dashboard.css";
+import CardHeader from "react-bootstrap/esm/CardHeader";
 
 export default function Dashboard(props) {
     const dispatch = useDispatch();
@@ -15,8 +16,13 @@ export default function Dashboard(props) {
     return (
         <>
             <article className="dash-container">
-                <h1 id="welcome-username"><span>Welcome {props.username}!</span></h1>
                 <Container className="dash-mid-container">
+                        <Card id="welcome-username">
+                            <CardHeader>Welcome {username}!</CardHeader>
+                            <Card.Body>
+                                <Card.Subtitle>Player Stats</Card.Subtitle>
+                            </Card.Body>
+                        </Card>
                     <Container className="dash-inner-container shadow">
                         <div className="selections">
                             <DashboardForm />
