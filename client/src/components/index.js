@@ -5,5 +5,7 @@ export { default as Lobby } from './Lobby';
 export { default as OngoingMatch } from './OngoingMatch';
 export { default as Question } from './Question';
 export { default as Answer } from './Answer';
-export { default as API } from './API';
 export { default as MatchLogic } from './matchLogic';
+export { default as Timer } from './Timer';
+export { default as JoinRoomModal } from './JoinRoomModal';
+export { default as NewGameButtons } from './NewGameButtons';
