@@ -24,6 +24,7 @@ export default function Match() {
     socket.on('connect', () => {
       socketID = socket.id;
 
+      //Host / Join game
       if(isHost){ //create room if host
         if(roomNum === null){
           setRoomNum(Math.floor(1000 + Math.random() * 9000));
@@ -34,21 +35,54 @@ export default function Match() {
         socket.emit('join_room', roomNum);
       }
 
-      console.log({username: username, id: socketID, isHost: isHost, room: roomNum});
+      console.log({username: username, isHost: isHost, room: roomNum});
     });
 
+    //Test message recieve
     socket.on('recieve_message', (data) => {
-      console.log('message recieved: ', data);
+      console.log('recieved from:', data);
     })
+
+    if(!isHost){
+      //host start game
+
+      //recieve question
+
+      //recieve answers
+
+    }
+    
+    //recieve player answer choices
 
 
   }, [socket])
 
+  /* --- Host --- */
 
-   /* TEST FUNCTION */
-   function testFunc(){
-    socket.emit('send_message', {message: 'test', room: roomNum});
+  //host start game
+  function hostStartGame(){
+    socket.emit('host_start_game', {});
   }
+
+  //relay question
+  function hostRelayQuestion(){
+    socket.emit('host_relay_question', {});
+  }
+
+  //relay answers
+  function hostRelayAnswers(){
+    socket.emit('host_relay_answers', {});
+  }
+
+  /* --- ALL Users --- */
+
+
+
+  /* TEST FUNCTION */
+  function testFunc(){
+    socket.emit('send_message', {message: username, room: roomNum});
+  }
+
 
   return (
     <>
