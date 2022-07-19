@@ -1,8 +1,6 @@
 import Lobby from '../Lobby';
 import { OngoingMatch } from "../../components";
-import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { OngoingMatch } from '../../components';
 import { useSelector, useDispatch} from 'react-redux';
 import io from 'socket.io-client'
 // import Player from '../../Player';
