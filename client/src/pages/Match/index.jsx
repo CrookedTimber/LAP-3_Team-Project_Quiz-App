@@ -26,13 +26,13 @@ export default function Match() {
         if(roomNum === null){
           setRoomNum(Math.floor(1000 + Math.random() * 9000));
         } 
-        socket.emit('join_room', 5583);
+        socket.emit('join_room', roomNum);
       }else if(!isHost){
-        setRoomNum(requestedRoom);
-        socket.emit('join_room', 5583);
+        setRoomNum(parseInt(requestedRoom));
+        socket.emit('join_room', roomNum);
       }
 
-      console.log({username: username, id: socketID, isHost: isHost, room: 5583});
+      console.log({username: username, id: socketID, isHost: isHost, room: roomNum});
     });
 
     socket.on('recieve_message', (data) => {
@@ -45,13 +45,13 @@ export default function Match() {
 
    /* TEST FUNCTION */
    function testFunc(){
-    socket.emit('send_message', {message: 'test', room: 5583});
+    socket.emit('send_message', {message: 'test', room: roomNum});
   }
 
   return (
     <>
       <h3>{`Username: ${username}`}</h3>
-      {!gameStarted && <Lobby roomNum={5583}/>}
+      {!gameStarted && <Lobby roomNum={roomNum}/>}
       {gameStarted && <OngoingMatch />}
       <button onClick={testFunc}>Test</button>
     </>
