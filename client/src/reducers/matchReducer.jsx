@@ -9,7 +9,8 @@ const initialState = {
   timeout: false, // is true when time limit is reached and false on new round
   roundStart: false, // is true once answers appear and false upon transitioning to new question
   showResults: false,
-  playersInGame: []
+  playersInGame: [],
+  showJoinRoom: false,
 };
 
 const matchSlice = createSlice({
@@ -57,8 +58,12 @@ const matchSlice = createSlice({
     setShowResults(state) {
       state.showResults = true;
     },
+    toggleShowJoinRoomModal(state) {
+      state.showJoinRoom = !state.showJoinRoom;
+    },
     resetMatch: () => initialState,
   },
+ 
 });
 
 export const matchActions = matchSlice.actions;
