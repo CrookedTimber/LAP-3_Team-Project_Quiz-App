@@ -11,7 +11,7 @@ export default function Navbar() {
       <Container>
         <Nav className="nav">
           <NavLink className="nav-link nav-link-home" to="/">
-            Play!
+            Home
           </NavLink>
           <NavLink className="nav-link nav-link-rules" to="/rules">
             How To Play
@@ -19,7 +19,7 @@ export default function Navbar() {
           <NavLink className="nav-link nav-link-leaderboard" to="/leaderboard">
             Leaderboard
           </NavLink>
-          <NavbarBrand className="nav-brand">Risky Quizness</NavbarBrand>
+          <NavbarBrand className="nav-brand" href="/">Risky Quizness</NavbarBrand>
         </Nav>
       </Container>
     </>

@@ -1,8 +1,10 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
+
+import "./Lobby.css";
 
 export default function Lobby({roomNum}) {
   const navigate = useNavigate();
@@ -45,7 +47,7 @@ export default function Lobby({roomNum}) {
       let currentIndex = array.length,
         randomIndex;
 
-      while (currentIndex != 0) {
+      while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
 
@@ -76,6 +78,7 @@ export default function Lobby({roomNum}) {
 
   return (
     <>
+    <Container className="lobby-container">
       <Button onClick={backToMainButton}>Main Menu</Button>
       <h1>This is the lobby</h1>
       <h2>{`Room Number: ${roomNum}`}</h2>
@@ -106,6 +109,7 @@ export default function Lobby({roomNum}) {
 
         <Button type="submit">Start Game</Button>
       </Form>
+    </Container>
     </>
   );
 }
