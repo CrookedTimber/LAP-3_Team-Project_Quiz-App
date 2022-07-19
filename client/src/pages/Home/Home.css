@@ -25,25 +25,41 @@
 
 .welcome-div {
     margin: 10px;
-    border: groove 1px yellow;
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
 }
 
-.home-h2a, .home-h2b {
-    animation-name: fadeIn;
-    transition-delay: 500ms;
-    transition-duration: 2s;
-    transition-timing-function: linear;
+.home-h2a {
+    color: red;
+    text-shadow: 2px 2px black;
+    animation-name: fadeIn1;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
 }
-
-@keyframes fadeIn {
+@keyframes fadeIn1 {
     from { 
-        visibility: hidden; 
+        opacity: 0; 
     } to {
-        visibility: visible;
+        opacity: 1;
     }
 }
+
+.home-h2b {
+    color: plum;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+    animation-name: fadeIn2;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes fadeIn2 {
+    from { 
+        opacity: 0; 
+    } to {
+        opacity: 1;
+    }
+}
+
 
 .form {
     text-align: center;
@@ -54,4 +70,50 @@
     width: 100px;
     margin-left: 400px;
 }
+
+
+
+.quiz-logo {
+    display: flex;
+    margin: 20px auto;
+    animation-name: logo-spin;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    height: 200px;
+}
+
+@keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+.home-h1 {
+    position: relative;
+    color: red;
+    text-shadow: 2px 2px black;
+    font-style: italic;
+    font-weight: bold;
+    outline: 2px azure;
+    margin: auto;
+    animation-name: slide-in;
+    animation-duration: 4s;    
+    animation-timing-function: ease-in-out;
+    animation-direction: forward;
+    animation-iteration-count: 1;
+    animation-delay: 4s;
+}
+  @keyframes slide-in {
+        0%  { margin-left: -800px; opacity: 0; }
+        25% { margin-left: 0px; color: yellow; opacity: 1; }
+        100% { margin: inherit; color: plum; opacity: 1; }
+  }
+
+  .home-h1::after {
+    opacity: 1;
+  }
 
