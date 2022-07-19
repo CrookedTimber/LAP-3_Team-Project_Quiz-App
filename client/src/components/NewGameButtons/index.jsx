@@ -1,8 +1,10 @@
 import Button from 'react-bootstrap/Button';
 
+import JoinRoomModal from '../JoinRoomModal';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userActions } from '../../reducers';
+import { matchActions, userActions } from '../../reducers';
 
 export default function NewGameButtons() {
   const dispatch = useDispatch();
@@ -14,8 +16,8 @@ export default function NewGameButtons() {
     dispatch(userActions.resetUser());
   }
 
-  const handleJoinGame = () => {
-    dispatch(userActions.joinGame());
+  const handleJoinRoomModal = () => {
+    dispatch(matchActions.toggleShowJoinRoomModal());
   };
 
   function startMatch() {
@@ -31,9 +33,10 @@ export default function NewGameButtons() {
           Host Game
         </Button>
         <br />
-        <Button className="w-25 m-2" onClick={handleJoinGame}>
+        <Button className="w-25 m-2" onClick={handleJoinRoomModal}>
           Join Game
         </Button>
+        <JoinRoomModal />
         <br />
         <br />
         <Button className="w-25 m-2" onClick={emptyUsername}>

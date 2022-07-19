@@ -11,6 +11,7 @@ const initialState = {
   showResults: false,
   playersInGame: [],
   roomNum: null,
+  showJoinRoom: false,
 };
 
 const matchSlice = createSlice({
@@ -69,9 +70,12 @@ const matchSlice = createSlice({
     setShowResults(state) {
       state.showResults = true;
     },
-
-    resetMatch: () => initialState,
+    toggleShowJoinRoomModal(state) {
+      state.showJoinRoom = !state.showJoinRoom;
     },
+    resetMatch: () => initialState,
+  },
+ 
 });
 
 export const matchActions = matchSlice.actions;

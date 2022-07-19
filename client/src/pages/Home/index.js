@@ -1,4 +1,3 @@
-
 import QuizLogo from '../../assets/quiz-logo.png';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -57,10 +56,8 @@ export default function Home() {
             </form>
           )}
           {username && <NewGameButtons />}
-
         </Container>
       </article>
     </>
   );
 }
-
