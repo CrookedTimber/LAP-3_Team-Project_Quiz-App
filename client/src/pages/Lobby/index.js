@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
 
+import "./Lobby.css";
+
 export default function Lobby() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,6 +43,22 @@ export default function Lobby() {
 
     let restructuredQuestions = [];
 
+    const shuffleArray = (array) => {
+      let currentIndex = array.length,
+        randomIndex;
+
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex],
+          array[currentIndex],
+        ];
+      }
+      return array;
+    }
+
     apiQuestions.results.map((item) => {
       return restructuredQuestions.push({
         question: item.question,
@@ -60,7 +78,7 @@ export default function Lobby() {
 
   return (
     <>
-    <Container>
+    <Container className="lobby-container">
       <Button onClick={backToMainButton}>Main Menu</Button>
       <h1>This is the lobby</h1>
       <h2>{`Room Number: ${'####'}`}</h2>

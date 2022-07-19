@@ -16,7 +16,7 @@
     margin: auto;
 }
 
-.user-form > input {
+input {
     font-family: 'Share Tech Mono', monospace;
     letter-spacing: 1.5px;
     padding: 10px;
@@ -24,9 +24,11 @@
     border-radius: 10px 0 0 10px;
 }
 
-#username-button {
+#start-btn {
     font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
     background-color: yellow;
+    color: #000;
     font-weight: bold;
     border-radius: 0 10px 10px 0;
 }

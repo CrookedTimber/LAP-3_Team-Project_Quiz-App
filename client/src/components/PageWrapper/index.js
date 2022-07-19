@@ -6,9 +6,7 @@ const PageWrapper = () => {
     return (
         <main className="page-wrapper">
             <Header />
-            <article>
                 <Outlet />
-            </article>
             <Footer />
         </main>
     )

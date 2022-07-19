@@ -1,7 +1,13 @@
+import "./LocalGame.css";
+import Lobby from "../Lobby";
+import { Container } from "react-bootstrap";
+
 export default function LocalGame() {
     return (
         <>
-            <h1>Local Game Dashboard</h1>
+            <Container>
+                <Lobby />
+            </Container>
         </>
     )
 }

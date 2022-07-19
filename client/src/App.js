@@ -1,9 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import { PageWrapper } from './components';
-import { Dashboard, Home, Instructions, Leaderboard, Lobby, LocalGame, Match, NotFound } from './pages/';
+import { Home, Instructions, Leaderboard, Lobby, LocalGame, Match, NotFound } from './pages/';
 
 
 import './App.css';
+
 
 function App() {
   
@@ -13,19 +14,20 @@ function App() {
       
         <Routes>
           <Route path="/" element={<PageWrapper />}>
-            <Route path="/">
-              <Route path="/" element={<Home />}></Route>
-                <Route path=":dashboard" element={<Dashboard />}></Route>
-                <Route path=":localgame" element={<LocalGame />}></Route>
-                <Route path=":lobby" element={<Lobby />}></Route>
-                <Route path=":joingame" element={<Match />}></Route>               
+              <Route path="/">
+                <Route path="/" element={<Home />}>                  
+                  <Route path=":localgame" element={<LocalGame />} />
+                  <Route path=":lobby" element={<Lobby />} /> 
+                  <Route path=":joingame" element={<Match />} /> 
+                </Route>
+                
               </Route>
             <Route path="rules" element={<Instructions />}></Route>
             <Route path="leaderboard" element={<Leaderboard />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Route>
         </Routes>
-      
+        <Outlet /> 
     </div>
     </>
  

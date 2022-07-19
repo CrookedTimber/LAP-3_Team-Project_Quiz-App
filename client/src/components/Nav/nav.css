@@ -12,7 +12,12 @@
     font-family: 'Press Start 2P', cursive;
     color: #F9FD0F;
     letter-spacing: 2px;
+    text-shadow: 2px 2px black;
     margin: auto;
+}
+
+.nav-brand:hover {
+    cursor: pointer;
 }
 
 .nav-link {
@@ -21,6 +26,7 @@
     font-size: larger;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+    text-shadow: 2px 2px black;
 }
 .nav-link:hover {
     color: #fff;

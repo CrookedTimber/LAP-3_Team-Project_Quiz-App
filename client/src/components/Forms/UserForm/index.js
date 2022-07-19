@@ -1,40 +1,52 @@
 import { useState } from "react";
-import { Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
+// import { useNavigate } from "react-router-dom";
 import { userActions } from '../../../reducers';
-import { useNavigate } from "react-router-dom";
+import NewGameButtons from '../../Buttons/NewGameButtons';
 import "./UserForm.css";
 
 export default function UserForm() {
-    const [ username, setUsername ] = useState("");
-    
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const Dashboard = "../../../pages";
-    
-    // function reset() {
-    //     dispatch(userActions.resetUsername());
-    // }
-    
-    const handleInput = (e) => {
-        const input = e.target.value;
-        setUsername(input);
-    }
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.user.username);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        navigate(Dashboard);
-        setUsername("");
-        }
+  const [input, setInput] = useState('');
+  
+  function updateInput(e) {
+    setInput(e.target.value);
+  }
 
+  function submitUsername(e) {
+    e.preventDefault();
+    dispatch(userActions.setUsername(input));
+    localStorage.setItem('username', input);
+    setInput('');
+  }
     return (
         <>
             <Container className="username-form-container">
-            <h3 className="username-form-header">To start, please enter a username!</h3>
-                <Form className="user-form shadow" onSubmit={handleSubmit} role="form">
-                    <input id="username-input" onChange={handleInput} type="text" value={username} placeholder="USERNAME" required></input>
-                    <input id="username-button" type="submit" value="START"></input>
+                
+           
+                {!username && (
+                <Form onSubmit={submitUsername}
+                      className="d-flex justify-content-center"
+                      >
+                    <label htmlFor="user-input"></label>
+                    <br />
+                    <input
+                        type="text"
+                        id="user-input"
+                        onChange={updateInput}
+                        value={input}
+                        required
+                        />
+                    <Button id="start-btn" type="submit">Start</Button>
                 </Form>
+                )}
+            </Container>
+                
+            <Container className="dashboard-container">
+                {username && <NewGameButtons />}
             </Container>
         </>
     )

@@ -2,8 +2,6 @@ import { Answer, Question, Timer } from '..';
 import { useSelector } from 'react-redux';
 
 export default function OngoingMatch() {
-  const username = useSelector((state) => state.user.username);
-
   const questions = useSelector((state) => state.match.questionsArray);
   const qIndex = useSelector((state) => state.match.currentRoundNum);
 
