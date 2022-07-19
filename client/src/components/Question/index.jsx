@@ -3,50 +3,44 @@ import { useSelector, useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import Button from 'react-bootstrap/Button';
 
-
 export default function Question(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const questions = useSelector((state) => state.match.questionsArray);
   const qIndex = useSelector((state) => state.match.currentRoundNum);
 
-
-   // DEVELOPER FEATURE
-   const backToMainButton = () => {
+  // DEVELOPER FEATURE
+  const backToMainButton = () => {
     navigate('/');
-    dispatch(matchActions.resetGame());
+    dispatch(matchActions.resetMatch());
   };
 
+  // DEVELOPER FEATURE
 
- // DEVELOPER FEATURE
+  const nextQuestion = () => {
+    dispatch(matchActions.nextRound());
+  };
 
- const nextQuestion = () => {
-  dispatch(matchActions.nextRound());
-};
-
-// DEVELOPER FEATURE
-const previousQuestion = () => {
-  dispatch(matchActions.previousRound());
-};
-
-
+  // DEVELOPER FEATURE
+  const previousQuestion = () => {
+    dispatch(matchActions.previousRound());
+  };
 
   return (
     <>
-    {qIndex > 0 && (
-      <Button onClick={previousQuestion}>Previous Question</Button>
-    )}
-    <Button onClick={backToMainButton}>Go back</Button>
-    {qIndex < questions.length - 1 && (
-      <Button onClick={nextQuestion}>Next Question</Button>
-    )}
-    <h3>{`Question ${qIndex + 1} / ${questions.length}`}</h3>
-    <h1
-      key={`${props.id}h`}
-      dangerouslySetInnerHTML={{ __html: props.question }}
-    ></h1>
-  </>
+      {qIndex > 0 && (
+        <Button onClick={previousQuestion}>Previous Question</Button>
+      )}
+      <Button onClick={backToMainButton}>Go back</Button>
+      {qIndex < questions.length - 1 && (
+        <Button onClick={nextQuestion}>Next Question</Button>
+      )}
+      <h3>{`Question ${qIndex + 1} / ${questions.length}`}</h3>
+      <h1
+        key={`${props.id}h`}
+        dangerouslySetInnerHTML={{ __html: props.question }}
+      ></h1>
+    </>
   );
 }

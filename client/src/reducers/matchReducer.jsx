@@ -8,6 +8,8 @@ const initialState = {
   gameStart: false, //once lobby has been setup and game is ready to begin, gameStart is true through out every round
   timeout: false, // is true when time limit is reached and false on new round
   roundStart: false, // is true once answers appear and false upon transitioning to new question
+  showResults: false,
+  playersInGame: []
 };
 
 const matchSlice = createSlice({
@@ -48,14 +50,14 @@ const matchSlice = createSlice({
       state.currentRoundNum--;
     },
 
-
     //set current round number back to its initial state
     resetCurrentRound(state) {
       state.currentRoundNum = initialState.currentRoundNum;
     },
-    resetGame(state) {
-      state = initialState;
+    setShowResults(state) {
+      state.showResults = true;
     },
+    resetMatch: () => initialState,
   },
 });
 
