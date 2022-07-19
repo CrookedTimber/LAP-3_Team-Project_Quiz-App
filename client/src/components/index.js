@@ -9,3 +9,5 @@ export { default as PageWrapper } from './PageWrapper';
 export { default as MatchLogic } from './matchLogic';
 export { default as Timer } from './Timer';
 
+export { default as JoinRoomModal } from './JoinRoomModal';
+export { default as NewGameButtons } from './NewGameButtons';
