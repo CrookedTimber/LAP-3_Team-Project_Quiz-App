@@ -1,9 +1,10 @@
-import QuizLogo from "../../assets/quiz-logo.png";
 import { Container } from "react-bootstrap";
-import "./Home.css";
+import QuizLogo from "../../assets/quiz-logo.png";
 import UserForm from "../../components/Forms/UserForm";
+import "./Home.css";
 
 export default function Home() {
+
     return (
         <>
             <article className="home-container">

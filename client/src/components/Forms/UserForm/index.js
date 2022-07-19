@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { Container, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux';
+import { userActions } from '../../../reducers';
 import { useNavigate } from "react-router-dom";
 import "./UserForm.css";
 
 export default function UserForm() {
     const [ username, setUsername ] = useState("");
+    
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const Dashboard = "../../../pages";
+    
+    // function reset() {
+    //     dispatch(userActions.resetUsername());
+    // }
     
     const handleInput = (e) => {
         const input = e.target.value;

@@ -1,15 +1,24 @@
-import { Answer, Question } from '..';
-
-const answerNumber = [1, 2, 3, 4];
+import { Answer, Question, Timer } from '..';
+import { useSelector } from 'react-redux';
 
 export default function OngoingMatch() {
+  const username = useSelector((state) => state.user.username);
+
+  const questions = useSelector((state) => state.match.questionsArray);
+  const qIndex = useSelector((state) => state.match.currentRoundNum);
+
   return (
     <>
       <h1>This is the Ongoing Match</h1>
-      <Question />
-      {answerNumber.map((item, index) => (
-        <Answer key={index} answer={item}></Answer>
+      <Question question={questions[qIndex].question} />
+      {questions[qIndex].answers.map((item, index) => (
+        <Answer
+          key={index}
+          isCorrect={item.isCorrect}
+          answer={item.answer}
+        ></Answer>
       ))}
+      <Timer done="30" />
     </>
   );
 }

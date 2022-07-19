@@ -3,7 +3,6 @@ import { Container, Form } from "react-bootstrap";
 import "./DashboardForm.css";
 
 export default function DashboardForm() {
-    
 
     const navigate = useNavigate();
 
@@ -14,7 +13,7 @@ export default function DashboardForm() {
         navigate("../../../pages/LocalGame");
     }
     const handleHost = () => {
-        navigate("../../../pages/Lobby");
+        navigate("../../../pages/Lobby/index.jsx");
     }
     const handleJoin = () => {
         navigate("../../../pages/Match");
