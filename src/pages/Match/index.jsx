@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { Lobby, OngoingMatch } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import io from 'socket.io-client'
-// import Player from '../../Player';
-// import { userActions } from '../../reducers';
+import { matchActions } from '../../reducers';
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
+
+  const dispatch = useDispatch();
 
   const players = useSelector((state) => state.match.players);
   const username = useSelector((state) => state.user.username);
@@ -46,10 +47,11 @@ export default function Match() {
     if(!isHost){
       //host start game
       socket.on('recieve_host_start', (data) => {
-        // if(data.hostStart){
-
-        // }
-        console.log('host start', data);
+        if(data.hostStart){
+          console.log('host starting match');
+          dispatch(matchActions.updateQuestionsArray(data.questions));
+          dispatch(matchActions.updateGameStart());
+        }
       })
 
       //recieve question

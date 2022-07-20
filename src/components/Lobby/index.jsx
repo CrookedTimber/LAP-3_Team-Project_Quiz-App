@@ -12,11 +12,9 @@ export default function Lobby({roomNum, isHost, socket}) {
   /* --- Host --- */
 
   //host start game
-  function hostStartGame(){
-    socket.emit('host_start_game', {roomNum});
+  function hostStartGame(questions){
+    socket.emit('host_start_game', {roomNum, questions});
   }
-
-
 
   const categories = [
     { code: 9, name: 'General Knowledge' },
@@ -47,42 +45,41 @@ export default function Lobby({roomNum, isHost, socket}) {
 
   const startGame = async (e) => {
     e.preventDefault();
-    hostStartGame();
-    // let apiQuestions = await getData(e.target);
+    let apiQuestions = await getData(e.target);
 
-    // let restructuredQuestions = [];
+    let restructuredQuestions = [];
 
-    // const shuffleArray = (array) => {
-    //   let currentIndex = array.length,
-    //     randomIndex;
+    const shuffleArray = (array) => {
+      let currentIndex = array.length,
+        randomIndex;
 
-    //   while (currentIndex != 0) {
-    //     randomIndex = Math.floor(Math.random() * currentIndex);
-    //     currentIndex--;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
-    //     [array[currentIndex], array[randomIndex]] = [
-    //       array[randomIndex],
-    //       array[currentIndex],
-    //     ];
-    //   }
-    //   return array;
-    // }
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex],
+          array[currentIndex],
+        ];
+      }
+      return array;
+    }
 
-    // apiQuestions.results.map((item) => {
-    //   return restructuredQuestions.push({
-    //     question: item.question,
-    //     answers: [
-    //       { isCorrect: true, answer: item.correct_answer },
-    //       { isCorrect: false, answer: item.incorrect_answers[0] },
-    //       { isCorrect: false, answer: item.incorrect_answers[1] },
-    //       { isCorrect: false, answer: item.incorrect_answers[2] },
-    //     ],
-    //   });
-    // });
+    apiQuestions.results.map((item) => {
+      return restructuredQuestions.push({
+        question: item.question,
+        answers: [
+          { isCorrect: true, answer: item.correct_answer },
+          { isCorrect: false, answer: item.incorrect_answers[0] },
+          { isCorrect: false, answer: item.incorrect_answers[1] },
+          { isCorrect: false, answer: item.incorrect_answers[2] },
+        ],
+      });
+    });
 
-    // dispatch(matchActions.updateQuestionsArray(restructuredQuestions));
-
-    // dispatch(matchActions.updateGameStart());
+    dispatch(matchActions.updateQuestionsArray(restructuredQuestions));
+    dispatch(matchActions.updateGameStart());
+    hostStartGame(restructuredQuestions);
   };
 
   return (
