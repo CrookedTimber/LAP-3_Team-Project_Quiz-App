@@ -3,6 +3,7 @@ import { Lobby, OngoingMatch, MatchResults } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { matchActions, userActions } from '../../reducers';
 import { io } from 'socket.io-client';
+import { socket } from './Socket';
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
@@ -18,37 +19,34 @@ export default function Match() {
   const showResults = useSelector((state) => state.match.showResults);
   
   // establish connection to socket port
-  let socket = io.connect("http://localhost:3001"); 
+  // let socket = io.connect("http://localhost:3001"); 
 
-  //detect changes in socket i.e. broadcasts/emitions
   useEffect(() => {
+    //if host create room
+    if(isHost && roomNum === null){
+      let roomNumber = Math.floor(1000 + Math.random() * 9000);
+      setRoomNum(roomNumber);
+
+      //assign host name
+      if(isHost && roomHost === null){
+        setroomHost(username);
+      };
+
+      //create random room
+      socket.emit('create_room', {room: roomNumber, username: username});
+
+      // users join requested room
+    }else if(!isHost && roomNum === null){
+      let roomNumber = parseInt(requestedRoom);
+      setRoomNum(roomNumber);
+
+      socket.emit('join_room', {room: roomNumber, username: username});
+    };
     
-    //establish connection upon load
-    socket.on('connect', async() => {
-
-      if(isHost){ //create room if host
-        if(roomNum === null){
-          setRoomNum(Math.floor(1000 + Math.random() * 9000));
-        }
-        
-        if(isHost && roomHost === null){
-          setroomHost(username);
-        }
-
-        await socket.emit('create_room', {room: roomNum, username: username, isHost: isHost});
-
-      }else if(!isHost){
-        setRoomNum(parseInt(requestedRoom));
-        await socket.emit('join_room', {room: roomNum, username: username, isHost: isHost});
-      }
-
-      console.log('Player Connected: ', username, socket.id);
-    });
-
-    //Test message recieve
+    // Test message recieve
     socket.on('recieve_message', (data) => {
       console.log('recieved from:', data);
-    })
+    });
 
     //get name of host
     socket.on('recieve_host_name', (data) => {
@@ -67,10 +65,17 @@ export default function Match() {
         }
       })
     }
-    
-    //recieve player answer choices
 
-  }, [socket])
+    //recieve updated player list
+    // if(isHost){
+    //   socket.on('recieve_player_data', (data) => {
+    //     dispatch(matchActions.addPlayer(data.username));
+    //     console.log(players);
+    //   })
+    // }
+
+  }, [socket]);
+
 
   /* --- Host --- */
 
