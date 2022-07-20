@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Lobby, OngoingMatch } from '../../components';
+import { Lobby, OngoingMatch, MatchResults } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import io from 'socket.io-client'
 import { matchActions } from '../../reducers';
@@ -14,6 +14,7 @@ export default function Match() {
   const isHost = useSelector((state) => state.user.host);
   const requestedRoom = useSelector((state) => state.user.requestedRoom);
   const gameStarted = useSelector((state) => state.match.gameStart);
+  const showResults = useSelector((state) => state.match.showResults);
   
   // establish connection to socket port
   let socket = io.connect("http://localhost:3001");
@@ -96,7 +97,8 @@ export default function Match() {
     <>
       <h3>{`Username: ${username}`}</h3>
       {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost} socket={socket}/>}
-      {gameStarted && <OngoingMatch />}
+      {gameStarted && !showResults && <OngoingMatch />}
+      {gameStarted && showResults &&  <MatchResults />}
       <button onClick={testFunc}>Test</button>
     </>
   );

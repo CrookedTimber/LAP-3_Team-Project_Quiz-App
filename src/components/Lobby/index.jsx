@@ -53,7 +53,7 @@ export default function Lobby({roomNum, isHost, socket}) {
       let currentIndex = array.length,
         randomIndex;
 
-      while (currentIndex != 0) {
+      while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
 
@@ -68,12 +68,12 @@ export default function Lobby({roomNum, isHost, socket}) {
     apiQuestions.results.map((item) => {
       return restructuredQuestions.push({
         question: item.question,
-        answers: [
+        answers: /* shuffleArray( */[
           { isCorrect: true, answer: item.correct_answer },
           { isCorrect: false, answer: item.incorrect_answers[0] },
           { isCorrect: false, answer: item.incorrect_answers[1] },
           { isCorrect: false, answer: item.incorrect_answers[2] },
-        ],
+        ]/* ) */,
       });
     });
 

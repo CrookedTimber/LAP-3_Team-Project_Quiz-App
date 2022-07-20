@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function JoinRoomModal() {
-  const showJoinRoom = useSelector((state) => state.match.showJoinRoom);
+  const showJoinRoom = useSelector((state) => state.match.showJoinRoomModal);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

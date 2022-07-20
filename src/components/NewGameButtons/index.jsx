@@ -23,6 +23,8 @@ export default function NewGameButtons() {
   function startMatch() {
     navigate('/match');
     dispatch(userActions.setHost());
+    dispatch(matchActions.resetMatch());
+    dispatch(userActions.resetUserMatchData());
   }
 
   return (
