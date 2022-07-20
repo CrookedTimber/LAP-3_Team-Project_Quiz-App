@@ -26,6 +26,12 @@ io.on("connection", (socket) => {
         console.log("message sent from: ", data.room)
         socket.to(data.room).emit('recieve_message', data.message);
     })
+
+    socket.on('host_start_game', (data) => {
+        console.log("Host has started game: ", data.roomNum)
+        socket.to(data.roomNum).emit('recieve_host_start', {hostStart: true});
+    })
+
 })
 
 server.listen(3001, () => {

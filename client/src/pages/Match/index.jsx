@@ -45,6 +45,12 @@ export default function Match() {
 
     if(!isHost){
       //host start game
+      socket.on('recieve_host_start', (data) => {
+        // if(data.hostStart){
+
+        // }
+        console.log('host start', data);
+      })
 
       //recieve question
 
@@ -87,7 +93,7 @@ export default function Match() {
   return (
     <>
       <h3>{`Username: ${username}`}</h3>
-      {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost}/>}
+      {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost} socket={socket}/>}
       {gameStarted && <OngoingMatch />}
       <button onClick={testFunc}>Test</button>
     </>
