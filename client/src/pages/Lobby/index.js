@@ -4,11 +4,21 @@ import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
 
+<<<<<<<< HEAD:client/src/pages/Lobby/index.js
 import "./Lobby.css";
 
 export default function Lobby({roomNum}) {
+========
+export default function Lobby({roomHost, roomNum, isHost, socket}) {
+>>>>>>>> e3665559cd0f01339d0229dc323c76fedc13baf5:src/components/Lobby/index.jsx
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  /* --- Socket emits --- */
+  //host start game
+  function hostStartGame(questions){
+    socket.emit('host_start_game', {roomNum, questions});
+  }
 
   const categories = [
     { code: 9, name: 'General Knowledge' },
@@ -62,27 +72,30 @@ export default function Lobby({roomNum}) {
     apiQuestions.results.map((item) => {
       return restructuredQuestions.push({
         question: item.question,
-        answers: [
+        answers: shuffleArray([
           { isCorrect: true, answer: item.correct_answer },
           { isCorrect: false, answer: item.incorrect_answers[0] },
           { isCorrect: false, answer: item.incorrect_answers[1] },
           { isCorrect: false, answer: item.incorrect_answers[2] },
-        ],
+        ]),
       });
     });
 
     dispatch(matchActions.updateQuestionsArray(restructuredQuestions));
-
     dispatch(matchActions.updateGameStart());
+    hostStartGame(restructuredQuestions);
   };
 
   return (
     <>
     <Container className="lobby-container">
       <Button onClick={backToMainButton}>Main Menu</Button>
-      <h1>This is the lobby</h1>
+      <h1>Game Host: {roomHost}</h1>
       <h2>{`Room Number: ${roomNum}`}</h2>
-      <Form onSubmit={startGame}>
+
+      {
+        isHost ?
+        <Form onSubmit={startGame}>
         <Form.Group className="mb-3">
           <Form.Label htmlFor="category">Category</Form.Label>
           <Form.Select id="category" name="category">
@@ -109,7 +122,12 @@ export default function Lobby({roomNum}) {
 
         <Button type="submit">Start Game</Button>
       </Form>
+<<<<<<<< HEAD:client/src/pages/Lobby/index.js
     </Container>
+========
+        : null
+      }
+>>>>>>>> e3665559cd0f01339d0229dc323c76fedc13baf5:src/components/Lobby/index.jsx
     </>
   );
 }
