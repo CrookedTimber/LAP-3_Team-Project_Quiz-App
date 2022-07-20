@@ -3,13 +3,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { matchActions, userActions } from '../../reducers';
 
-export default function OngoingMatch() {
+export default function OngoingMatch({socket, roomNum}) {
   const questions = useSelector((state) => state.match.questionsArray);
   const qIndex = useSelector((state) => state.match.currentRoundNum);
   const showAnswers = useSelector((state) => state.match.showAnswers);
   const timeout = useSelector((state) => state.match.timeout);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    socket.on()
+  }, [socket])
+
+  //socket.io emissions
+  function playerChoice(){
+    const username = localStorage.getItem('username');
+    let choiceID = 'test';
+    socket.emit('player_choice', {user: username, id: socket.id, choice: choiceID, room: roomNum});
+  }
+
+
 
   const [timerDigit, setTimerDigit] = useState(0);
 
