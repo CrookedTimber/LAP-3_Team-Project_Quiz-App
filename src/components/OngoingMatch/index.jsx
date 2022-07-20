@@ -66,7 +66,7 @@ export default function OngoingMatch() {
             <Answer
               key={index}
               option={index}
-              id={`answwer${index}`}
+              id={`answer${index}`}
               isCorrect={item.isCorrect}
               answer={item.answer}
             />

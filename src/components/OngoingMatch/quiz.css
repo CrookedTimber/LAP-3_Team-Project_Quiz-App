@@ -124,12 +124,32 @@ div {
 }
 
 .avatar {
-  border: 2px solid black;
-  position: absolute;
-  top: 0px;
-  right: 0px;
+  position: relative;
+  float: right;
+  right: 0;
+  height: 75px;
+  width: 75px;
   background-color: #33b4ff;
   border: 3px solid #8c8c8c;
+
+  background-size: 100px 100px;
+  background-position: center;
   color: #fff;
-  border-radius: 100%;
+  border-radius: 50%;
 }
+
+.player1 {
+  background-image: url('../../assets/player-1.png');
+}
+
+.player2 {
+  background-image: url('../../assets/player-2.png');
+}
+
+.player3 {
+  background-image: url('../../assets/player-3.png');
+}
+.player4 {
+  background-image: url('../../assets/player-4.png');
+}
+

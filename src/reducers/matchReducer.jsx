@@ -8,13 +8,13 @@ const initialState = {
   gameStart: false, //once lobby has been setup and game is ready to begin, gameStart is true through out every round
   timeout: false, // is true when time limit is reached and false on new round
   roundStart: false, // is true once answers appear and false upon transitioning to new question
-  showAnswers: false,
+  showAnswers: true,
   showResults: false, // becomes true once all rounds of the match have been played
   playersInGame: [], // stores the names of the players in the game
   showJoinRoomModal: false, // Boolean value is toggled when pressing the Join Game Button
   roomNum: null, // Online Game Room Number
-
   difficulty: 0,
+  roundAnswers: { answer0: [], answer1: [], answer2: [], answer3: [] },
 };
 
 const matchSlice = createSlice({
@@ -65,7 +65,7 @@ const matchSlice = createSlice({
     },
 
     setUpNextRound(state) {
-      state.showAnswers = initialState.showAnswers ;
+      state.showAnswers = initialState.showAnswers;
       state.timeout = initialState.timeout;
     },
 
@@ -80,11 +80,11 @@ const matchSlice = createSlice({
     },
 
     revealAnswers(state) {
-      state.showAnswers = true
+      state.showAnswers = true;
     },
 
     hideAnswers(state) {
-      state.showAnswers = false
+      state.showAnswers = false;
     },
 
     setShowResults(state) {
