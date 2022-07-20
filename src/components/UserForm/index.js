@@ -3,7 +3,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from "react-router-dom";
 import { userActions } from '../../reducers';
-import NewGameButtons from '../Buttons/NewGameButtons';
+import NewGameButtons from '../../pages/NewGameButtons';
 import "./UserForm.css";
 
 export default function UserForm() {

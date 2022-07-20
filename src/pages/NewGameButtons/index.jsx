@@ -1,6 +1,6 @@
 import { Button, Container } from 'react-bootstrap';
 import UserProfileCard from '../../components/UserProfileCard';
-import JoinRoomModal from '../JoinRoomModal';
+import JoinRoomModal from '../../components/JoinRoomModal';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
