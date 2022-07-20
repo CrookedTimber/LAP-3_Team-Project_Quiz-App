@@ -62,12 +62,12 @@ export default function Lobby({roomNum, isHost}) {
     apiQuestions.results.map((item) => {
       return restructuredQuestions.push({
         question: item.question,
-        answers: [
+        answers: /* shuffleArray( */[
           { isCorrect: true, answer: item.correct_answer },
           { isCorrect: false, answer: item.incorrect_answers[0] },
           { isCorrect: false, answer: item.incorrect_answers[1] },
           { isCorrect: false, answer: item.incorrect_answers[2] },
-        ],
+        ]/* ) */,
       });
     });
 

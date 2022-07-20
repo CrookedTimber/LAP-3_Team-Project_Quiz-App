@@ -98,35 +98,35 @@ export default function LocalGame() {
 
     return (
         <>
-            <Container>
-                <Button onClick={backToMainButton}>Main Menu</Button>
-                <h1>Create a Local Game</h1>
+            <Container className="local-game-container">
+                <Button className="back-to-main-btn shadow" onClick={backToMainButton}>Main Menu</Button>
+                <h1 className="local-game-title">Create a Local Game</h1>
                 
-                <Form onSubmit={startGame}>
+                <Form id="create-local-game-form" className="shadow" onSubmit={startGame}>
                     <Form.Group className="mb-3">
-                    <Form.Label htmlFor="players">Number of Players</Form.Label>
-                        <Form.Select id="players" name="players" onSelect={handlePlayer}>
+                    <Form.Label className="form-label" htmlFor="players"># of Players</Form.Label>
+                        <Form.Select className="form-select shadow" id="players" name="players" onSelect={handlePlayer}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </Form.Select>
-                    <Form.Label htmlFor="category">Category</Form.Label>
-                        <Form.Select id="category" name="category">
+                    <Form.Label className="form-label" htmlFor="category">Category</Form.Label>
+                        <Form.Select className="form-select shadow" id="category" name="category">
                             {categories.map((category, index) => (
                             <option key={index} value={category.code}>
                                 {category.name}
                             </option>
                             ))}
                         </Form.Select>
-                    <Form.Label htmlFor="difficulty">Difficulty</Form.Label>
-                        <Form.Select id="difficulty" name="difficulty">
+                    <Form.Label className="form-label" htmlFor="difficulty">Difficulty</Form.Label>
+                        <Form.Select className="form-select shadow" id="difficulty" name="difficulty">
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="hard">Hard</option>
                         </Form.Select>
-                    <Form.Label htmlFor="questionsNumber">Number of questions</Form.Label>
-                        <Form.Select name="questionsNumber" id="questionsNumber">
+                    <Form.Label className="form-label" htmlFor="questionsNumber"># of questions</Form.Label>
+                        <Form.Select className="form-select shadow" name="questionsNumber" id="questionsNumber">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
@@ -134,7 +134,7 @@ export default function LocalGame() {
                         </Form.Select>
                     </Form.Group>
 
-            <Button type="submit">Start Game</Button>
+            <Button className="start-game-btn shadow" type="submit">Start Game</Button>
       </Form>
     </Container>
     </>

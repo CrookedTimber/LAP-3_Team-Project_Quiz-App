@@ -31,16 +31,16 @@ export default function NewGameButtons() {
                 </Form>
                 <Form className="form shadow">
                     <label htmlFor="local-game-btn"></label>
-                    <a id="local-game-btn" href={localGame}>Local Game</a>
+                    <a className="a" id="local-game-btn" href={localGame}>Local Game</a>
                 </Form>
                 <Form className="form shadow">
                     <label htmlFor="host-game-btn"></label>
-                    <a id="host-game-btn" href={hostGame}>Host a Game</a>
+                    <a className="a" id="host-game-btn" href={hostGame}>Host a Game</a>
                 </Form>
                 
                 <Form className="form shadow">
                     <label htmlFor="join-game-btn"></label>
-                    <a id="join-game-btn" href={joinGame}>Join a Game</a>
+                    <a className="a" id="join-game-btn" href={joinGame}>Join a Game</a>
                 </Form>              
             </Container>
         <Outlet />

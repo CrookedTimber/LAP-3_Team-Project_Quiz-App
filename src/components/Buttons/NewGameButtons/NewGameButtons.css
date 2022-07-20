@@ -20,14 +20,21 @@
     border-radius: 20px;
 }
 
-.form > input {
+.a {
+    padding: 10px;
+}
+.form > input, .a {
+    cursor: pointer;
     background-color: yellow;
     color: black;
     font-weight: bold;
     border: none;
     letter-spacing: 1.6px;
+    text-transform: uppercase;
+    text-decoration: none;
 }
 
-.form > input:hover {
+.form > input:hover, .a:hover {
     background-color: lime;
+    color: #000;
 }

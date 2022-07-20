@@ -5,11 +5,10 @@ const initialState = {
   host: false,
 
   currentScore: 0,
-  currentAnswer: '',
+  selectedAnswer: null,
 
   id: null,
   requestedRoom: null,
-
 };
 
 const userSlice = createSlice({
@@ -24,8 +23,8 @@ const userSlice = createSlice({
     increaseScore(state) {
       state.currentScore++;
     },
-    setCurrentAnswer(state, action) {
-      state.username = action.payload;
+    selectedAnswer(state, action) {
+      state.selectedAnswer = action.payload;
     },
 
     setHost(state) {
@@ -40,6 +39,10 @@ const userSlice = createSlice({
       state.requestedRoom = action.payload;
     },
 
+    resetUserMatchData(state) {
+      state.currentScore = initialState.currentScore;
+      state.selectedAnswer = initialState.selectedAnswer;
+    },
 
     resetUser: () => initialState,
   },
