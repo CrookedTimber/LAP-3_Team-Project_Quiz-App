@@ -3,7 +3,6 @@ import { Lobby, OngoingMatch, MatchResults } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { matchActions, userActions } from '../../reducers';
 import { io } from 'socket.io-client';
-import { socketID, socket } from './socket';
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
@@ -18,38 +17,33 @@ export default function Match() {
   const gameStarted = useSelector((state) => state.match.gameStart);
   const showResults = useSelector((state) => state.match.showResults);
   
+  // establish connection to socket port
   let socket = io.connect("http://localhost:3001"); 
 
-  const firstUpdate = useRef(true);
   //detect changes in socket i.e. broadcasts/emitions
   useEffect(() => {
     
-    //establish connection to socket port
-    if(firstUpdate.current){
-      let roomNumber;
+    //establish connection upon load
+    socket.on('connect', async() => {
 
-      socket.on('connect', () => {
-        if(isHost){
-          roomNumber = Math.floor(1000 + Math.random() * 9000)
-          setRoomNum(roomNumber);
-          
-          if(isHost && roomHost === null){
-            setroomHost(username);
-          }
-
-        socket.emit('create_room', {room: roomNumber, username: username, isHost: isHost});
-
-        }else if(!isHost){
-          setRoomNum(parseInt(requestedRoom));
-          let requestedRoomNum = parseInt(requestedRoom);
-          socket.emit('join_room', {room: requestedRoomNum, username: username});
+      if(isHost){ //create room if host
+        if(roomNum === null){
+          setRoomNum(Math.floor(1000 + Math.random() * 9000));
         }
-  
-        firstUpdate.current = false;
-        console.log('Player Connected: ', username, socketID, `isHost: ${isHost}`);
-      
-      });
-    }
+        
+        if(isHost && roomHost === null){
+          setroomHost(username);
+        }
+
+        await socket.emit('create_room', {room: roomNum, username: username, isHost: isHost});
+
+      }else if(!isHost){
+        setRoomNum(parseInt(requestedRoom));
+        await socket.emit('join_room', {room: roomNum, username: username, isHost: isHost});
+      }
+
+      console.log('Player Connected: ', username, socket.id);
+    });
 
     //Test message recieve
     socket.on('recieve_message', (data) => {
@@ -97,9 +91,10 @@ export default function Match() {
 
   /* --- ALL Users --- */
 
+
+
   /* TEST FUNCTION */
   function testFunc(){
-    console.log('sent from: ', socket.id);
     socket.emit('send_message', {message: username, room: roomNum});
   }
 
