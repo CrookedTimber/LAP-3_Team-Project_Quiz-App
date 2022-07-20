@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Lobby, OngoingMatch, MatchResults } from '../../components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Container } from 'react-bootstrap';
 import io from 'socket.io-client'
-// import Player from '../../Player';
-// import { userActions } from '../../reducers';
+import { matchActions } from '../../reducers';
+
+import "./Match.css";
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
 
-  // const players = useSelector((state) => state.match.players);
+  const dispatch = useDispatch();
+
+  const players = useSelector((state) => state.match.players);
   const username = useSelector((state) => state.user.username);
   const isHost = useSelector((state) => state.user.host);
   const requestedRoom = useSelector((state) => state.user.requestedRoom);
@@ -25,6 +29,7 @@ export default function Match() {
     socket.on('connect', () => {
       socketID = socket.id;
 
+      //Host / Join game
       if(isHost){ //create room if host
         if(roomNum === null){
           setRoomNum(Math.floor(1000 + Math.random() * 9000));
@@ -35,29 +40,71 @@ export default function Match() {
         socket.emit('join_room', roomNum);
       }
 
-      console.log({username: username, id: socketID, isHost: isHost, room: roomNum});
+      console.log({username: username, isHost: isHost, room: roomNum});
     });
 
+    //Test message recieve
     socket.on('recieve_message', (data) => {
-      console.log('message recieved: ', data);
+      console.log('recieved from:', data);
     })
+
+    if(!isHost){
+      //host start game
+      socket.on('recieve_host_start', (data) => {
+        if(data.hostStart){
+          console.log('host starting match');
+          dispatch(matchActions.updateQuestionsArray(data.questions));
+          dispatch(matchActions.updateGameStart());
+        }
+      })
+
+      //recieve question
+
+      //recieve answers
+
+    }
+    
+    //recieve player answer choices
 
 
   }, [socket])
 
+  /* --- Host --- */
 
-   /* TEST FUNCTION */
-   function testFunc(){
-    socket.emit('send_message', {message: 'test', room: roomNum});
+  //host start game
+  function hostStartGame(){
+    socket.emit('host_start_game', {});
   }
+
+  //relay question
+  function hostRelayQuestion(){
+    socket.emit('host_relay_question', {});
+  }
+
+  //relay answers
+  function hostRelayAnswers(){
+    socket.emit('host_relay_answers', {});
+  }
+
+  /* --- ALL Users --- */
+
+
+
+  /* TEST FUNCTION */
+  function testFunc(){
+    socket.emit('send_message', {message: username, room: roomNum});
+  }
+
 
   return (
     <>
-      <h3>{`Username: ${username}`}</h3>
-      {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost}/>}
-      {gameStarted && !showResults && <OngoingMatch />}
-      {gameStarted && showResults &&  <MatchResults />}
-      <button onClick={testFunc}>Test</button>
+      <Container className="match-container">
+        <h3 className="match-title-user">{`Username: ${username}`}</h3>
+        {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost} socket={socket}/>}
+        {gameStarted && !showResults && <OngoingMatch />}
+        {gameStarted && showResults &&  <MatchResults />}
+        <button onClick={testFunc}>Test</button>
+      </Container>
     </>
   );
 }

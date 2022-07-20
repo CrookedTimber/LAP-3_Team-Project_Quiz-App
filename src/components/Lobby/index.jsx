@@ -6,9 +6,18 @@ import axios from 'axios';
 
 import "./Lobby.css";
 
-export default function Lobby({roomNum, isHost}) {
+
+export default function Lobby({roomNum, isHost, socket}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  /* --- Socket emits --- */
+  /* --- Host --- */
+
+  //host start game
+  function hostStartGame(questions){
+    socket.emit('host_start_game', {roomNum, questions});
+  }
 
   const categories = [
     { code: 9, name: 'General Knowledge' },
@@ -72,8 +81,8 @@ export default function Lobby({roomNum, isHost}) {
     });
 
     dispatch(matchActions.updateQuestionsArray(restructuredQuestions));
-
     dispatch(matchActions.updateGameStart());
+    hostStartGame(restructuredQuestions);
   };
 
   return (

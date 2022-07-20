@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
 import { Button, Form, Container } from "react-bootstrap";
+import { player1, player2, player3, player4 } from "../../assets";
 
 
 export default function LocalGame() {
@@ -25,11 +26,8 @@ export default function LocalGame() {
         navigate('/');
       };
     
-      const player1 = "../../assets/player-1.png";
-      const player2 = "../../assets/player-2.png";
-      const player3 = "../../assets/player-3.png";
-      const player4 = "../../assets/player-4.png";
-      const players = [player1, player2, player3, player4]
+      
+    const players = [player1, player2, player3, player4]
     
 
     function handlePlayer() {
@@ -106,10 +104,10 @@ export default function LocalGame() {
                     <Form.Group className="mb-3">
                     <Form.Label className="form-label" htmlFor="players"># of Players</Form.Label>
                         <Form.Select className="form-select shadow" id="players" name="players" onSelect={handlePlayer}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option value="player1">1 Player</option>
+                            <option value="player2">2 Players</option>
+                            <option value="player3">3 Players</option>
+                            <option value="player4">4 Players</option>
                         </Form.Select>
                     <Form.Label className="form-label" htmlFor="category">Category</Form.Label>
                         <Form.Select className="form-select shadow" id="category" name="category">

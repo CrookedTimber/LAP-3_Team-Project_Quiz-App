@@ -1,56 +1,56 @@
 import { Answer, Question, Timer } from '..';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-// import { matchActions, userActions } from '../../reducers';
+import { useState, useEffect } from 'react';
+import { matchActions, userActions } from '../../reducers';
 
 export default function OngoingMatch() {
   const questions = useSelector((state) => state.match.questionsArray);
   const qIndex = useSelector((state) => state.match.currentRoundNum);
-  // const gameStart = useSelector((state) => state.match.gameStart);
+  const gameStart = useSelector((state) => state.match.gameStart);
   const showAnswers = useSelector((state) => state.match.showAnswers);
   const timeout = useSelector((state) => state.match.timeout);
-  // const showResults = useSelector((state) => state.match.showResults);
+  const showResults = useSelector((state) => state.match.showResults);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [timerDigit, setTimerDigit] = useState(0);
   
 
-  // useEffect(() => {
-  //   setTimerDigit(3);
-  //   setTimeout(() => {
-  //     dispatch(matchActions.revealAnswers());
-  //     clearInterval(questionInterval);
+  useEffect(() => {
+    setTimerDigit(3);
+    setTimeout(() => {
+      dispatch(matchActions.revealAnswers());
+      clearInterval(questionInterval);
 
-  //     setTimerDigit(5);
-  //     setTimeout(() => {
-  //       dispatch(matchActions.declareTimeout());
-  //       clearInterval(answerInterval);
+      setTimerDigit(5);
+      setTimeout(() => {
+        dispatch(matchActions.declareTimeout());
+        clearInterval(answerInterval);
 
-  //       setTimerDigit(5);
+        setTimerDigit(5);
 
-  //       setTimeout(() => {
-  //         dispatch(matchActions.nextRound());
-  //         dispatch(userActions.selectedAnswer(''));
-  //         dispatch(matchActions.clearTimeout());
-  //         dispatch(matchActions.hideAnswers());
-  //         clearInterval(timesUpInterval);
+        setTimeout(() => {
+          dispatch(matchActions.nextRound());
+          dispatch(userActions.selectedAnswer(''));
+          dispatch(matchActions.clearTimeout());
+          dispatch(matchActions.hideAnswers());
+          clearInterval(timesUpInterval);
 
-  //         let timesUpInterval = setInterval(() => {
-  //           setTimerDigit((progressBar) => progressBar - 1);
-  //         }, 1000);
-  //       }, 5000);
-  //     }, 10000);
+          let timesUpInterval = setInterval(() => {
+            setTimerDigit((progressBar) => progressBar - 1);
+          }, 1000);
+        }, 5000);
+      }, 10000);
 
-  //     let answerInterval = setInterval(() => {
-  //       setTimerDigit((timerDigit) => timerDigit - 1);
-  //     }, 1000);
-  //   }, 5000);
+      let answerInterval = setInterval(() => {
+        setTimerDigit((timerDigit) => timerDigit - 1);
+      }, 1000);
+    }, 5000);
 
-  //   let questionInterval = setInterval(() => {
-  //     setTimerDigit((timerDigit) => timerDigit - 1);
-  //   }, 1000);
-  // }, [gameStart, qIndex]);
+    let questionInterval = setInterval(() => {
+      setTimerDigit((timerDigit) => timerDigit - 1);
+    }, 1000);
+  }, [gameStart, qIndex]);
 
   return (
     <>
