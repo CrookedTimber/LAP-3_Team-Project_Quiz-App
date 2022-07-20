@@ -39,11 +39,13 @@ export default function Answers(props) {
       >
         <h3 className="answer-letter">{options[props.option]}</h3>
         <h2 dangerouslySetInnerHTML={{ __html: props.answer }}></h2>
+
         {timeout &&
           roundAnswers[props.id].length > 0 &&
           roundAnswers[props.id].map((item, index) => (
             <div key={`av${index}`} className={`avatar player${item}`}></div>
           ))}
+
       </div>
     </>
   );
