@@ -1,68 +1,80 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Lobby, OngoingMatch, MatchResults } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import io from 'socket.io-client'
-import { matchActions } from '../../reducers';
+import { matchActions, userActions } from '../../reducers';
+import { io } from 'socket.io-client';
+import { socketID, socket } from './socket';
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
+  const [roomHost, setroomHost] = useState(null);
 
   const dispatch = useDispatch();
 
-  const players = useSelector((state) => state.match.players);
+  const players = useSelector((state) => state.match.playersInGame);
   const username = useSelector((state) => state.user.username);
   const isHost = useSelector((state) => state.user.host);
   const requestedRoom = useSelector((state) => state.user.requestedRoom);
   const gameStarted = useSelector((state) => state.match.gameStart);
   const showResults = useSelector((state) => state.match.showResults);
   
-  // establish connection to socket port
-  let socket = io.connect("http://localhost:3001");
-  let socketID;
+  let socket = io.connect("http://localhost:3001"); 
 
+  const firstUpdate = useRef(true);
   //detect changes in socket i.e. broadcasts/emitions
   useEffect(() => {
     
-    socket.on('connect', () => {
-      socketID = socket.id;
+    //establish connection to socket port
+    if(firstUpdate.current){
+      let roomNumber;
 
-      //Host / Join game
-      if(isHost){ //create room if host
-        if(roomNum === null){
-          setRoomNum(Math.floor(1000 + Math.random() * 9000));
-        } 
-        socket.emit('join_room', roomNum);
-      }else if(!isHost){
-        setRoomNum(parseInt(requestedRoom));
-        socket.emit('join_room', roomNum);
-      }
+      socket.on('connect', () => {
+        if(isHost){
+          roomNumber = Math.floor(1000 + Math.random() * 9000)
+          setRoomNum(roomNumber);
+          
+          if(isHost && roomHost === null){
+            setroomHost(username);
+          }
 
-      console.log({username: username, isHost: isHost, room: roomNum});
-    });
+        socket.emit('create_room', {room: roomNumber, username: username, isHost: isHost});
+
+        }else if(!isHost){
+          setRoomNum(parseInt(requestedRoom));
+          let requestedRoomNum = parseInt(requestedRoom);
+          socket.emit('join_room', {room: requestedRoomNum, username: username});
+        }
+  
+        firstUpdate.current = false;
+        console.log('Player Connected: ', username, socketID, `isHost: ${isHost}`);
+      
+      });
+    }
 
     //Test message recieve
     socket.on('recieve_message', (data) => {
       console.log('recieved from:', data);
     })
 
+    //get name of host
+    socket.on('recieve_host_name', (data) => {
+      if(roomHost === null){
+        setroomHost(data);
+      }
+    })
+
+    //host start game
     if(!isHost){
-      //host start game
       socket.on('recieve_host_start', (data) => {
         if(data.hostStart){
-          console.log('host starting match');
+          console.log('host starting match', players);
           dispatch(matchActions.updateQuestionsArray(data.questions));
           dispatch(matchActions.updateGameStart());
         }
       })
-
-      //recieve question
-
-      //recieve answers
-
     }
     
     //recieve player answer choices
-
 
   }, [socket])
 
@@ -85,10 +97,9 @@ export default function Match() {
 
   /* --- ALL Users --- */
 
-
-
   /* TEST FUNCTION */
   function testFunc(){
+    console.log('sent from: ', socket.id);
     socket.emit('send_message', {message: username, room: roomNum});
   }
 
@@ -96,8 +107,8 @@ export default function Match() {
   return (
     <>
       <h3>{`Username: ${username}`}</h3>
-      {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost} socket={socket}/>}
-      {gameStarted && !showResults && <OngoingMatch />}
+      {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket}/>}
+      {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
       {gameStarted && showResults &&  <MatchResults />}
       <button onClick={testFunc}>Test</button>
     </>

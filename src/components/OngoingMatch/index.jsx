@@ -55,7 +55,7 @@ export default function OngoingMatch() {
   return (
     <>
       <h1>This is the Ongoing Match</h1>
-      <Question question={questions[qIndex].question} />
+      <Question question={questions[qIndex].question}/>
       {!showAnswers && <h2>{`The answers will appear in ${timerDigit}s`}</h2>}
       <div className="answers">
         {showAnswers &&

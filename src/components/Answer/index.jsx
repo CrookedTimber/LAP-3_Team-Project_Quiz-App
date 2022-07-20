@@ -37,7 +37,7 @@ export default function Answers(props) {
       
         <h3 className="answer-letter">{options[props.option]}</h3>
         <h2 dangerouslySetInnerHTML={{ __html: props.answer }}></h2>
-        <div class="avatar">AvatarDiv</div>
+        <div className="avatar">AvatarDiv</div>
         
       </div>
     </>
