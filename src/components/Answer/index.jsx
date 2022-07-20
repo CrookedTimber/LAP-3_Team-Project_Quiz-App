@@ -21,7 +21,8 @@ export default function Answers(props) {
   const options = ['A', 'B', 'C', 'D'];
 
   const onAnswerSelection = () => {
-    dispatch(userActions.selectedAnswer(options[props.option]));
+    // dispatch(userActions.selectedAnswer(options[props.option]));
+    dispatch(userActions.selectedAnswer(props.id));
     props.isCorrect && dispatch(userActions.increaseScore());
     setDisplaySelected('selected-answer');
   };

@@ -1,0 +1,16 @@
+.dash-container {
+    position: relative;
+    display: block;
+    margin: auto auto 50px;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    border: none;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    text-decoration: none;
+}

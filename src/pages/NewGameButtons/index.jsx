@@ -1,5 +1,5 @@
-import Button from 'react-bootstrap/Button';
-
+import { Button, Container } from 'react-bootstrap';
+import UserProfileCard from '../../components/UserProfileCard';
 import JoinRoomModal from '../JoinRoomModal';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,11 +9,12 @@ import { matchActions, userActions } from '../../reducers';
 export default function NewGameButtons() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const username = useSelector((state) => state.user.username);
+  // const username = useSelector((state) => state.user.username);
 
   function emptyUsername() {
     localStorage.removeItem('username');
     dispatch(userActions.resetUser());
+    navigate("/");
   }
 
   const handleJoinRoomModal = () => {
@@ -27,22 +28,26 @@ export default function NewGameButtons() {
 
   return (
     <>
-      <h3 className="d-flex justify-content-center">{`Hello, ${username}`}</h3>
+    <Container className="dash-container">
+        <UserProfileCard />
+      
       <div className="d-flex justify-content-center">
-        <Button className="w-25 m-2" onClick={startMatch}>
-          Host Game
+        
+        <Button className="btn w-25 m-2 shadow" onClick={startMatch}>
+          Host a Game
         </Button>
         <br />
-        <Button className="w-25 m-2" onClick={handleJoinRoomModal}>
-          Join Game
+        <Button className="btn w-25 m-2 shadow" onClick={handleJoinRoomModal}>
+          Join a Game
         </Button>
         <JoinRoomModal />
         <br />
         <br />
-        <Button className="w-25 m-2" onClick={emptyUsername}>
+        <Button className="btn w-25 m-2 shadow" onClick={emptyUsername}>
           Change Username
         </Button>
       </div>
+      </Container>
     </>
   );
 }
