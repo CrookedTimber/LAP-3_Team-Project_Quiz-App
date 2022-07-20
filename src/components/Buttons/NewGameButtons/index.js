@@ -2,7 +2,7 @@ import { Form, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { userActions } from '../../../reducers';
-import UserProfileCard from "../../Cards/UserProfileCard";
+import UserProfileCard from "../../UserProfileCard";
 import "./NewGameButtons.css";
 
 export default function NewGameButtons() {

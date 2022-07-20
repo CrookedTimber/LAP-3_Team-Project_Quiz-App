@@ -1,5 +1,5 @@
 import QuizLogo from "../../assets/quiz-logo.png";
-import UserForm from "../../components/Forms/UserForm";
+import UserForm from "../../components/UserForm";
 import { Container } from "react-bootstrap";
 
 import "./Home.css";
