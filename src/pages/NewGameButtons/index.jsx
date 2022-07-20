@@ -1,11 +1,10 @@
 import { Button, Container } from 'react-bootstrap';
-import UserProfileCard from '../UserProfileCard';
-import JoinRoomModal from '../JoinRoomModal';
+import UserProfileCard from '../../components/UserProfileCard';
+import JoinRoomModal from '../../components/JoinRoomModal';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { matchActions, userActions } from '../../reducers';
-
-import "./NewGameButtons.css";
 
 export default function NewGameButtons() {
   const dispatch = useDispatch();

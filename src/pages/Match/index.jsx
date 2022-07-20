@@ -1,9 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import { Lobby, OngoingMatch, MatchResults } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
+import { Container } from 'react-bootstrap';
 import { matchActions, userActions } from '../../reducers';
 import { io } from 'socket.io-client';
 import { socket } from './Socket';
+
+import "./Match.css";
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
@@ -106,11 +109,13 @@ export default function Match() {
 
   return (
     <>
-      <h3>{`Username: ${username}`}</h3>
-      {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket}/>}
-      {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
-      {gameStarted && showResults &&  <MatchResults />}
-      <button onClick={testFunc}>Test</button>
+      <Container className="match-container">
+        <h3 className="match-title-user">{`Username: ${username}`}</h3>
+        {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost} socket={socket}/>}
+        {gameStarted && !showResults && <OngoingMatch />}
+        {gameStarted && showResults &&  <MatchResults />}
+        <button onClick={testFunc}>Test</button>
+      </Container>
     </>
   );
 }

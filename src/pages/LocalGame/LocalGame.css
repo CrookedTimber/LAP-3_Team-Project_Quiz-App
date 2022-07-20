@@ -1,0 +1,74 @@
+.local-game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    margin: 2% auto 50px;
+    padding: 10px 0;
+    background-color: #75FDD7;
+    opacity: 0.9;
+    border-radius: 20px;
+    border: solid 6px #E663B9;
+}
+
+.back-to-main-btn, .start-game-btn {
+    background-color: yellow;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    letter-spacing: 1.6px;
+    width: 150px;
+    margin: 20px auto;
+}
+
+.back-to-main-btn:hover, .start-game-btn:hover {
+    background-color: lime;
+    color: #000;
+}
+
+.local-game-title {
+    animation-name: rainbow;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px black;
+}
+
+@keyframes rainbow {
+    0%   { color: #E663B9; }
+    25%  { color: #FFFD07; }
+    50%  { color: #63E2FA; }
+    100% { color: #C7FC1A; }
+}
+
+#create-local-game-form {
+    background-color: #5DD7F9;
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+    margin: 2% auto 50px;
+    border: #6D6EE6 6px solid;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.form-label {
+    color: yellow;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+    text-shadow: 2px 2px black;
+    letter-spacing: 1.5px;
+    padding: 10px;
+}
+
+.form-select {
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: center;
+    font-weight: bold;
+}

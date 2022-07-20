@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import "./JoinRoomModal.css";
+
 export default function JoinRoomModal() {
   const showJoinRoom = useSelector((state) => state.match.showJoinRoomModal);
   const dispatch = useDispatch();
@@ -22,24 +24,24 @@ export default function JoinRoomModal() {
 
   return (
     <>
-      <Modal
+      <Modal className="modal" 
         show={showJoinRoom}
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Join a Game</Modal.Title>
+        <Modal.Header className="modal-header" closeButton>
+          <Modal.Title className="modal-title">Join a Game</Modal.Title>
         </Modal.Header>
         <Form onSubmit={handleJoinRoom}>
-          <Modal.Body>
+          <Modal.Body className="modal-body">
             <Form.Group className="mb-3">
-              <Form.Label>Room Number</Form.Label>
-              <Form.Control type="number" name="room-number" placeholder="0000" autoFocus />
+              <Form.Label className="modal-label">Room Number</Form.Label>
+              <Form.Control className="modal-input" type="number" name="room-number" placeholder="0000" autoFocus />
             </Form.Group>
           </Modal.Body>
-          <Modal.Footer>
-            <Button type="submit" variant="primary">
+          <Modal.Footer className="modal-footer">
+            <Button className="modal-btn" type="submit" variant="primary">
               Enter Room
             </Button>
           </Modal.Footer>

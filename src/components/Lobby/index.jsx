@@ -1,4 +1,4 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
@@ -82,30 +82,34 @@ export default function Lobby({roomHost, roomNum, isHost, socket}) {
 
   return (
     <>
+    <Container className="lobby-container">
+      <Button className="back-to-main-btn shadow" onClick={backToMainButton}>Main Menu</Button>
+      <h1 className="online-game-title">Create an Online Game</h1>
+      <h2 className="roomNum">{`Room Number: ${roomNum}`}</h2>
       <Button onClick={backToMainButton}>Main Menu</Button>
       <h1>Game Host: {roomHost}</h1>
       <h2>{`Room Number: ${roomNum}`}</h2>
 
       {
         isHost ?
-        <Form onSubmit={startGame}>
+        <Form id="create-online-game-form" className="shadow" onSubmit={startGame}>
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="category">Category</Form.Label>
-          <Form.Select id="category" name="category">
+          <Form.Label className="form-label" htmlFor="category">Category</Form.Label>
+          <Form.Select className="form-select shadow" id="category" name="category">
             {categories.map((category, index) => (
               <option key={index} value={category.code}>
                 {category.name}
               </option>
             ))}
           </Form.Select>
-          <Form.Label htmlFor="difficulty">Difficulty</Form.Label>
-          <Form.Select id="difficulty" name="difficulty">
+          <Form.Label className="form-label" htmlFor="difficulty">Difficulty</Form.Label>
+          <Form.Select className="form-select shadow" id="difficulty" name="difficulty">
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </Form.Select>
-          <Form.Label htmlFor="questionsNumber">Number of questions</Form.Label>
-          <Form.Select name="questionsNumber" id="questionsNumber">
+          <Form.Label className="form-label" htmlFor="questionsNumber">Number of questions</Form.Label>
+          <Form.Select className="form-select shadow" name="questionsNumber" id="questionsNumber">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
@@ -113,10 +117,11 @@ export default function Lobby({roomHost, roomNum, isHost, socket}) {
           </Form.Select>
         </Form.Group>
 
-        <Button type="submit">Start Game</Button>
+        <Button className="start-game-btn shadow" type="submit">Start Game</Button>
       </Form>
         : null
       }
+      </Container>
     </>
   );
 }
