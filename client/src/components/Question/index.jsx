@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { matchActions } from '../../reducers';
+import { matchActions, userActions } from '../../reducers';
 import Button from 'react-bootstrap/Button';
 
-import '../OngoingMatch/quiz.css'
+import '../OngoingMatch/quiz.css';
 
 export default function Question(props) {
   const navigate = useNavigate();
@@ -22,11 +22,23 @@ export default function Question(props) {
 
   const nextQuestion = () => {
     dispatch(matchActions.nextRound());
+    dispatch(matchActions.setUpNextRound());
+    dispatch(userActions.selectedAnswer(''));
   };
 
   // DEVELOPER FEATURE
   const previousQuestion = () => {
     dispatch(matchActions.previousRound());
+    dispatch(userActions.selectedAnswer(''));
+    dispatch(matchActions.clearTimeout());
+  };
+
+  const setTimeout = () => {
+    dispatch(matchActions.declareTimeout());
+  };
+
+  const showResults = () => {
+    dispatch(matchActions.setShowResults());
   };
 
   return (
@@ -38,12 +50,16 @@ export default function Question(props) {
       {qIndex < questions.length - 1 && (
         <Button onClick={nextQuestion}>Next Question</Button>
       )}
+      {qIndex === questions.length - 1 && (
+        <Button onClick={showResults}>See results</Button>
+      )}
       <h3>{`Question ${qIndex + 1} of ${questions.length}`}</h3>
-      <div className='question'>
-      <h1
-        key={`${props.id}h`}
-        dangerouslySetInnerHTML={{ __html: props.question }}
-      ></h1>
+      <div className="question">
+        <h1
+          key={`${props.id}h`}
+          dangerouslySetInnerHTML={{ __html: props.question }}
+        ></h1>
+        <Button onClick={setTimeout}>Timeout</Button>
       </div>
     </>
   );

@@ -52,6 +52,7 @@ div {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 50px;
+  position: relative;
 }
 
 .answer-letter {
@@ -77,6 +78,10 @@ div {
 
 .correct-answer .answer-letter {
   background: #1ea55b;
+}
+
+.selected-answer .answer-letter {
+  background: purple;
 }
 
 .wrong-answer {
@@ -116,4 +121,15 @@ div {
 
 .disabled-answer {
   pointer-events: none;
+}
+
+.avatar {
+  border: 2px solid black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #33b4ff;
+  border: 3px solid #8c8c8c;
+  color: #fff;
+  border-radius: 100%;
 }

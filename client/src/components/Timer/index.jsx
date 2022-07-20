@@ -1,12 +1,12 @@
 import './timer.css';
 import { useState } from 'react';
-export default function Progress({done}) {
+export default function Progress(props) {
 	const [style, setStyle] = useState({});
 	
 	setTimeout(() => {
 		const newStyle = {
 			opacity: 1,
-			width: `${done}%`
+			width: `${props.done}%`
 		}
 		
 		setStyle(newStyle);
@@ -15,7 +15,7 @@ export default function Progress({done}) {
 	return (
 		<div className="progress">
 			<div className="progress-done" style={style}>
-				{done}%
+				{`Time Remaining ${props.remaining}s`}
 			</div>
 		</div>
 	)
