@@ -100,8 +100,8 @@ const matchSlice = createSlice({
     },
 
     //cut player from array
-    removePlayer(state, action) {
-      state.playersInGame.push(action.payload);
+    removePlayers(state) {
+      state.playersInGame = initialState.playersInGame;
     },
 
     resetMatch: () => initialState,
