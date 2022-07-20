@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import Button from 'react-bootstrap/Button';
 
+import '../OngoingMatch/quiz.css'
+
 export default function Question(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -36,11 +38,13 @@ export default function Question(props) {
       {qIndex < questions.length - 1 && (
         <Button onClick={nextQuestion}>Next Question</Button>
       )}
-      <h3>{`Question ${qIndex + 1} / ${questions.length}`}</h3>
+      <h3>{`Question ${qIndex + 1} of ${questions.length}`}</h3>
+      <div className='question'>
       <h1
         key={`${props.id}h`}
         dangerouslySetInnerHTML={{ __html: props.question }}
       ></h1>
+      </div>
     </>
   );
 }
