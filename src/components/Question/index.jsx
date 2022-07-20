@@ -43,6 +43,7 @@ export default function Question(props) {
 
   return (
     <>
+    <div className="d-flex justify-content-center">
       {qIndex > 0 && (
         <Button onClick={previousQuestion}>Previous Question</Button>
       )}
@@ -53,6 +54,7 @@ export default function Question(props) {
       {qIndex === questions.length - 1 && (
         <Button onClick={showResults}>See results</Button>
       )}
+      </div>
       <h3>{`Question ${qIndex + 1} of ${questions.length}`}</h3>
       <div className="question">
         <h1

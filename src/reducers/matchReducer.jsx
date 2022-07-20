@@ -8,7 +8,7 @@ const initialState = {
   gameStart: false, //once lobby has been setup and game is ready to begin, gameStart is true through out every round
   timeout: false, // is true when time limit is reached and false on new round
   roundStart: false, // is true once answers appear and false upon transitioning to new question
-  showAnswers: true,
+  showAnswers: false,
   showResults: false, // becomes true once all rounds of the match have been played
   playersInGame: [], // stores the names of the players in the game
   showJoinRoomModal: false, // Boolean value is toggled when pressing the Join Game Button
