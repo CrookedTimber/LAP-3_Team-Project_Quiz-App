@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Lobby, OngoingMatch, MatchResults } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import io from 'socket.io-client'
-import { matchActions } from '../../reducers';
+import { matchActions, userActions } from '../../reducers';
+import { io } from 'socket.io-client';
+import { socket } from './Socket';
 
 import "./Match.css";
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
+  const [roomHost, setroomHost] = useState(null);
 
   const dispatch = useDispatch();
 
-  const players = useSelector((state) => state.match.players);
+  const players = useSelector((state) => state.match.playersInGame);
   const username = useSelector((state) => state.user.username);
   const isHost = useSelector((state) => state.user.host);
   const requestedRoom = useSelector((state) => state.user.requestedRoom);
@@ -20,54 +22,63 @@ export default function Match() {
   const showResults = useSelector((state) => state.match.showResults);
   
   // establish connection to socket port
-  let socket = io.connect("http://localhost:3001");
-  let socketID;
+  // let socket = io.connect("http://localhost:3001"); 
 
-  //detect changes in socket i.e. broadcasts/emitions
   useEffect(() => {
+    //if host create room
+    if(isHost && roomNum === null){
+      let roomNumber = Math.floor(1000 + Math.random() * 9000);
+      setRoomNum(roomNumber);
+
+      //assign host name
+      if(isHost && roomHost === null){
+        setroomHost(username);
+      };
+
+      //create random room
+      socket.emit('create_room', {room: roomNumber, username: username});
+
+      // users join requested room
+    }else if(!isHost && roomNum === null){
+      let roomNumber = parseInt(requestedRoom);
+      setRoomNum(roomNumber);
+
+      socket.emit('join_room', {room: roomNumber, username: username});
+    };
     
-    socket.on('connect', () => {
-      socketID = socket.id;
-
-      //Host / Join game
-      if(isHost){ //create room if host
-        if(roomNum === null){
-          setRoomNum(Math.floor(1000 + Math.random() * 9000));
-        } 
-        socket.emit('join_room', roomNum);
-      }else if(!isHost){
-        setRoomNum(parseInt(requestedRoom));
-        socket.emit('join_room', roomNum);
-      }
-
-      console.log({username: username, isHost: isHost, room: roomNum});
-    });
-
-    //Test message recieve
+    // Test message recieve
     socket.on('recieve_message', (data) => {
       console.log('recieved from:', data);
+    });
+
+    //get name of host
+    socket.on('recieve_host_name', (data) => {
+      if(roomHost === null){
+        setroomHost(data);
+      }
     })
 
+    //host start game
     if(!isHost){
-      //host start game
       socket.on('recieve_host_start', (data) => {
         if(data.hostStart){
-          console.log('host starting match');
+          console.log('host starting match', players);
           dispatch(matchActions.updateQuestionsArray(data.questions));
           dispatch(matchActions.updateGameStart());
         }
       })
-
-      //recieve question
-
-      //recieve answers
-
     }
-    
-    //recieve player answer choices
 
+    //recieve updated player list
+    // if(isHost){
+    //   socket.on('recieve_player_data', (data) => {
+    //     dispatch(matchActions.addPlayer(data.username));
+    //     console.log(players);
+    //   })
+    // }
 
-  }, [socket])
+  }, [socket]);
+
 
   /* --- Host --- */
 

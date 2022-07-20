@@ -4,16 +4,11 @@ import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
 
-import "./Lobby.css";
-
-
-export default function Lobby({roomNum, isHost, socket}) {
+export default function Lobby({roomHost, roomNum, isHost, socket}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   /* --- Socket emits --- */
-  /* --- Host --- */
-
   //host start game
   function hostStartGame(questions){
     socket.emit('host_start_game', {roomNum, questions});
@@ -91,6 +86,9 @@ export default function Lobby({roomNum, isHost, socket}) {
       <Button className="back-to-main-btn shadow" onClick={backToMainButton}>Main Menu</Button>
       <h1 className="online-game-title">Create an Online Game</h1>
       <h2 className="roomNum">{`Room Number: ${roomNum}`}</h2>
+      <Button onClick={backToMainButton}>Main Menu</Button>
+      <h1>Game Host: {roomHost}</h1>
+      <h2>{`Room Number: ${roomNum}`}</h2>
 
       {
         isHost ?
