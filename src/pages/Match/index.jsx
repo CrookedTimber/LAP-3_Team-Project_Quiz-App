@@ -146,18 +146,21 @@ export default function Match() {
 
       {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket} players={players}/>}
 
+      <div>
+
       {!gameStarted && 
         <section className="players-container">
-          <h3>Players in lobby: </h3>
+          <h3>Players in the Room: </h3>
           <ul>
             <PlayerList playersInLobby={players}/>
           </ul>
         </section>
       }
+      </div>
 
       {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
       {gameStarted && showResults &&  <MatchResults />}
-      <button onClick={testFunc}>Test</button>
+      {/* <button onClick={testFunc}>Test</button> */}
       </Container>
     </>
   );

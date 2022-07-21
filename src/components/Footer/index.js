@@ -1,13 +1,11 @@
-import "./Footer.css";
+import './Footer.css';
 
 export default function Footer() {
-    return (
-        <>
-            
-                <footer>
-                    <p>Risky Quizness (c) created by Ben, Abigail, Sam and Edgar</p>
-                </footer>
-           
-        </>
-    )
+  return (
+    <>
+      <footer>
+        <p>Risky Quizness (c) created by Ben, Abigail, Sam and Edgar</p>
+      </footer>
+    </>
+  );
 }
