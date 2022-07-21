@@ -1,6 +1,11 @@
 div {
   box-sizing: border-box;
 }
+
+.ongoing-match-title {
+  font-family: 'Press Start 2P', cursive;
+}
+
 .quiz {
   width: 975px;
   margin: 0 auto;

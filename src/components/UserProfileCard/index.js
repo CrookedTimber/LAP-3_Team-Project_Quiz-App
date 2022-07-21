@@ -12,19 +12,21 @@ export default function UserProfileCard() {
             <Card.Header id="welcome-username">{`Hello, ${username}!`}</Card.Header>
               <Card.Body>
                 <h3>Player Stats</h3>
-                <Table className="table shadow">
-                  <tr>
-                    <th>
-                      <td>No. Games Played</td>
-                      <td>Highest Score</td>
-                      <td>Most Played Category</td>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                <Table striped bordered >
+                  <thead>
+                    <tr>
+                      <th>No. Games Played</th>
+                      <th>Highest Score</th>
+                      <th>Most Played Category</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>5</td>
+                      <td>25</td>
+                      <td>animals</td>
+                    </tr>
+                  </tbody>
                 </Table>
               </Card.Body>
           </Card>

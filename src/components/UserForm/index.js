@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from "react-router-dom";
-import { userActions } from '../../../reducers';
-import NewGameButtons from '../../Buttons/NewGameButtons';
+import { useNavigate } from "react-router-dom";
+import { userActions } from '../../reducers';
+import NewGameButtons from '../NewGameButtons';
 import "./UserForm.css";
 
 export default function UserForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const username = useSelector((state) => state.user.username);
 
@@ -22,14 +23,15 @@ export default function UserForm() {
     localStorage.setItem('username', input);
     setInput('');
   }
-    return (
+
+  return (
         <>
             <Container className="username-form-container">
-                
-           
+                      
                 {!username && (
                 <Form onSubmit={submitUsername}
                       className="d-flex justify-content-center"
+                      required
                       >
                     <label htmlFor="user-input"></label>
                     <br />
@@ -44,10 +46,10 @@ export default function UserForm() {
                 </Form>
                 )}
             </Container>
-                
             <Container className="dashboard-container">
                 {username && <NewGameButtons />}
             </Container>
+            
         </>
     )
 }

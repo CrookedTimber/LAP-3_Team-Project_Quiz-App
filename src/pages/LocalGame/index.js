@@ -1,5 +1,5 @@
 import "./LocalGame.css";
-import Lobby from "../Lobby";
+import Lobby from "../../components/Lobby";
 import { Container } from "react-bootstrap";
 
 export default function LocalGame() {

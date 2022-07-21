@@ -56,7 +56,7 @@ export default function OngoingMatch() {
   return (
     <>
 
-      <h1 className="d-flex justify-content-center">This is the Ongoing Match</h1>
+      <h1 className="d-flex justify-content-center ongoing-match-title">This is the Ongoing Match</h1>
       
       <Question question={questions[qIndex].question} />
     

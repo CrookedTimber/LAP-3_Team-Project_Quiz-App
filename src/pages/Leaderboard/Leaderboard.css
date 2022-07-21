@@ -1,24 +1,11 @@
-.userProfileCard {
+.leaderboard-container {
     position: relative;
     display: block;
     max-width: 18rem;
-    margin: auto;
+    margin: 2% auto;
     background-color: yellow;
     border: 6px solid #6D6EE6;
     border-radius: 20px;
     padding: 10px;
     font-family: 'Share Tech Mono', monospace;
-}
-
-.userProfileCard h3 {
-    font-weight: bold;
-}
-
-.table {
-    display: flex;
-    margin: auto;
-}
-
-td {
-    height: 25px;
 }
