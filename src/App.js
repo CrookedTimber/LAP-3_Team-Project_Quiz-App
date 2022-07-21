@@ -1,6 +1,6 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
 import { Lobby, PageWrapper } from './components';
-import { Home, Dashboard, Instructions, Leaderboard, LocalGame, Match, NotFound } from './pages/';
+import { Home, Instructions, Leaderboard, LocalGame, Match, NotFound } from './pages/';
 
 import './App.css';
 
@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<PageWrapper />}>
               <Route path="/">
                 <Route path="/" element={<Home />}>
-                  <Route path="dashboard" element={<Dashboard />} />
+                  
                   <Route path=":hostgame" element={<Lobby />}></Route>               
                   <Route path=":localgame" element={<LocalGame />} />
                   <Route path=":joingame" element={<Match />} /> 

@@ -1,5 +1,4 @@
 import { Button, Container } from 'react-bootstrap';
-import UserProfileCard from '../UserProfileCard';
 import JoinRoomModal from '../JoinRoomModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +31,8 @@ export default function NewGameButtons() {
   return (
     <>
     <Container className="dash-container">
-        <UserProfileCard />
+    <h3 className="d-flex justify-content-center">
+      {`Hello, ${username}`}</h3>
       
       <div className="d-flex justify-content-center">
         
