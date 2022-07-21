@@ -1,0 +1,35 @@
+.match-container {
+    min-height: 100%;
+    min-width: 100%;
+    background-image: url("../../assets/quiz-bg.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.username-header {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: #6D6EE6;
+    padding: 10px;
+    margin: auto;
+    border: 6px yellow solid;
+    border-radius: 20px;
+}
+
+.players-container {
+    background-color: yellow;
+    border: #6D6EE6 solid 6px;
+    border-radius: 0 0 20px 20px;
+    height: auto;
+}
+
+@media only screen and (max-width: 400px) {
+    .username-header {
+        font-size: 16px;
+    }
+}

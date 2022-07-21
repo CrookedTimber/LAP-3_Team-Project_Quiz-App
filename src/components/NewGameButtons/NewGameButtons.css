@@ -1,0 +1,46 @@
+.dash-container {
+    position: relative;
+    display: block;
+    margin: auto;
+}
+
+.welcome-user {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.btn {
+    font-family: 'Share Tech Mono', monospace;
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    border: #6D6EE6 3px solid;
+    border-radius: 10px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: lime;
+    color: #000;
+}
+
+@media only screen and (max-width: 400px) {
+    .welcome-user {
+        font-size: 16px;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        display: flex;
+        margin: 0;    
+        justify-content: space-evenly;
+         
+    }
+}

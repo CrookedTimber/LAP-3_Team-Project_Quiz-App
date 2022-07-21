@@ -1,0 +1,16 @@
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: auto;
+    margin: 2% auto;
+    background-color: yellow;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.ul {
+    display: block;
+    text-align: justify;
+    margin: auto;
+}

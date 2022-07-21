@@ -1,0 +1,62 @@
+.nav {
+    display: flex;
+    background-color: #6D6EE6;
+    height: auto;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    justify-content: space-between;
+    transition: .5s ease;
+}
+
+.nav-brand {
+    font-family: 'Press Start 2P', cursive;
+    color: #F9FD0F;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px black;
+    margin: auto;
+}
+
+.nav-brand:hover {
+    cursor: pointer;
+}
+
+.nav-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px black;
+}
+.nav-link:hover {
+    color: #fff;
+}
+
+.nav-link-home {
+    color: #75FDDF;
+}
+
+.nav-link-rules {
+    color: #C7FC1A;
+}
+
+.nav-link-leaderboard {
+    color: #63E2FA;
+}
+
+@media only screen and (max-width: 400px) {
+    .nav-brand {
+        visibility: hidden;
+    }
+    .nav {
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        height: 70px;
+        transition: 1s ease;
+    }
+    .nav-link {
+        font-size: 12px;
+    }
+}
