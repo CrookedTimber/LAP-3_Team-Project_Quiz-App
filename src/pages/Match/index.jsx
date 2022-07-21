@@ -98,6 +98,13 @@ export default function Match() {
     //   })
     // }
 
+    socket.on('recieve_final_results', (data) => {
+      if(!results.includes(data.username)){
+        dispatch(matchActions.addToResults({username: data.username, score: data.score}));
+      }
+    })
+    
+
   }, [socket]);
 
 
@@ -109,15 +116,15 @@ export default function Match() {
   }
 
   /* --- ALL Users --- */
+  //emit final results
   if(showResults){
-    
     results.forEach(element => {
       if(!element.username === username){
         dispatch(matchActions).addToResults({username: username, score: score});
       }
     });
     
-    socket.emit('emit_final_result', {username: username, score: score});
+    socket.emit('emit_final_result', {username: username, score: score, room: roomNum});
   }
 
   /* TEST FUNCTION */
@@ -125,7 +132,6 @@ export default function Match() {
     socket.emit('send_message', {message: username, room: roomNum});
 
     const test = {username: 'test', choice: 'answer0'};
-    dispatch(matchActions.addToRoundAnswers({index: test.choice, value: test.username}));
   }
 
   return (
