@@ -1,26 +1,24 @@
 import { screen, render } from '@testing-library/react';
 import PlayerList from './index';
-import { useSelector, useDispatch } from 'react-redux';
-import { matchActions, userActions } from '../../reducers';
+import { Provider } from 'react-redux';
+import store from '../../store';
+import React from 'react';
+
+let testPlayers = ["ben", "edgar", "abigail", "sam"];
 
 describe('player list component', () => {
-    let dispatch = useDispatch();
-    let testPlayers = ["ben", "edgar", "abigail", "sam"];
-    
+
     beforeEach(() => {
-        dispatch(matchActions.updatePlayers(testPlayers));
         render(
-            <PlayerList/>
+            <Provider store={store}>
+                <PlayerList testPayload={testPlayers}/>
+            </Provider>
         )
     })
 
-    afterEach(() => {
-        dispatch(matchActions.updatePlayers([]));
-    })
-
-    test('', async() => {
-        expect().toBe();
+    test('generates list items', () => {
+        const listItems = screen.getByRole('player-list-item');
+        expect(listItems).toBeInTheDocument();
     });
-
 
 });
