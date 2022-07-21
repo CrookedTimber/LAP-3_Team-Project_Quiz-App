@@ -61,3 +61,10 @@
     background-color: lime;
     color: black;
 }
+
+@media only screen and (max-width: 400px) {
+    .lobby-hoster, .lobby-room {
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 16px;
+    }
+}

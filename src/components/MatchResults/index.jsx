@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { matchActions } from '../../reducers';
-import Button from 'react-bootstrap/Button';
+import { Button, Container } from 'react-bootstrap';
+
+import "./MatchResults.css";
 
 export default function MatchResults() {
   const dispatch = useDispatch();
@@ -16,12 +18,14 @@ export default function MatchResults() {
 
   return (
     <>
-      <h1>Scores</h1>
+    <Container className="results-container">
+      <h1 className="results-title">Scores</h1>
       <ol>
         <li>{`${username}:  ${score}`}</li>
       </ol>
 
-      <Button onClick={backToMainButton}>Go back</Button>
+      <Button className="back-btn" onClick={backToMainButton}>Go back</Button>
+    </Container>
     </>
   );
 }

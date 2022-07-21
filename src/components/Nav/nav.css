@@ -6,6 +6,7 @@
     margin: auto;
     padding: 10px;
     justify-content: space-between;
+    transition: .5s ease;
 }
 
 .nav-brand {
@@ -42,4 +43,20 @@
 
 .nav-link-leaderboard {
     color: #63E2FA;
+}
+
+@media only screen and (max-width: 400px) {
+    .nav-brand {
+        visibility: hidden;
+    }
+    .nav {
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        height: 70px;
+        transition: 1s ease;
+    }
+    .nav-link {
+        font-size: 12px;
+    }
 }

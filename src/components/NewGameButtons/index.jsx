@@ -31,21 +31,20 @@ export default function NewGameButtons() {
     <>
     <Container className="dash-container">
     <h3 className="d-flex justify-content-center welcome-user">
-      {`Hello, ${username}`}</h3>
+      {`Hello, ${username}!`}</h3>
       
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center btn-container">
         
-        <Button className="btn w-25 m-2 shadow" onClick={startMatch}>
+        <Button className="btn shadow" onClick={startMatch}>
           Host a Game
         </Button>
         <br />
-        <Button className="btn w-25 m-2 shadow" onClick={handleJoinRoomModal}>
+        <Button className="btn shadow" onClick={handleJoinRoomModal}>
           Join a Game
         </Button>
         <JoinRoomModal />
         <br />
-        <br />
-        <Button className="btn w-25 m-2 shadow" onClick={emptyUsername}>
+        <Button className="btn shadow" onClick={emptyUsername}>
           Change Username
         </Button>
       </div>

@@ -27,3 +27,9 @@
     border-radius: 0 0 20px 20px;
     height: auto;
 }
+
+@media only screen and (max-width: 400px) {
+    .username-header {
+        font-size: 16px;
+    }
+}

@@ -1,7 +1,7 @@
 .dash-container {
     position: relative;
     display: block;
-    margin: auto auto 50px;
+    margin: auto;
 }
 
 .welcome-user {
@@ -14,7 +14,7 @@
     background-color: yellow;
     color: black;
     font-weight: bold;
-    font-size: larger;
+    font-size: large;
     border: #6D6EE6 3px solid;
     border-radius: 10px;
     letter-spacing: 1.6px;
@@ -25,4 +25,22 @@
 .btn:hover {
     background-color: lime;
     color: #000;
+}
+
+@media only screen and (max-width: 400px) {
+    .welcome-user {
+        font-size: 16px;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        display: flex;
+        margin: 0;    
+        justify-content: space-evenly;
+         
+    }
 }

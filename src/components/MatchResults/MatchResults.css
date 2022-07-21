@@ -1,0 +1,15 @@
+.results-container {
+    background-color: yellow;
+    border: 6px solid #6D6EE6;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.results-title {
+    font-family: 'Press Start 2P', cursive;
+}
+
+ol {
+    font-family: 'Share Tech Mono', monospace;
+}

@@ -8,3 +8,9 @@ footer {
     text-align: center;
     font-size: small;
 }
+
+@media only screen and (max-width: 400px) {
+    footer {
+        visibility: hidden;
+    }
+}
