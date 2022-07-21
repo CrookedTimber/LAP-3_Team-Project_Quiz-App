@@ -1,13 +1,20 @@
 import React from "react";
+import { matchActions, userActions } from '../../reducers';
+import { useSelector, useDispatch } from 'react-redux';
 
-function PlayerList({playersInLobby}){
-    let players = [];
+function PlayerList(){
+    const players = useSelector((state) => state.match.playersInGame);
+    let playerList = [];
 
-    playersInLobby.forEach(player => {
-        players.push(<li>{player}</li>)
-    })
+    async function createList(){
 
-    return players;
+        for (let i = 0; i < players.length; i++) {
+            playerList.push(<li key={i}>{players[i]}</li>)
+        }
+    }
+
+    createList()
+    return playerList;
 }
 
 export default PlayerList;
