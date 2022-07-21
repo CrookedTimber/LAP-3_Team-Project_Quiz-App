@@ -42,6 +42,10 @@ const userSlice = createSlice({
     resetUserMatchData(state) {
       state.currentScore = initialState.currentScore;
       state.selectedAnswer = initialState.selectedAnswer;
+
+      state.host = initialState.host;
+      state.index = initialState.index;
+      state.requestedRoom = initialState.requestedRoom;
     },
 
     resetUser: () => initialState,
