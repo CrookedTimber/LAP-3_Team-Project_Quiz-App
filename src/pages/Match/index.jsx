@@ -17,6 +17,8 @@ export default function Match() {
   const requestedRoom = useSelector((state) => state.user.requestedRoom);
   const gameStarted = useSelector((state) => state.match.gameStart);
   const showResults = useSelector((state) => state.match.showResults);
+  const score =  useSelector((state) => state.user.currentScore);
+  const results =  useSelector((state) => state.match.results);
   
   useEffect(() => {
     let roomNumber;
@@ -74,25 +76,24 @@ export default function Match() {
       })
     }
     
-    //recieve updated player list from host - Not display for users other than host reliably
-    // if(!isHost){
-    //   socket.on('recieve_updated_player_list', (data) => {
-    //     console.log(data);
-    //   })
-    // }
-
     //recieve players choice
     socket.on('recieve_player_choices', (data) => {
-      dispatch(matchActions.addToRoundAnswers({index: data.choice, value: tokenID}));
+      dispatch(matchActions.addToRoundAnswers({index: data.choice, value: data.token}));
     })
-   
+    
     //recieve token index number
     socket.on('recieve_token_index', (data) => {
       tokenID = data.indexOf(username)
       dispatch(userActions.setIndex(tokenID));
       console.log('token index: ', tokenID);
     })
-
+    
+    //recieve updated player list from host - Not display for users other than host reliably
+    // if(!isHost){
+    //   socket.on('recieve_updated_player_list', (data) => {
+    //     console.log(data);
+    //   })
+    // }
 
   }, [socket]);
 
@@ -105,6 +106,16 @@ export default function Match() {
   }
 
   /* --- ALL Users --- */
+  if(showResults){
+    
+    results.forEach(element => {
+      if(!element.username === username){
+        dispatch(matchActions).addToResults({username: username, score: score});
+      }
+    });
+    
+    socket.emit('emit_final_result', {username: username, score: score});
+  }
 
   /* TEST FUNCTION */
   function testFunc(){
@@ -120,12 +131,14 @@ export default function Match() {
 
       {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket} players={players}/>}
 
-      <section>
-        <h3>Players in lobby: </h3>
-        <ul>
-          <PlayerList playersInLobby={players}/>
-        </ul>
-      </section>
+      {!gameStarted && 
+        <section>
+          <h3>Players in lobby: </h3>
+          <ul>
+            <PlayerList playersInLobby={players}/>
+          </ul>
+        </section>
+      }
 
       {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
       {gameStarted && showResults &&  <MatchResults />}
