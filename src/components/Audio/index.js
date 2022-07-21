@@ -1,16 +1,11 @@
-import { Component } from "react";
-
-const bgMusic = "https://www.youtube.com/clip/UgkxJg-t4bFY2LuQx7w459hI4zUaUA_ar4jR";
-
-class MusicTheme extends Component {
-    render() {
+function MusicTheme() {
+   
     return (
-        <video controls
-        src={bgMusic}>
-
-        </video>
+        <audio controls autoPlay>
+          <source src="./synthwave-80s-110045.mp3" type="audio/mpeg"></source>
+        </audio>
     )
   }
-}
+
 
 export default MusicTheme;

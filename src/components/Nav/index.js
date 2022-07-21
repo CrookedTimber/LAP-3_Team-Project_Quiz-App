@@ -1,6 +1,6 @@
 import { Container, Nav, NavbarBrand } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-
+import MusicTheme from "../Audio";
 
 import './nav.css';
 
@@ -18,7 +18,7 @@ export default function Navbar() {
             Leaderboard
           </NavLink>
           <NavbarBrand className="nav-brand" href="/">Risky Quizness</NavbarBrand>
-
+          <MusicTheme />
         </Nav>
       </Container>
     </>
