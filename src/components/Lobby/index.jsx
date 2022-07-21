@@ -1,6 +1,6 @@
 import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
 
@@ -9,6 +9,8 @@ import "./Lobby.css";
 export default function Lobby({roomHost, roomNum, isHost, socket, players}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const hostName = useSelector((state) => state.match.playersInGame[0]);
+
 
   /* --- Socket emits --- */
   //host start game
@@ -87,7 +89,7 @@ export default function Lobby({roomHost, roomNum, isHost, socket, players}) {
     <>
     <Container className="lobby-container shadow">
       <Button className="back-btn shadow" onClick={backToMainButton}>Main Menu</Button>
-      <h1 className="lobby-hoster">Game Host: {roomHost}</h1>
+      <h1 className="lobby-hoster">Game Host: {hostName}</h1>
       <h2 className="lobby-room">{`Room Number: ${roomNum}`}</h2>
 
       {
