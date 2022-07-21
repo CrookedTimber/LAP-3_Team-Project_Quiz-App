@@ -1,8 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Lobby, OngoingMatch, MatchResults, PlayerList } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { matchActions, userActions } from '../../reducers';
-import { io } from 'socket.io-client';
 import { socket } from './Socket';
 import { Container } from 'react-bootstrap';
 

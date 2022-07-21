@@ -18,8 +18,13 @@ describe('player list component', () => {
     })
 
     test('generates list items', () => {
-        const listItems = screen.getByText('ben');
-        expect(listItems).toBeInTheDocument();
+        const listItem = screen.getByText('ben');
+        expect(listItem).toBeInTheDocument();
     });
+
+    test('4 list items with a role of ', ()=> {
+        const listItems = screen.getAllByRole('listitem');
+        expect(listItems.length).toBe(4);
+    })
 
 });
