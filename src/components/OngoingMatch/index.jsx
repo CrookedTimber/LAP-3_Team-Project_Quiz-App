@@ -22,8 +22,6 @@ export default function OngoingMatch({socket, roomNum}) {
     socket.emit('player_choice', {user: username, id: socket.id, choice: choiceID, room: roomNum});
   }
 
-
-
   const [timerDigit, setTimerDigit] = useState(0);
 
   useEffect(() => {
