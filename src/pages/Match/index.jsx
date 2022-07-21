@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Lobby, OngoingMatch, MatchResults } from '../../components';
+import { Lobby, OngoingMatch, MatchResults, PlayerList } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { matchActions, userActions } from '../../reducers';
@@ -21,14 +21,14 @@ export default function Match() {
   const gameStarted = useSelector((state) => state.match.gameStart);
   const showResults = useSelector((state) => state.match.showResults);
   
-  // establish connection to socket port
-  // let socket = io.connect("http://localhost:3001"); 
-
   useEffect(() => {
+    let roomNumber;
+
     //if host create room
     if(isHost && roomNum === null){
-      let roomNumber = Math.floor(1000 + Math.random() * 9000);
+      roomNumber = Math.floor(1000 + Math.random() * 9000);
       setRoomNum(roomNumber);
+      dispatch(matchActions.addPlayer(username));
 
       //assign host name
       if(isHost && roomHost === null){
@@ -40,10 +40,10 @@ export default function Match() {
 
       // users join requested room
     }else if(!isHost && roomNum === null){
-      let roomNumber = parseInt(requestedRoom);
+      roomNumber = parseInt(requestedRoom);
       setRoomNum(roomNumber);
 
-      socket.emit('join_room', {room: roomNumber, username: username});
+      socket.emit('join_room', {room: roomNumber, username: username, id: socket.id});
     };
     
     // Test message recieve
@@ -62,18 +62,24 @@ export default function Match() {
     if(!isHost){
       socket.on('recieve_host_start', (data) => {
         if(data.hostStart){
-          console.log('host starting match', players);
           dispatch(matchActions.updateQuestionsArray(data.questions));
           dispatch(matchActions.updateGameStart());
         }
       })
     }
 
-    //recieve updated player list
-    // if(isHost){
-    //   socket.on('recieve_player_data', (data) => {
-    //     dispatch(matchActions.addPlayer(data.username));
-    //     console.log(players);
+    // recieve players for list
+    if(isHost){
+      socket.on('recieve_player_data', async (data) => {
+        dispatch(matchActions.addPlayer(data.username));
+        socket.emit('update_player_list', {room: roomNumber, players: players});
+      })
+    }
+    
+    //recieve updated player list from host - Not display for users other than host
+    // if(!isHost){
+    //   socket.on('recieve_updated_player_list', (data) => {
+    //     console.log(data);
     //   })
     // }
 
@@ -87,25 +93,13 @@ export default function Match() {
     socket.emit('host_start_game', {});
   }
 
-  //relay question
-  function hostRelayQuestion(){
-    socket.emit('host_relay_question', {});
-  }
-
-  //relay answers
-  function hostRelayAnswers(){
-    socket.emit('host_relay_answers', {});
-  }
-
   /* --- ALL Users --- */
-
-
 
   /* TEST FUNCTION */
   function testFunc(){
     socket.emit('send_message', {message: username, room: roomNum});
+    console.log(players);
   }
-
 
   return (
     <>

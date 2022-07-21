@@ -8,14 +8,14 @@ export default function Leaderboard() {
             <h1>Highest Scorers!</h1>
             <Container className="top5-list shadow">
                 <ListGroup id="leaderboard" className="top5">
-                    <ListGroupItem></ListGroupItem>
-                    <ListGroupItem></ListGroupItem>
-                    <ListGroupItem></ListGroupItem>
-                    <ListGroupItem></ListGroupItem>
+                    <ListGroupItem>Sam     45</ListGroupItem>
+                    <ListGroupItem>Ben     39</ListGroupItem>
+                    <ListGroupItem>Abigail 35</ListGroupItem>
+                    <ListGroupItem>Edgar   32</ListGroupItem>
                     <ListGroupItem></ListGroupItem>
                 </ListGroup>
             </Container>
-        </Container>
+        </Container>           
         </>
     )
 }

@@ -11,3 +11,4 @@ export { default as Timer } from './Timer';
 export { default as Lobby } from "./Lobby";
 export { default as JoinRoomModal } from './JoinRoomModal';
 export { default as MatchResults } from './MatchResults';
+export { default as PlayerList } from './PlayerList';
