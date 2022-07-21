@@ -25,6 +25,7 @@ function PlayerList({ testPayload }) {
           <div className={`lobby-avatar player${i}`}></div>
         </>
       );
+
     }
   }
 

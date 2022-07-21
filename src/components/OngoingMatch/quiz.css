@@ -161,6 +161,7 @@ div {
   border-radius: 50%;
 }
 
+
 .player1 {
   background-image: url('../../assets/player-1.png');
 }
@@ -173,6 +174,9 @@ div {
   background-image: url('../../assets/player-3.png');
 }
 .player4 {
+  background-image: url('../../assets/player-4.png');
+}
+.player0 {
   background-image: url('../../assets/player-4.png');
 }
 
