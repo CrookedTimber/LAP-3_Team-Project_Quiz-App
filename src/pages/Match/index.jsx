@@ -107,9 +107,20 @@ export default function Match() {
         dispatch(matchActions.addToResults({username: data.username, score: data.score}));
       }
     })
+
+    //emit final results
+    if(showResults){
+      results.forEach(element => {
+        if(!element.username === username){
+          dispatch(matchActions).addToResults({username: username, score: score});
+        }
+      });
+      
+      socket.emit('emit_final_result', {username: username, score: score, room: roomNum});
+    }
     
 
-  }, [socket]);
+  }, [socket, showResults]);
 
 
   /* --- Host --- */
@@ -119,17 +130,7 @@ export default function Match() {
     socket.emit('host_start_game', {});
   }
 
-  /* --- ALL Users --- */
-  //emit final results
-  if(showResults){
-    results.forEach(element => {
-      if(!element.username === username){
-        dispatch(matchActions).addToResults({username: username, score: score});
-      }
-    });
-    
-    socket.emit('emit_final_result', {username: username, score: score, room: roomNum});
-  }
+
 
   /* TEST FUNCTION */
   function testFunc(){

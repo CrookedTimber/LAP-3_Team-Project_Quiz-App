@@ -14,8 +14,8 @@ describe('player list component', () => {
             <Provider store={store}>
                 <PlayerList testPayload={testPlayers}/>
             </Provider>
-        )
-    })
+        );
+    });
 
     test('generates list items', () => {
         const listItem = screen.getByText('ben');
@@ -25,6 +25,6 @@ describe('player list component', () => {
     test('4 list items with a role of ', ()=> {
         const listItems = screen.getAllByRole('listitem');
         expect(listItems.length).toBe(4);
-    })
+    });
 
 });
