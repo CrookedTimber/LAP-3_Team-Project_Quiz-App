@@ -14,13 +14,14 @@ const initialState = {
   showJoinRoomModal: false, // Boolean value is toggled when pressing the Join Game Button
   roomNum: null, // Online Game Room Number
   difficulty: 0,
-  roundAnswers: { answer0: [], answer1: [], answer2: [], answer3: [] },
+  roundAnswers: { answer0: [1], answer1: [], answer2: [2,4], answer3: [3] },
 };
 
 const matchSlice = createSlice({
   name: 'match',
   initialState: initialState,
   reducers: {
+
     //populate array with data
     updateQuestionsArray(state, action) {
       state.questionsArray = action.payload;
@@ -45,6 +46,7 @@ const matchSlice = createSlice({
     updateGameStart(state) {
       state.gameStart = true;
     },
+
     //set  timeOut to true
     declareTimeout(state) {
       state.timeout = true;
@@ -90,6 +92,7 @@ const matchSlice = createSlice({
     setShowResults(state) {
       state.showResults = true;
     },
+
     toggleShowJoinRoomModal(state) {
       state.showJoinRoomModal = !state.showJoinRoomModal;
     },
@@ -100,11 +103,19 @@ const matchSlice = createSlice({
     },
 
     //cut player from array
-    removePlayer(state, action) {
-      state.playersInGame.push(action.payload);
+    removePlayers(state) {
+      state.playersInGame = initialState.playersInGame;
+    },
+
+    addToRoundAnswers(state, action){
+      if(!state.roundAnswers[action.payload.index].includes(action.payload.value)){
+        state.roundAnswers[action.payload.index].push(action.payload.value);
+      }
+      console.log(state.roundAnswers[action.payload.index]);
     },
 
     resetMatch: () => initialState,
+    
   },
 });
 

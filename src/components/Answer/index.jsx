@@ -16,6 +16,12 @@ export default function Answers(props) {
 
   const truthClass = props.isCorrect ? 'correct-answer' : 'wrong-answer';
 
+  //socket.io emissions
+  function playerChoice(choice){
+    const username = localStorage.getItem('username');
+    props.socket.emit('player_choice', {username: username, choice: choice, room: props.roomNum});
+  }
+
   useEffect(() => {
     setDisplaySelected('');
   }, [currentRoundNum]);
@@ -27,6 +33,7 @@ export default function Answers(props) {
 
     props.isCorrect && dispatch(userActions.increaseScore());
     setDisplaySelected('selected-answer');
+    playerChoice(props.id);
   };
 
   return (

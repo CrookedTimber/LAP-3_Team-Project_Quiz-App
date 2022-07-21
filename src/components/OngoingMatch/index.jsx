@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { matchActions, userActions } from '../../reducers';
 
-export default function OngoingMatch() {
+export default function OngoingMatch({socket, roomNum}) {
   const questions = useSelector((state) => state.match.questionsArray);
   const qIndex = useSelector((state) => state.match.currentRoundNum);
   const showAnswers = useSelector((state) => state.match.showAnswers);
@@ -13,45 +13,45 @@ export default function OngoingMatch() {
 
   const [timerDigit, setTimerDigit] = useState(0);
 
-  useEffect(() => {
-    setTimerDigit(5);
+  // useEffect(() => {
+  //   setTimerDigit(5);
 
-    let showQuestionInterval = setInterval(() => {
-      setTimerDigit((timerDigit) => timerDigit - 1);
-    }, 1000);
+  //   let showQuestionInterval = setInterval(() => {
+  //     setTimerDigit((timerDigit) => timerDigit - 1);
+  //   }, 1000);
 
-    let showQuestionTimeout = setTimeout(() => {
-      clearInterval(showQuestionInterval);
-      dispatch(matchActions.revealAnswers());
+  //   let showQuestionTimeout = setTimeout(() => {
+  //     clearInterval(showQuestionInterval);
+  //     dispatch(matchActions.revealAnswers());
 
-      setTimerDigit(10);
+  //     setTimerDigit(10);
 
-      let showAnswersInterval = setInterval(() => {
-        setTimerDigit((timerDigit) => timerDigit - 1);
-      }, 1000);
+  //     let showAnswersInterval = setInterval(() => {
+  //       setTimerDigit((timerDigit) => timerDigit - 1);
+  //     }, 1000);
 
-      let showAnswersTimeout = setTimeout(() => {
-        clearInterval(showAnswersInterval);
-        dispatch(matchActions.declareTimeout());
+  //     let showAnswersTimeout = setTimeout(() => {
+  //       clearInterval(showAnswersInterval);
+  //       dispatch(matchActions.declareTimeout());
 
-        setTimerDigit(5);
+  //       setTimerDigit(5);
 
-        let timesUpInterval = setInterval(() => {
-          setTimerDigit((timerDigit) => timerDigit - 1);
-        }, 1000);
+  //       let timesUpInterval = setInterval(() => {
+  //         setTimerDigit((timerDigit) => timerDigit - 1);
+  //       }, 1000);
 
-        let timesUpTimeout = setTimeout(() => {
-          clearInterval(timesUpInterval);
+  //       let timesUpTimeout = setTimeout(() => {
+  //         clearInterval(timesUpInterval);
 
-          qIndex === questions.length - 1
-            ? dispatch(matchActions.setShowResults())
-            : dispatch(matchActions.nextRound()) &&
-              dispatch(matchActions.setUpNextRound()) &&
-              dispatch(userActions.selectedAnswer(''));
-        }, 5000);
-      }, 10000);
-    }, 5000);
-  }, [qIndex]);
+  //         qIndex === questions.length - 1
+  //           ? dispatch(matchActions.setShowResults())
+  //           : dispatch(matchActions.nextRound()) &&
+  //             dispatch(matchActions.setUpNextRound()) &&
+  //             dispatch(userActions.selectedAnswer(''));
+  //       }, 5000);
+  //     }, 10000);
+  //   }, 5000);
+  // }, [qIndex]);
 
   return (
     <>
@@ -69,6 +69,8 @@ export default function OngoingMatch() {
               id={`answer${index}`}
               isCorrect={item.isCorrect}
               answer={item.answer}
+              socket = {socket}
+              roomNum = {roomNum}
             />
           ))}
       </div>
