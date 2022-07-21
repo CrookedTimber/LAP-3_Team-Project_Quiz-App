@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function PlayerList({testPayload}){
     let players = useSelector((state) => state.match.playersInGame);
-    if(testPayload !== null || testPayload !== undefined){
+    if(testPayload !== null && testPayload !== undefined){
         players = testPayload;
     }
     
