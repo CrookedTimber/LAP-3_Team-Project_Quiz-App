@@ -13,7 +13,8 @@ function PlayerList({testPayload}){
     async function createList(){
 
         for (let i = 0; i < players.length; i++) {
-            playerList.push(<li role="player-list-item" key={i}>{players[i]}</li>)
+            playerList.push(<li role="player-list-item" key={i}>{players[i]}</li>);
+            console.log(players[i]);
         }
     }
 
