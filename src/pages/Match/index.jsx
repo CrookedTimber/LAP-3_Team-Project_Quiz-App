@@ -131,7 +131,6 @@ export default function Match() {
     socket.emit('send_message', {message: username, room: roomNum});
 
     const test = {username: 'test', choice: 'answer0'};
-    dispatch(matchActions.addToRoundAnswers({index: test.choice, value: test.username}));
   }
 
   return (
