@@ -85,31 +85,31 @@ export default function Lobby({roomHost, roomNum, isHost, socket, players}) {
 
   return (
     <>
-    <Container className="lobby-container">
-      <Button onClick={backToMainButton}>Main Menu</Button>
-      <h1>Game Host: {roomHost}</h1>
-      <h2>{`Room Number: ${roomNum}`}</h2>
+    <Container className="lobby-container shadow">
+      <Button className="back-btn shadow" onClick={backToMainButton}>Main Menu</Button>
+      <h1 className="lobby-hoster">Game Host: {roomHost}</h1>
+      <h2 className="lobby-room">{`Room Number: ${roomNum}`}</h2>
 
       {
         isHost ?
-        <Form onSubmit={startGame}>
+        <Form className="lobby-form" onSubmit={startGame}>
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="category">Category</Form.Label>
-          <Form.Select id="category" name="category">
+          <Form.Label className="form-label" htmlFor="category">Category</Form.Label>
+          <Form.Select className="form-select shadow" id="category" name="category">
             {categories.map((category, index) => (
               <option key={index} value={category.code}>
                 {category.name}
               </option>
             ))}
           </Form.Select>
-          <Form.Label htmlFor="difficulty">Difficulty</Form.Label>
-          <Form.Select id="difficulty" name="difficulty">
+          <Form.Label className="form-label" htmlFor="difficulty">Difficulty</Form.Label>
+          <Form.Select className="form-select shadow" id="difficulty" name="difficulty">
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </Form.Select>
-          <Form.Label htmlFor="questionsNumber">Number of questions</Form.Label>
-          <Form.Select name="questionsNumber" id="questionsNumber">
+          <Form.Label className="form-label" htmlFor="questionsNumber">Number of questions</Form.Label>
+          <Form.Select className="form-select shadow" name="questionsNumber" id="questionsNumber">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
@@ -117,12 +117,11 @@ export default function Lobby({roomHost, roomNum, isHost, socket, players}) {
           </Form.Select>
         </Form.Group>
 
-        <Button type="submit">Start Game</Button>
+        <Button className="start-btn shadow" type="submit">Start Game</Button>
       </Form>
-    : null
-  }
-  </Container>
-
-  </>
+        : null
+      }
+      </Container>
+    </>
   );
 }

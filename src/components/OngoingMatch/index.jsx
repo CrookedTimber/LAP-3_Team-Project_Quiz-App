@@ -2,6 +2,7 @@ import { Answer, Question, Timer } from '..';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { matchActions, userActions } from '../../reducers';
+import { Container } from "react-bootstrap";
 
 export default function OngoingMatch({socket, roomNum}) {
   const questions = useSelector((state) => state.match.questionsArray);
@@ -55,8 +56,9 @@ export default function OngoingMatch({socket, roomNum}) {
 
   return (
     <>
+    <Container className="ongoing-container">
 
-      <h1 className="d-flex justify-content-center ongoing-match-title">This is the Ongoing Match</h1>
+      <h1 className="d-flex justify-content-center ongoing-title">Ongoing Match</h1>
       
       <Question question={questions[qIndex].question} />
     
@@ -87,6 +89,7 @@ export default function OngoingMatch({socket, roomNum}) {
         <h2>{`New round in ${timerDigit}s`}</h2>
       )}
       </div>
+      </Container>
     </>
   );
 }

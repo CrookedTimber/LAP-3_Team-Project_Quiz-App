@@ -2,8 +2,23 @@ div {
   box-sizing: border-box;
 }
 
-.ongoing-match-title {
+.ongoing-container {
+  height: 100%;
+  background-image: url("../../assets/quiz-bg.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ongoing-title {
   font-family: 'Press Start 2P', cursive;
+  color: white;
+  background-color: #6D6EE6;
+  padding: 10px;
+  margin: auto;
+  border: 6px yellow solid;
+  border-radius: 20px 20px 0 0;
 }
 
 .quiz {
@@ -43,13 +58,16 @@ div {
 }
 
 .answer {
-  width: 48%;
-  background: #fff;
-  border: 2px solid #0094da;
-  min-height: 70px;
+  min-width: 48%;
+  max-width: 90%;
+  background: yellow;
+  border: 6px solid #6D6EE6;
+  border-radius: 10px;
+  min-height: 60px;
   cursor: pointer;
-  margin-bottom: 30px;
+  margin: auto auto 30px ;
   display: flex;
+  flex-direction: column;
 }
 
 .answers {
@@ -62,12 +80,13 @@ div {
 
 .answer-letter {
   font-size: 30px;
-  background-color: #0084da;
+  background-color: #6D6EE6;
   color: #fff;
   width: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 5px;
 }
 
 .answer-text {
@@ -130,12 +149,11 @@ div {
 
 .avatar {
   position: relative;
-  float: right;
-  right: 0;
+  display: flex;
+  align-items: flex-end;
   height: 75px;
   width: 75px;
-  background-color: #33b4ff;
-  border: 3px solid #8c8c8c;
+  border: 3px solid yellow;
 
   background-size: 100px 100px;
   background-position: center;

@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { matchActions, userActions } from '../../reducers';
 import { io } from 'socket.io-client';
 import { socket } from './Socket';
+import { Container } from 'react-bootstrap';
+
+import "./Match.css";
 
 export default function Match() {
   const [roomNum, setRoomNum] = useState(null);
@@ -23,14 +26,12 @@ export default function Match() {
   useEffect(() => {
     let roomNumber;
     let tokenID;
-    let playerArr = [];
 
     //if host create room
     if(isHost && roomNum === null){
       roomNumber = Math.floor(1000 + Math.random() * 9000);
       setRoomNum(roomNumber);
       dispatch(matchActions.addPlayer(username));
-      playerArr.push(username);
       dispatch(userActions.setIndex(0));
       //assign host name
       if(isHost && roomHost === null){
@@ -46,10 +47,6 @@ export default function Match() {
       setRoomNum(roomNumber);
 
       socket.emit('join_room', {room: roomNumber, username: username, id: socket.id});
-      if(!playerArr.includes(username)){
-        playerArr.push(username);
-        dispatch(matchActions.addPlayer(username));
-      }
     };
     
     // Test message recieve
@@ -76,12 +73,9 @@ export default function Match() {
 
     // recieve players for list
     if(isHost){
-      socket.on('recieve_player_data', (data) => {
-        if(!playerArr.includes(data.username)){
-          playerArr.push(data.username);
-          dispatch(matchActions.addPlayer(data.username));
-        }
-        socket.emit('update_player_list', {room: roomNumber, players: playerArr});
+      socket.on('recieve_player_data', async (data) => {
+        dispatch(matchActions.addPlayer(data.username));
+        socket.emit('update_player_list', {room: roomNumber, players: players});
       })
     }
     
@@ -97,12 +91,12 @@ export default function Match() {
       console.log('token index: ', tokenID);
     })
     
-    //recieve updated player list from host
-    if(!isHost){
-      socket.on('recieve_updated_player_list', (data) => {
-        dispatch(matchActions.updatePlayers(data));
-      })
-    }
+    //recieve updated player list from host - Not display for users other than host reliably
+    // if(!isHost){
+    //   socket.on('recieve_updated_player_list', (data) => {
+    //     console.log(data);
+    //   })
+    // }
 
   }, [socket]);
 
@@ -136,15 +130,16 @@ export default function Match() {
 
   return (
     <>
-      <h3>{`Username: ${username}`}</h3>
+    <Container className="match-container">
+      <h3 className="username-header">{`Username: ${username}`}</h3>
 
       {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket} players={players}/>}
 
       {!gameStarted && 
-        <section>
+        <section className="players-container">
           <h3>Players in lobby: </h3>
           <ul>
-            <PlayerList/>
+            <PlayerList playersInLobby={players}/>
           </ul>
         </section>
       }
@@ -152,6 +147,7 @@ export default function Match() {
       {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
       {gameStarted && showResults &&  <MatchResults />}
       <button onClick={testFunc}>Test</button>
+      </Container>
     </>
   );
 }

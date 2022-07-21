@@ -14,7 +14,6 @@ export default function NewGameButtons() {
   function emptyUsername() {
     localStorage.removeItem('username');
     dispatch(userActions.resetUser());
-    navigate('/');
   }
 
   const handleJoinRoomModal = () => {
@@ -22,7 +21,7 @@ export default function NewGameButtons() {
   };
 
   function startMatch() {
-    navigate('/lobby');
+    navigate('/match');
     dispatch(userActions.setHost());
     dispatch(matchActions.resetMatch());
     dispatch(userActions.resetUserMatchData());
@@ -31,7 +30,7 @@ export default function NewGameButtons() {
   return (
     <>
     <Container className="dash-container">
-    <h3 className="d-flex justify-content-center">
+    <h3 className="d-flex justify-content-center welcome-user">
       {`Hello, ${username}`}</h3>
       
       <div className="d-flex justify-content-center">

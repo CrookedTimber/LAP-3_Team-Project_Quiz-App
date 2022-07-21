@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  display: flex;
+  display: static;
   flex-direction: column;
   margin: auto;
   height: 100vh;

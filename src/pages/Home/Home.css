@@ -145,9 +145,18 @@
     margin: auto;
   }
 
+.username-form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
 .username-form-header {
     font-family: 'Share Tech Mono', monospace;
-    color: red;
+    color: yellow;
+    font-size: larger;
+    text-transform: uppercase;
+    font-weight: bold;
     text-shadow: 2px 2px black;
     text-align: center;
 }
@@ -162,7 +171,8 @@ input {
     letter-spacing: 1.5px;
     padding: 10px;
     border: none;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
 }
 
 #start-btn {
@@ -171,5 +181,5 @@ input {
     background-color: yellow;
     color: #000;
     font-weight: bold;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 0 10px 10px;
 }

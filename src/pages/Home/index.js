@@ -43,7 +43,7 @@ export default function Home() {
                     {!username && (
             <Form
               onSubmit={submitUsername}
-              className="d-flex justify-content-center"
+              className="d-flex justify-content-center username-form"
             >
               <label className="username-form-header" htmlFor="user-input">Enter your username to start </label>
               <br />
@@ -52,6 +52,7 @@ export default function Home() {
                 id="user-input"
                 onChange={updateInput}
                 value={input}
+                placeholder="USERNAME"
               />
               <Button id="start-btn" type="submit">Start</Button>
             </Form>
