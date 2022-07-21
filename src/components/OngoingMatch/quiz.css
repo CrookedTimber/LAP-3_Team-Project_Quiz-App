@@ -176,6 +176,10 @@ div {
   background-image: url('../../assets/player-4.png');
 }
 
+.player0 {
+  background-image: url('../../assets/player-4.png');
+}
+
 @media only screen and (max-width: 400px) {
   .ongoing-title {
     font-size: 16px;
