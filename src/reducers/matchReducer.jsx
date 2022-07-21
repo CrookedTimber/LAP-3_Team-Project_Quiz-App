@@ -108,6 +108,11 @@ const matchSlice = createSlice({
     removePlayers(state) {
       state.playersInGame = initialState.playersInGame;
     },
+    
+    updatePlayers(state, action){
+      state.playersInGame = initialState.playersInGame;
+      state.playersInGame = action.payload;
+    },
 
     addToRoundAnswers(state, action){
       if(!state.roundAnswers[action.payload.index].includes(action.payload.value)){
