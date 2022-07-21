@@ -21,6 +21,7 @@ const matchSlice = createSlice({
   name: 'match',
   initialState: initialState,
   reducers: {
+
     //populate array with data
     updateQuestionsArray(state, action) {
       state.questionsArray = action.payload;
@@ -45,6 +46,7 @@ const matchSlice = createSlice({
     updateGameStart(state) {
       state.gameStart = true;
     },
+
     //set  timeOut to true
     declareTimeout(state) {
       state.timeout = true;
@@ -90,6 +92,7 @@ const matchSlice = createSlice({
     setShowResults(state) {
       state.showResults = true;
     },
+
     toggleShowJoinRoomModal(state) {
       state.showJoinRoomModal = !state.showJoinRoomModal;
     },
@@ -104,7 +107,15 @@ const matchSlice = createSlice({
       state.playersInGame = initialState.playersInGame;
     },
 
+    addToRoundAnswers(state, action){
+      if(!state.roundAnswers[action.payload.index].includes(action.payload.value)){
+        state.roundAnswers[action.payload.index].push(action.payload.value);
+      }
+      console.log(state.roundAnswers[action.payload.index]);
+    },
+
     resetMatch: () => initialState,
+    
   },
 });
 
