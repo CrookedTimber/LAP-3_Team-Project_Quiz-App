@@ -69,6 +69,7 @@ const matchSlice = createSlice({
     setUpNextRound(state) {
       state.showAnswers = initialState.showAnswers;
       state.timeout = initialState.timeout;
+      state.roundAnswers = initialState.roundAnswers;
     },
 
     //subtract 1 to Round Number
@@ -111,7 +112,7 @@ const matchSlice = createSlice({
       if(!state.roundAnswers[action.payload.index].includes(action.payload.value)){
         state.roundAnswers[action.payload.index].push(action.payload.value);
       }
-      console.log(state.roundAnswers[action.payload.index]);
+      // console.log(state.roundAnswers[action.payload.index]);
     },
 
     resetMatch: () => initialState,

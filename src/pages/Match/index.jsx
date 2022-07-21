@@ -74,25 +74,24 @@ export default function Match() {
       })
     }
     
-    //recieve updated player list from host - Not display for users other than host reliably
-    // if(!isHost){
-    //   socket.on('recieve_updated_player_list', (data) => {
-    //     console.log(data);
-    //   })
-    // }
-
     //recieve players choice
     socket.on('recieve_player_choices', (data) => {
-      dispatch(matchActions.addToRoundAnswers({index: data.choice, value: tokenID}));
+      dispatch(matchActions.addToRoundAnswers({index: data.choice, value: data.token}));
     })
-   
+    
     //recieve token index number
     socket.on('recieve_token_index', (data) => {
       tokenID = data.indexOf(username)
       dispatch(userActions.setIndex(tokenID));
       console.log('token index: ', tokenID);
     })
-
+    
+    //recieve updated player list from host - Not display for users other than host reliably
+    // if(!isHost){
+    //   socket.on('recieve_updated_player_list', (data) => {
+    //     console.log(data);
+    //   })
+    // }
 
   }, [socket]);
 
