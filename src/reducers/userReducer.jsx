@@ -7,7 +7,7 @@ const initialState = {
   currentScore: 0,
   selectedAnswer: null,
 
-  id: null,
+  index: null,
   requestedRoom: null,
 };
 
@@ -31,8 +31,8 @@ const userSlice = createSlice({
       state.host = true;
     },
 
-    setId(state, action) {
-      state.id = action.payload;
+    setIndex(state, action) {
+      state.index = action.payload;
     },
 
     setRequestedRoom(state, action) {

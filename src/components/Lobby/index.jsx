@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux';
 import { matchActions } from '../../reducers';
 import axios from 'axios';
 
-export default function Lobby({roomHost, roomNum, isHost, socket}) {
+export default function Lobby({roomHost, roomNum, isHost, socket, players}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   /* --- Socket emits --- */
   //host start game
   function hostStartGame(questions){
+    socket.emit('assign_tokenId', {players: players, room: roomNum})
     socket.emit('host_start_game', {roomNum, questions});
   }
 

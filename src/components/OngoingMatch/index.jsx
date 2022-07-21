@@ -11,19 +11,6 @@ export default function OngoingMatch({socket, roomNum}) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    socket.on()
-  }, [socket])
-
-  //socket.io emissions
-  function playerChoice(){
-    const username = localStorage.getItem('username');
-    let choiceID = 'test';
-    socket.emit('player_choice', {user: username, id: socket.id, choice: choiceID, room: roomNum});
-  }
-
-
-
   const [timerDigit, setTimerDigit] = useState(0);
 
   // useEffect(() => {
@@ -82,6 +69,8 @@ export default function OngoingMatch({socket, roomNum}) {
               id={`answer${index}`}
               isCorrect={item.isCorrect}
               answer={item.answer}
+              socket = {socket}
+              roomNum = {roomNum}
             />
           ))}
       </div>

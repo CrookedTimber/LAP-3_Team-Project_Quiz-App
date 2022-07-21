@@ -23,13 +23,14 @@ export default function Match() {
   
   useEffect(() => {
     let roomNumber;
+    let tokenID;
 
     //if host create room
     if(isHost && roomNum === null){
       roomNumber = Math.floor(1000 + Math.random() * 9000);
       setRoomNum(roomNumber);
       dispatch(matchActions.addPlayer(username));
-
+      dispatch(userActions.setIndex(0));
       //assign host name
       if(isHost && roomHost === null){
         setroomHost(username);
@@ -76,12 +77,25 @@ export default function Match() {
       })
     }
     
-    //recieve updated player list from host - Not display for users other than host
+    //recieve updated player list from host - Not display for users other than host reliably
     // if(!isHost){
     //   socket.on('recieve_updated_player_list', (data) => {
     //     console.log(data);
     //   })
     // }
+
+    //recieve players choice
+    socket.on('recieve_player_choices', (data) => {
+      dispatch(matchActions.addToRoundAnswers({index: data.choice, value: tokenID}));
+    })
+   
+    //recieve token index number
+    socket.on('recieve_token_index', (data) => {
+      tokenID = data.indexOf(username)
+      dispatch(userActions.setIndex(tokenID));
+      console.log('token index: ', tokenID);
+    })
+
 
   }, [socket]);
 
@@ -98,18 +112,31 @@ export default function Match() {
   /* TEST FUNCTION */
   function testFunc(){
     socket.emit('send_message', {message: username, room: roomNum});
-    console.log(players);
+
+    const test = {username: 'test', choice: 'answer0'};
+    dispatch(matchActions.addToRoundAnswers({index: test.choice, value: test.username}));
   }
 
   return (
     <>
-      <Container className="match-container">
-        <h3 className="match-title-user">{`Username: ${username}`}</h3>
-        {!gameStarted && <Lobby roomNum={roomNum} isHost={isHost} socket={socket}/>}
-        {gameStarted && !showResults && <OngoingMatch />}
-        {gameStarted && showResults &&  <MatchResults />}
-        <button onClick={testFunc}>Test</button>
-      </Container>
+
+<Container className="match-container">
+      <h3>{`Username: ${username}`}</h3>
+
+      {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket} players={players}/>}
+
+      <section>
+        <h3>Players in lobby: </h3>
+        <ul>
+          <PlayerList playersInLobby={players}/>
+        </ul>
+      </section>
+
+      {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
+      {gameStarted && showResults &&  <MatchResults />}
+      <button onClick={testFunc}>Test</button>
+       </Container>
+
     </>
   );
 }
