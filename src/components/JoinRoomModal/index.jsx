@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import "./JoinRoomModal.css";
+import './JoinRoomModal.css';
 
 export default function JoinRoomModal() {
   const showJoinRoom = useSelector((state) => state.match.showJoinRoomModal);
@@ -20,11 +20,13 @@ export default function JoinRoomModal() {
     e.preventDefault();
     dispatch(userActions.setRequestedRoom(e.target['room-number'].value));
     navigate('/match');
+    handleClose();
   };
 
   return (
     <>
-      <Modal className="modal"
+      <Modal
+        className="modal"
         show={showJoinRoom}
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
@@ -37,7 +39,13 @@ export default function JoinRoomModal() {
           <Modal.Body className="modal-body">
             <Form.Group className="mb-3">
               <Form.Label className="modal-label">Room Number</Form.Label>
-              <Form.Control className="modal-input" type="number" name="room-number" placeholder="0000" autoFocus />
+              <Form.Control
+                className="modal-input"
+                type="number"
+                name="room-number"
+                placeholder="0000"
+                autoFocus
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer className="modal-footer">
