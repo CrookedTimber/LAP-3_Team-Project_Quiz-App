@@ -3,11 +3,9 @@ import { matchActions, userActions } from '../../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 
 function PlayerList({testPayload}){
-    let players;
+    let players = useSelector((state) => state.match.playersInGame);
     if(testPayload !== null || testPayload !== undefined){
         players = testPayload;
-    }else{
-        players = useSelector((state) => state.match.playersInGame);
     }
     
     let playerList = [];
