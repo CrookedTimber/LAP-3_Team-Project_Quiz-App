@@ -3,6 +3,7 @@ import PlayerList from './index';
 import { Provider } from 'react-redux';
 import store from '../../store';
 import React from 'react';
+import "@testing-library/jest-dom/extend-expect";
 
 let testPlayers = ["ben", "edgar", "abigail", "sam"];
 
@@ -17,7 +18,7 @@ describe('player list component', () => {
     })
 
     test('generates list items', () => {
-        const listItems = screen.getByRole('player-list-item');
+        const listItems = screen.getByText('ben');
         expect(listItems).toBeInTheDocument();
     });
 
