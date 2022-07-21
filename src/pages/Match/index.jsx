@@ -17,6 +17,8 @@ export default function Match() {
   const requestedRoom = useSelector((state) => state.user.requestedRoom);
   const gameStarted = useSelector((state) => state.match.gameStart);
   const showResults = useSelector((state) => state.match.showResults);
+  const score =  useSelector((state) => state.user.currentScore);
+  const results =  useSelector((state) => state.match.results);
   
   useEffect(() => {
     let roomNumber;
@@ -104,6 +106,16 @@ export default function Match() {
   }
 
   /* --- ALL Users --- */
+  if(showResults){
+    
+    results.forEach(element => {
+      if(!element.username === username){
+        dispatch(matchActions).addToResults({username: username, score: score});
+      }
+    });
+    
+    socket.emit('emit_final_result', {username: username, score: score});
+  }
 
   /* TEST FUNCTION */
   function testFunc(){
@@ -119,12 +131,14 @@ export default function Match() {
 
       {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket} players={players}/>}
 
-      <section>
-        <h3>Players in lobby: </h3>
-        <ul>
-          <PlayerList playersInLobby={players}/>
-        </ul>
-      </section>
+      {!gameStarted && 
+        <section>
+          <h3>Players in lobby: </h3>
+          <ul>
+            <PlayerList playersInLobby={players}/>
+          </ul>
+        </section>
+      }
 
       {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
       {gameStarted && showResults &&  <MatchResults />}
