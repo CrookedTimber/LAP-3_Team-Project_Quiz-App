@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '../../reducers';
+import { userActions, matchActions } from '../../reducers';
 
 import '../OngoingMatch/quiz.css';
 import './Answer.css';
@@ -13,13 +13,14 @@ export default function Answers(props) {
   const currentRoundNum = useSelector((state) => state.match.currentRoundNum);
   const selectedAnswer = useSelector((state) => state.user.selectedAnswer);
   const roundAnswers = useSelector((state) => state.match.roundAnswers);
+  const tokenID = useSelector((state) => state.user.index);
+
 
   const truthClass = props.isCorrect ? 'correct-answer' : 'wrong-answer';
 
   //socket.io emissions
-  function playerChoice(choice){
-    const username = localStorage.getItem('username');
-    props.socket.emit('player_choice', {username: username, choice: choice, room: props.roomNum});
+  function emitPlayerChoice(token, choice){
+    props.socket.emit('player_choice', {token: token, choice: choice, room: props.roomNum});
   }
 
   useEffect(() => {
@@ -29,11 +30,14 @@ export default function Answers(props) {
   const options = ['A', 'B', 'C', 'D'];
 
   const onAnswerSelection = () => {
+    let token = tokenID;
     dispatch(userActions.selectedAnswer(props.id));
 
     props.isCorrect && dispatch(userActions.increaseScore());
     setDisplaySelected('selected-answer');
-    playerChoice(props.id);
+
+    dispatch(matchActions.addToRoundAnswers({index: props.id, value: token}));
+    emitPlayerChoice(token, props.id);
   };
 
   return (

@@ -10,6 +10,7 @@ const initialState = {
   roundStart: false, // is true once answers appear and false upon transitioning to new question
   showAnswers: true,
   showResults: false, // becomes true once all rounds of the match have been played
+  results: [],
   playersInGame: [], // stores the names of the players in the game
   showJoinRoomModal: false, // Boolean value is toggled when pressing the Join Game Button
   roomNum: null, // Online Game Room Number
@@ -69,6 +70,7 @@ const matchSlice = createSlice({
     setUpNextRound(state) {
       state.showAnswers = initialState.showAnswers;
       state.timeout = initialState.timeout;
+      state.roundAnswers = initialState.roundAnswers;
     },
 
     //subtract 1 to Round Number
@@ -111,11 +113,14 @@ const matchSlice = createSlice({
       if(!state.roundAnswers[action.payload.index].includes(action.payload.value)){
         state.roundAnswers[action.payload.index].push(action.payload.value);
       }
-      console.log(state.roundAnswers[action.payload.index]);
+      // console.log(state.roundAnswers[action.payload.index]);
+    },
+
+    addToResults(state, action){
+      state.results.push(action.payload);
     },
 
     resetMatch: () => initialState,
-    
   },
 });
 
