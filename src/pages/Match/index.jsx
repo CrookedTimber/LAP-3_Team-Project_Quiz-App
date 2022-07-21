@@ -26,12 +26,14 @@ export default function Match() {
   useEffect(() => {
     let roomNumber;
     let tokenID;
+    let playerArr = [];
 
     //if host create room
     if(isHost && roomNum === null){
       roomNumber = Math.floor(1000 + Math.random() * 9000);
       setRoomNum(roomNumber);
       dispatch(matchActions.addPlayer(username));
+      playerArr.push(username)
       dispatch(userActions.setIndex(0));
       //assign host name
       if(isHost && roomHost === null){
@@ -73,9 +75,12 @@ export default function Match() {
 
     // recieve players for list
     if(isHost){
-      socket.on('recieve_player_data', async (data) => {
-        dispatch(matchActions.addPlayer(data.username));
-        socket.emit('update_player_list', {room: roomNumber, players: players});
+      socket.on('recieve_player_data', (data) => {
+        if(!playerArr.includes(data.username)){
+          playerArr.push(data.username);
+          dispatch(matchActions.addPlayer(data.username));
+        }
+        socket.emit('update_player_list', {room: roomNumber, players: playerArr});
       })
     }
     
@@ -91,12 +96,12 @@ export default function Match() {
       console.log('token index: ', tokenID);
     })
     
-    //recieve updated player list from host - Not display for users other than host reliably
-    // if(!isHost){
-    //   socket.on('recieve_updated_player_list', (data) => {
-    //     console.log(data);
-    //   })
-    // }
+   //recieve updated player list from host
+    if(!isHost){
+      socket.on('recieve_updated_player_list', (data) => {
+        dispatch(matchActions.updatePlayers(data));
+      })
+    }
 
     socket.on('recieve_final_results', (data) => {
       if(!results.includes(data.username)){
