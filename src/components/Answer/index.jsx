@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userActions, matchActions } from '../../reducers';
 
 import '../OngoingMatch/quiz.css';
-import './Answer.css';
 
 export default function Answers(props) {
   const dispatch = useDispatch();

@@ -61,7 +61,7 @@ export default function OngoingMatch({ socket, roomNum }) {
     <>
       <Container className="ongoing-container">
         <h1 className="d-flex justify-content-center ongoing-title">
-          Ongoing Match
+          Risky Quizness!
         </h1>
 
         <Question question={questions[qIndex].question} />
@@ -81,7 +81,7 @@ export default function OngoingMatch({ socket, roomNum }) {
             ))}
         </div>
 
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center time-remaining-container">
           {!showAnswers && (
             <h2>{`Choices appearing in ${timerDigit}s`}</h2>
           )}

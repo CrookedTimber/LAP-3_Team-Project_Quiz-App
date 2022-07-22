@@ -17,10 +17,12 @@ function PlayerList({testPayload}){
         for (let i = 0; i < players.length; i++) {
           playerList.push(
             <>
+            <div className="players-lobby-container">
               <li className="player-list" role="player-list-item" key={i}>
                 {players[i]}
+                <div className={`lobby-avatar player${i}`}></div>
               </li>
-              <div className={`lobby-avatar player${i}`}></div>
+            </div>
             </>
           );
     

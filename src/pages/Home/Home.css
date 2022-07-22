@@ -179,6 +179,7 @@ input {
 
 #start-btn {
     font-family: 'Share Tech Mono', monospace;
+    text-align: center;
     text-transform: uppercase;
     background-color: yellow;
     color: #000;

@@ -6,7 +6,7 @@ export default function Progress(props) {
 	setTimeout(() => {
 		const newStyle = {
 			opacity: 1,
-			width: `${props.done}%`
+			width: `${props.done}%`,
 		}
 		
 		setStyle(newStyle);
