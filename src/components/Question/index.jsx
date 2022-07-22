@@ -34,6 +34,7 @@ export default function Question(props) {
 
   const setTimeout = () => {
     dispatch(matchActions.declareTimeout());
+    qIndex === questions.length - 1 &&  dispatch(matchActions.setMatchEnd())
   };
 
   const showResults = () => {

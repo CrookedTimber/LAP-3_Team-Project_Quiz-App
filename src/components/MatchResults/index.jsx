@@ -2,14 +2,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { matchActions } from '../../reducers';
 import { Button, Container } from 'react-bootstrap';
+import { useEffect } from 'react';
 
-import "./MatchResults.css";
+import './MatchResults.css';
 
 export default function MatchResults() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const username = useSelector((state) => state.user.username);
-  const score = useSelector((state) => state.user.currentScore);
+
+  const results = useSelector((state) => state.match.results);
+
+  const showResults = useSelector((state) => state.match.showResults);
+
+  useEffect(() => {
+    if (showResults) {
+      let newResults = [...results].sort(
+        (a, b) => parseFloat(b.score) - parseFloat(a.score)
+      );
+      dispatch(matchActions.setResults(newResults));
+    }
+  }, [showResults]);
 
   const backToMainButton = () => {
     navigate('/');
@@ -18,14 +30,18 @@ export default function MatchResults() {
 
   return (
     <>
-    <Container className="results-container">
-      <h1 className="results-title">Scores</h1>
-      <ol>
-        <li>{`${username}:  ${score}`}</li>
-      </ol>
+      <Container className="results-container">
+        <h1 className="results-title">Scores</h1>
+        <ol>
+          {results.map((item, index) => (
+            <li key={`result${index}`}>{`${item.username}:  ${item.score}`}</li>
+          ))}
+        </ol>
 
-      <Button className="back-btn" onClick={backToMainButton}>Go back</Button>
-    </Container>
+        <Button className="back-btn" onClick={backToMainButton}>
+          Go back
+        </Button>
+      </Container>
     </>
   );
 }
