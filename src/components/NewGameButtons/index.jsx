@@ -12,8 +12,10 @@ export default function NewGameButtons() {
   const username = useSelector((state) => state.user.username);
 
   function emptyUsername() {
-    localStorage.removeItem('username');
+    dispatch(matchActions.resetMatch())
     dispatch(userActions.resetUser());
+    localStorage.removeItem('username');
+    
   }
 
   const handleJoinRoomModal = () => {

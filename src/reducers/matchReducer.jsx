@@ -9,8 +9,10 @@ const initialState = {
   timeout: false, // is true when time limit is reached and false on new round
   roundStart: false, // is true once answers appear and false upon transitioning to new question
   showAnswers: false,
+
   showResults: false, // becomes true once all rounds of the match have been played and the last answer has been displayed
   matchEnds: false, // becomes true on last question timeout
+
   results: [],
   playersInGame: [], // stores the names of the players in the game
   showJoinRoomModal: false, // Boolean value is toggled when pressing the Join Game Button
