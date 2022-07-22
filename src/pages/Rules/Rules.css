@@ -1,12 +1,15 @@
 .rules-container {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: auto;
     width: auto;
     margin: 2% auto;
     background-color: yellow;
     border-radius: 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
     text-align: center;
+    padding: 10px;
 }
 
 .ul {

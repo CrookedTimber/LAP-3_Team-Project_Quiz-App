@@ -1,7 +1,7 @@
 .match-container {
     min-height: 100%;
     min-width: 100%;
-    background-image: url("../../assets/quiz-bg.png");
+    background-image: url("../../assets/neon-bg.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,6 +26,20 @@
     border: #6D6EE6 solid 6px;
     border-radius: 0 0 20px 20px;
     height: auto;
+    z-index: 100;
+}
+
+.players-lobby {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.player-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-around;
 }
 
 @media only screen and (max-width: 400px) {

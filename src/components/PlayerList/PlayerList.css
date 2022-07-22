@@ -12,6 +12,9 @@
   border-radius: 50%;
 }
 
+.player-list {
+  list-style: none;
+}
 
 .player1 {
   background-image: url('../../assets/player-1.png');

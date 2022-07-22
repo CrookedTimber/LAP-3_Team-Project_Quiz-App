@@ -16,8 +16,7 @@ export default function Instructions() {
                             <ul className="ul">
                                 <li>Selecting this button, will take you to the lobby.</li>
                                 <li>Set up your local game:
-                                    <ol>
-                                        <li>Choose the number of players from: 1 to 4. </li>
+                                    <ol>                               
                                         <li>Select your difficulty from: Easy, Medium or Hard.</li>
                                         <li>Select a Category.</li>
                                         <li>Choose the number of questions to be asked: 5, 10, 15 or 20.</li>
@@ -35,7 +34,6 @@ export default function Instructions() {
                                 <li>Selecting this button, will take you to the online lobby.</li>
                                 <li>Set up your online game:
                                     <ol>
-                                        <li>Choose the number of players from: 1 to 4. </li>
                                         <li>Select your difficulty from: Easy, Medium or Hard.</li>
                                         <li>Select a Category.</li>
                                         <li>Choose the number of questions to be asked: 5, 10, 15 or 20.</li>

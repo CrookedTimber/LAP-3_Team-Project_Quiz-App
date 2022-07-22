@@ -17,7 +17,7 @@ function PlayerList({testPayload}){
         for (let i = 0; i < players.length; i++) {
           playerList.push(
             <>
-              <li role="player-list-item" key={i}>
+              <li className="player-list" role="player-list-item" key={i}>
                 {players[i]}
               </li>
               <div className={`lobby-avatar player${i}`}></div>
