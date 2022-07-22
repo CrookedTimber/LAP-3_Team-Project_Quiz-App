@@ -36,7 +36,7 @@ export default function OngoingMatch({ socket, roomNum }) {
         dispatch(matchActions.declareTimeout());
         qIndex === questions.length - 1 && dispatch(matchActions.setMatchEnd())
 
-        setTimerDigit(4);
+        setTimerDigit(5);
 
         let timesUpInterval = setInterval(() => {
           setTimerDigit((timerDigit) => timerDigit - 1);
@@ -53,7 +53,7 @@ export default function OngoingMatch({ socket, roomNum }) {
               
         }, 4000);
       }, 8000);
-    }, 4000);
+    }, 5000);
   }, [qIndex]);
 
   return (
