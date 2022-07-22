@@ -4,12 +4,14 @@ div {
 
 .ongoing-container {
   height: auto;
+  width: 100%;
   margin: auto;
   background-image: url("../../assets/neon-bg.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 0 0 20px 20px;
 }
 
 .ongoing-title {
@@ -22,11 +24,11 @@ div {
   border-radius: 20px 20px 0 0;
 }
 
-.quiz {
+/* .quiz {
   width: 975px;
   margin: 0 auto;
   margin-top: 100px;
-}
+} */
 
 .question {
   background-color:#6D6EE6;

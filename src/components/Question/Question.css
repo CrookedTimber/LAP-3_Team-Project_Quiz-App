@@ -1,11 +1,12 @@
 .question-container {
     margin: auto;
+    width: 100%;
     padding: 20px;
     border-radius: 0 0 20px 20px;
     background-color: yellow;
 }
 
-.dev-btns {
+/* .dev-btns {
     font-family: 'Share Tech Mono', monospace;
     text-transform: uppercase;
     background-color: blueviolet;
@@ -21,7 +22,7 @@
 .dev-btns:hover {
     background-color: lime;
     color: black;
-}
+} */
 
 .questionOfNum {
     font-family: 'Share Tech Mono', monospace;
