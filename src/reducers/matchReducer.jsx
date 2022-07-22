@@ -8,8 +8,9 @@ const initialState = {
   gameStart: false, //once lobby has been setup and game is ready to begin, gameStart is true through out every round
   timeout: false, // is true when time limit is reached and false on new round
   roundStart: false, // is true once answers appear and false upon transitioning to new question
-  showAnswers: true,
-  showResults: false, // becomes true once all rounds of the match have been played
+  showAnswers: false,
+  showResults: false, // becomes true once all rounds of the match have been played and the last answer has been displayed
+  matchEnds: false, // becomes true on last question timeout
   results: [],
   playersInGame: [], // stores the names of the players in the game
   showJoinRoomModal: false, // Boolean value is toggled when pressing the Join Game Button
@@ -22,7 +23,6 @@ const matchSlice = createSlice({
   name: 'match',
   initialState: initialState,
   reducers: {
-
     //populate array with data
     updateQuestionsArray(state, action) {
       state.questionsArray = action.payload;
@@ -108,8 +108,8 @@ const matchSlice = createSlice({
     removePlayers(state) {
       state.playersInGame = initialState.playersInGame;
     },
-    
-    updatePlayers(state, action){
+
+    updatePlayers(state, action) {
       state.playersInGame = action.payload.players;
 
       // action.payload.forEach(element => {
@@ -117,15 +117,25 @@ const matchSlice = createSlice({
       // });
     },
 
-    addToRoundAnswers(state, action){
-      if(!state.roundAnswers[action.payload.index].includes(action.payload.value)){
+    addToRoundAnswers(state, action) {
+      if (
+        !state.roundAnswers[action.payload.index].includes(action.payload.value)
+      ) {
         state.roundAnswers[action.payload.index].push(action.payload.value);
       }
       // console.log(state.roundAnswers[action.payload.index]);
     },
 
-    addToResults(state, action){
+    addToResults(state, action) {
       state.results.push(action.payload);
+    },
+
+    setResults(state, action) {
+      state.results = action.payload;
+    },
+
+    setMatchEnd(state) {
+      state.matchEnds = true;
     },
 
     resetMatch: () => initialState,
