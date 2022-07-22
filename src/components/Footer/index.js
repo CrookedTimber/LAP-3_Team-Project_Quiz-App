@@ -9,7 +9,7 @@ export default function Footer() {
     <>
       <footer>
         <p>
-          `2022 © Risky Quizness. Created by{' '}
+          2022 © Risky Quizness. Created by{' '}
           <a href="https://github.com/BenTidball" target="_blank" rel="noreferrer">
             Ben
           </a>

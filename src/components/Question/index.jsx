@@ -45,7 +45,7 @@ export default function Question(props) {
     <>
     <Container className="question-container shadow">
     <div className="d-flex justify-content-center dev-btns-banner">
-      {qIndex > 0 && (
+      {/* {qIndex > 0 && (
         <Button className="dev-btns shadow" onClick={previousQuestion}>Previous Question</Button>
       )}
       <Button className="dev-btns shadow" onClick={backToMainButton}>Go back</Button>
@@ -54,7 +54,7 @@ export default function Question(props) {
       )}
       {qIndex === questions.length - 1 && (
         <Button className="dev-btns shadow" onClick={showResults}>See results</Button>
-      )}
+      )} */}
       </div>
       <h3 className="questionOfNum">{`Question ${qIndex + 1} of ${questions.length}`}</h3>
       <div className="question-banner">
@@ -62,7 +62,7 @@ export default function Question(props) {
           key={`${props.id}h`}
           dangerouslySetInnerHTML={{ __html: props.question }}
         ></h1>
-        <Button className="dev-btns shadow" onClick={setTimeout}>Timeout</Button>
+        {/* <Button className="dev-btns shadow" onClick={setTimeout}>Timeout</Button> */}
       </div>
       </Container>
     </>
