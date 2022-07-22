@@ -15,7 +15,6 @@ export default function Progress(props) {
 	return (
 		<div className="progress">
 			<div className="progress-done" style={style}>
-				{`Time Remaining ${props.remaining}s`}
 			</div>
 		</div>
 	)
