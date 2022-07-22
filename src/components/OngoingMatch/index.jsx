@@ -9,6 +9,7 @@ export default function OngoingMatch({ socket, roomNum }) {
   const qIndex = useSelector((state) => state.match.currentRoundNum);
   const showAnswers = useSelector((state) => state.match.showAnswers);
   const timeout = useSelector((state) => state.match.timeout);
+  const matchEnds = useSelector((state) => state.match.matchEnds);
 
   const dispatch = useDispatch();
 
@@ -82,7 +83,7 @@ export default function OngoingMatch({ socket, roomNum }) {
 
         <div className="d-flex justify-content-center">
           {!showAnswers && (
-            <h2>{`The answers will appear in ${timerDigit}s`}</h2>
+            <h2>{`Choices appearing in ${timerDigit}s`}</h2>
           )}
           {showAnswers && !timeout && (
             <>
@@ -91,7 +92,7 @@ export default function OngoingMatch({ socket, roomNum }) {
             </>
           )}
           {showAnswers && timeout && <h2>Time's Up!</h2> && (
-            <h2>{`New round in ${timerDigit}s`}</h2>
+            !matchEnds ? <h2>{`New round in ${timerDigit}s`}</h2> : <h2>{`Showing results in ${timerDigit}s`}</h2>
           )}
         </div>
       </Container>
