@@ -20,7 +20,8 @@ export default function Match() {
   const gameStarted = useSelector((state) => state.match.gameStart);
   const showResults = useSelector((state) => state.match.showResults);
   const score =  useSelector((state) => state.user.currentScore);
-  const results =  useSelector((state) => state.match.results);
+  const matchEnds = useSelector((state) => state.match.matchEnds);
+  const roomFromMatchSlice = useSelector((state) => state.match.roomNum);
   
   useEffect(() => {
     let roomNumber;
@@ -31,6 +32,7 @@ export default function Match() {
     if(isHost && roomNum === null){
       roomNumber = Math.floor(1000 + Math.random() * 9000);
       setRoomNum(roomNumber);
+      dispatch(matchActions.setRoomNum(roomNumber))
       dispatch(matchActions.addPlayer(username));
       playerArr.push(username)
       dispatch(userActions.setIndex(0));
@@ -46,6 +48,7 @@ export default function Match() {
     }else if(!isHost && roomNum === null){
       roomNumber = parseInt(requestedRoom);
       setRoomNum(roomNumber);
+      dispatch(matchActions.setRoomNum(roomNumber))
 
       socket.emit('join_room', {room: roomNumber, username: username, id: socket.id});
     };
@@ -102,25 +105,41 @@ export default function Match() {
       })
     }
 
-    socket.on('recieve_final_results', (data) => {
-      if(!results.includes(data.username)){
-        dispatch(matchActions.addToResults({username: data.username, score: data.score}));
-      }
-    })
+    // socket.on('recieve_final_results', (data) => {
+    //   if(!results.includes(data.username)){
+    //     dispatch(matchActions.addToResults({username: data.username, score: data.score}));
+    //   }
+    // })
 
     //emit final results
-    if(showResults){
-      results.forEach(element => {
-        if(!element.username === username){
-          dispatch(matchActions).addToResults({username: username, score: score});
-        }
-      });
+    // if(showResults){
+    //   results.forEach(element => {
+    //     if(!element.username === username){
+    //       dispatch(matchActions).addToResults({username: username, score: score});
+    //     }
+    //   });
       
-      socket.emit('emit_final_result', {username: username, score: score, room: roomNum});
-    }
-    
+    //   socket.emit('emit_final_result', {username: username, score: score, room: roomNum});
+    // }
 
-  }, [socket, showResults]);
+    // Receives other player scores and pushes them into match.results
+    socket.on('receive_player_score', (data) => {
+      dispatch(matchActions.addToResults(data))
+  })
+
+  }, [socket]);
+
+  // On last question timeout
+  useEffect(() => {
+
+    // Adds player scores to their own results array
+    matchEnds && dispatch(matchActions.addToResults({'username': username, score: score}))
+
+    // Sends player scores to the server, in turn, the server sends the scores to the other players
+    matchEnds && socket.emit('send_player_score', {room: roomFromMatchSlice, username: username, score :score});
+
+  }, [matchEnds])
+  // matchEnds is a new boolean on the matchSlice. It tracks the timeout of the last question, which comes before the triggering of show results that becomes true after the after the answer to the last question is revealed. Apart from the activation on timer, matchEnds also becomes true when you press the Next Question development button
 
 
   /* --- Host --- */
