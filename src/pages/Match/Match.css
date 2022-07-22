@@ -1,14 +1,9 @@
 .match-container {
-    min-height: 100%;
-    min-width: 100%;
-    background-image: url("../../assets/neon-bg.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    margin: auto;   
 }
 
 .username-header {
@@ -18,7 +13,7 @@
     padding: 10px;
     margin: auto;
     border: 6px yellow solid;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
 }
 
 .players-container {
