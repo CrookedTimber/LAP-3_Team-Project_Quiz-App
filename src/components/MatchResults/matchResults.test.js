@@ -27,7 +27,7 @@ describe('matchResults component', () => {
     });
   
     test('list item', () => {
-        const listitem = screen.getByRole('listitem');
+        const listitem = screen.getByRole('list');
         expect(listitem).toBeInTheDocument();
     });
    
