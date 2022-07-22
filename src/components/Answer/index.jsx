@@ -44,6 +44,7 @@ export default function Answers(props) {
     <>
       <div
         id={props.id}
+        data-testid="answer-component"
         onClick={onAnswerSelection}
         className={`answer ${displaySelected} ${timeout && truthClass} ${
           (selectedAnswer || timeout) && 'disabled-answer'
