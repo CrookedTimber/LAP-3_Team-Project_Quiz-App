@@ -176,7 +176,7 @@ export default function Match() {
 
       {gameStarted && !showResults && <OngoingMatch socket={socket} roomNum={roomNum}/>}
       {gameStarted && showResults &&  <MatchResults />}
-      <button onClick={testFunc}>Test</button>
+      {/* <button onClick={testFunc}>Test</button> */}
       </Container>
     </>
   );
