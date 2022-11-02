@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { matchActions, userActions } from '../../reducers';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './JoinRoomModal.css';
@@ -14,7 +13,6 @@ export default function JoinRoomModal() {
   const navigate = useNavigate();
 
   const handleClose = () => dispatch(matchActions.toggleShowJoinRoomModal());
-  const test = useSelector((state) => state.user.requestedRoom);
 
   const handleJoinRoom = (e) => {
     e.preventDefault();

@@ -6,7 +6,7 @@ export default function Leaderboard() {
         <>
         <Container className="leaderboard-container shadow">
             <h1>Highest Scorers!</h1>
-            <Container className="top5-list shadow">
+            <Container className="top5-list">
                 <ListGroup id="leaderboard" className="top5">
                     <ListGroupItem>Sam     45</ListGroupItem>
                     <ListGroupItem>Ben     39</ListGroupItem>

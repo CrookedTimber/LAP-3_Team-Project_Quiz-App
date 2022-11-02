@@ -167,8 +167,8 @@ export default function Match() {
 
       {!gameStarted && 
         <section className="players-container">
-          <h3>Players in lobby: </h3>
-          <ul>
+          <h3 className="players-lobby">Players in lobby: </h3>
+          <ul className="player-list">
             <PlayerList playersInLobby={players}/>
           </ul>
         </section>

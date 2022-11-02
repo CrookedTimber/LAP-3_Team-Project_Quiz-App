@@ -32,7 +32,7 @@ export default function MatchResults() {
     <>
       <Container className="results-container">
         <h1 className="results-title">Scores</h1>
-        <ol>
+        <ol role="list">
           {results.map((item, index) => (
             <li key={`result${index}`}>{`${item.username}:  ${item.score}`}</li>
           ))}

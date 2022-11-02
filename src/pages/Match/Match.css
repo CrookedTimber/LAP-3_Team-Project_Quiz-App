@@ -1,14 +1,9 @@
 .match-container {
-    min-height: 100%;
-    min-width: 100%;
-    background-image: url("../../assets/quiz-bg.png");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    margin: auto;   
 }
 
 .username-header {
@@ -18,7 +13,8 @@
     padding: 10px;
     margin: auto;
     border: 6px yellow solid;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
 }
 
 .players-container {
@@ -26,6 +22,16 @@
     border: #6D6EE6 solid 6px;
     border-radius: 0 0 20px 20px;
     height: auto;
+}
+
+.players-lobby {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.player-list {
+    list-style: none;
 }
 
 @media only screen and (max-width: 400px) {

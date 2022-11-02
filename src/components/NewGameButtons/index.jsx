@@ -6,14 +6,16 @@ import { matchActions, userActions } from '../../reducers';
 
 import './NewGameButtons.css';
 
-export default function NewGameButtons() {
+export default function NewGameMenu() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const username = useSelector((state) => state.user.username);
 
-  function emptyUsername() {
+  function discardUsername() {
     localStorage.removeItem('username');
     dispatch(userActions.resetUser());
+    navigate(0)
+    
   }
 
   const handleJoinRoomModal = () => {
@@ -47,7 +49,7 @@ export default function NewGameButtons() {
           </Button>
           <JoinRoomModal />
           <br />
-          <Button className="btn shadow" onClick={emptyUsername}>
+          <Button className="btn shadow" onClick={discardUsername}>
             Change Username
           </Button>
         </div>

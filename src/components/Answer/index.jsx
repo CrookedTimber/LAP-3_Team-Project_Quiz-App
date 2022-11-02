@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userActions, matchActions } from '../../reducers';
 
 import '../OngoingMatch/quiz.css';
-import './Answer.css';
 
 export default function Answers(props) {
   const dispatch = useDispatch();
@@ -15,12 +14,15 @@ export default function Answers(props) {
   const roundAnswers = useSelector((state) => state.match.roundAnswers);
   const tokenID = useSelector((state) => state.user.index);
 
-
   const truthClass = props.isCorrect ? 'correct-answer' : 'wrong-answer';
 
   //socket.io emissions
-  function emitPlayerChoice(token, choice){
-    props.socket.emit('player_choice', {token: token, choice: choice, room: props.roomNum});
+  function emitPlayerChoice(token, choice) {
+    props.socket.emit('player_choice', {
+      token: token,
+      choice: choice,
+      room: props.roomNum,
+    });
   }
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function Answers(props) {
     props.isCorrect && dispatch(userActions.increaseScore());
     setDisplaySelected('selected-answer');
 
-    dispatch(matchActions.addToRoundAnswers({index: props.id, value: token}));
+    dispatch(matchActions.addToRoundAnswers({ index: props.id, value: token }));
     emitPlayerChoice(token, props.id);
   };
 
@@ -44,6 +46,7 @@ export default function Answers(props) {
     <>
       <div
         id={props.id}
+        data-testid="answer-component"
         onClick={onAnswerSelection}
         className={`answer ${displaySelected} ${timeout && truthClass} ${
           (selectedAnswer || timeout) && 'disabled-answer'
@@ -57,7 +60,6 @@ export default function Answers(props) {
           roundAnswers[props.id].map((item, index) => (
             <div key={`av${index}`} className={`avatar player${item}`}></div>
           ))}
-
       </div>
     </>
   );

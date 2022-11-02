@@ -9,6 +9,8 @@
 }
 
 .btn {
+    display: flex;
+    flex-direction: column;
     font-family: 'Share Tech Mono', monospace;
     cursor: pointer;
     background-color: yellow;
@@ -19,7 +21,7 @@
     border-radius: 10px;
     letter-spacing: 1.6px;
     text-transform: uppercase;
-    text-decoration: none;
+    text-decoration: none;   
 }
 
 .btn:hover {

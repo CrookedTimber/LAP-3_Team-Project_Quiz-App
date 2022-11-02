@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Header />
-
+      <main className="App">
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="rules" element={<Instructions />}></Route>
@@ -16,7 +16,7 @@ function App() {
         <Route path="match" element={<Match />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-
+      </main>
       <Footer />
     </>
   );

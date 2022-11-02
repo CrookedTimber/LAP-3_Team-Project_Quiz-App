@@ -1,22 +1,12 @@
 .App {
+  position: relative;
   text-align: center;
-  display: static;
+  display: flex;
   flex-direction: column;
   margin: auto;
-  height: 100vh;
+  height: 80vh;
+  width: 80vw;
+
 }
 
-.parallax {
-  /* The image used */
-  background-image: url("./assets/neon-bg.jpg");
-
-  /* Full height */
-  height: 100%;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 

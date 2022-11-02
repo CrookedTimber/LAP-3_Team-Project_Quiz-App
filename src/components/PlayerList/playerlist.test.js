@@ -23,7 +23,7 @@ describe('player list component', () => {
     });
 
     test('4 list items with a role of ', ()=> {
-        const listItems = screen.getAllByRole('listitem');
+        const listItems = screen.getAllByRole('player-list-item');
         expect(listItems.length).toBe(4);
     });
 
