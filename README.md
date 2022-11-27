@@ -33,11 +33,15 @@ Risky Quizness is an online quiz game that you can play with your friends. No ne
     - Socket.IO
     - Questions from the Open Trivia DB API
 
-Risky Quizness was created in July 2022 for a training academy in full stack development. The original contributors are:
+Risky Quizness was created in July 2022 for a training academy in full stack development. 
 
-[*BenTidball*](https://github.com/BenTidball/) - Sockets.IO integration (Server and Client)
-[*Tari38*](https://github.com/Tari38/) - Visual design, CSS Styling, and General Interface
-[*CrookedTimber*](https://github.com/CrookedTimber/) - Front End: Game logic and Components
+### Original Contributors:
+
+- [*BenTidball*](https://github.com/BenTidball/) - Sockets.IO integration (Server and Client)
+
+- [*Tari38*](https://github.com/Tari38/) - Visual design, CSS Styling, and General Interface
+
+- [*CrookedTimber*](https://github.com/CrookedTimber/) - Front End: Game logic and Components
 
 ## Contact the repo owner
 
