@@ -1,13 +1,13 @@
 .userProfileCard {
-    position: relative;
-    display: block;
-    max-width: 18rem;
-    margin: auto;
     background-color: yellow;
-    border: 6px solid #6D6EE6;
     border-radius: 20px;
-    padding: 10px;
+    border: 6px solid #6D6EE6;
+    display: block;
     font-family: 'Share Tech Mono', monospace;
+    margin: auto;
+    max-width: 18rem;
+    padding: 10px;
+    position: relative;
 }
 
 .userProfileCard h3 {

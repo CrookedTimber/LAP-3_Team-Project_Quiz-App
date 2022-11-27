@@ -1,27 +1,27 @@
 .match-container {
-    padding: 3%;
     display: flex;
     flex-direction: column;
     height: 50%;
-    width: auto;
     margin: auto;   
+    padding: 3%;
+    width: auto;
 }
 
 .username-header {
-    font-family: 'Press Start 2P', cursive;
-    color: white;
     background-color: #6D6EE6;
-    padding: 10px;
-    margin: auto;
-    border: 6px yellow solid;
     border-radius: 20px 20px 0 0;
+    border: 6px yellow solid;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    margin: auto;
+    padding: 10px;
     width: 100%;
 }
 
 .players-container {
     background-color: yellow;
-    border: #6D6EE6 solid 6px;
     border-radius: 0 0 20px 20px;
+    border: #6D6EE6 solid 6px;
     height: auto;
 }
 

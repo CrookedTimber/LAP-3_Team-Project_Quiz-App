@@ -5,10 +5,10 @@
   }
 
 .username-form-header {
-    font-family: 'Share Tech Mono', monospace;
     color: red;
-    text-shadow: 2px 2px black;
+    font-family: 'Share Tech Mono', monospace;
     text-align: center;
+    text-shadow: 2px 2px black;
 }
 
 .user-form {
@@ -17,18 +17,18 @@
 }
 
 input {
+    border-radius: 10px 0 0 10px;
+    border: none;
     font-family: 'Share Tech Mono', monospace;
     letter-spacing: 1.5px;
     padding: 10px;
-    border: none;
-    border-radius: 10px 0 0 10px;
 }
 
 #start-btn {
-    font-family: 'Share Tech Mono', monospace;
-    text-transform: uppercase;
     background-color: yellow;
-    color: #000;
-    font-weight: bold;
     border-radius: 0 10px 10px 0;
+    color: #000;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
 }

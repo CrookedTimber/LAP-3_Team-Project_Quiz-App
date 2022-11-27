@@ -1,11 +1,11 @@
 .results-container {
     background-color: yellow;
-    border: 6px solid #6D6EE6;
     border-radius: 0 0 20px 20px;
+    border: 6px solid #6D6EE6;
     display: flex;
     flex-direction: column;
-    margin: auto;
     height: auto;
+    margin: auto;
 }
 
 .results-title {
@@ -15,7 +15,7 @@
 
 ol {
     font-family: 'Share Tech Mono', monospace;
-    list-style: none;
-    font-weight: bold;
     font-size: 20px;
+    font-weight: bold;
+    list-style: none;
 }

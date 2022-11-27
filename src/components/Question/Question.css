@@ -1,10 +1,10 @@
 .question-container {
+    background-color: yellow;
+    border-radius: 0 0 20px 20px;
+    height: 15%;
+    margin-bottom: 10px;
     margin: auto;
     padding: 2%;
-    height: 15%;
-    border-radius: 0 0 20px 20px;
-    background-color: yellow;
-    margin-bottom: 10px;
 }
 
 .questionOfNum {
@@ -13,9 +13,9 @@
 }
 
 .question {
-    font-family: 'Share Tech Mono', monospace;
     background-color: #63E2FA;
     color: black;
+    font-family: 'Share Tech Mono', monospace;
 }
 
 @media only screen and (max-width: 400px) {

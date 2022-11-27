@@ -1,14 +1,14 @@
 .leaderboard-container {
-    position: relative;
-    display: block;
-    width: 80%;
-    height: auto;
-    margin: 2% auto;
     background-color: yellow;
-    border: 6px solid #6D6EE6;
     border-radius: 20px;
-    padding: 10px;
+    border: 6px solid #6D6EE6;
+    display: block;
     font-family: 'Share Tech Mono', monospace;
     font-weight: bold;
+    height: auto;
+    margin: 2% auto;
+    padding: 10px;
+    position: relative;
     text-align: center;
+    width: 80%;
 }

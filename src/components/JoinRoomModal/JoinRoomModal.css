@@ -13,30 +13,30 @@
 
 .modal-title {
     font-family: 'Share Tech Mono', monospace;
-    font-weight: bold;
     font-size: larger;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
 .modal-label {
+    color: yellow;
     font-family: 'Press Start 2P', cursive;
     letter-spacing: 1.6px;
     text-align: center;
-    color: yellow;
 }
 
 .modal-input {
-    text-align: center;
-    font-weight: bold;
     font-size: larger;
+    font-weight: bold;
+    text-align: center;
 }
 
 .modal-btn {
-    font-family: 'Share Tech Mono', monospace;
-    text-transform: uppercase;
     background-color: blueviolet;
-    color: yellow;
-    letter-spacing: 2px;
-    font-weight: bold;
     border-radius: 0 10px 10px 0;
+    color: yellow;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }

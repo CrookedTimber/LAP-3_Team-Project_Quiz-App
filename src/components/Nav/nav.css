@@ -1,20 +1,20 @@
 .nav {
-    display: flex;
     background-color: #6D6EE6;
+    display: flex;
     height: auto;
-    width: 100%;
+    justify-content: space-between;
     margin: auto;
     padding: 10px;
-    justify-content: space-between;
     transition: .5s ease;
+    width: 100%;
 }
 
 .nav-brand {
-    font-family: 'Press Start 2P', cursive;
     color: #F9FD0F;
+    font-family: 'Press Start 2P', cursive;
     letter-spacing: 2px;
-    text-shadow: 2px 2px black;
     margin: auto;
+    text-shadow: 2px 2px black;
 }
 
 .nav-brand:hover {
@@ -23,11 +23,11 @@
 
 .nav-link {
     font-family: 'Share Tech Mono', monospace;
-    font-weight: bold;
     font-size: larger;
-    text-transform: uppercase;
+    font-weight: bold;
     letter-spacing: 1.5px;
     text-shadow: 2px 2px black;
+    text-transform: uppercase;
 }
 .nav-link:hover {
     color: #fff;
@@ -50,10 +50,10 @@
         visibility: hidden;
     }
     .nav {
-        margin: auto;
         display: flex;
         flex-direction: row;
         height: 5.5vh;
+        margin: auto;
         transition: 1s ease;
     }
     .nav-link {

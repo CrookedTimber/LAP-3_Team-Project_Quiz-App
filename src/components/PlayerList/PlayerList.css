@@ -1,26 +1,26 @@
 .players-lobby-container {
   display: flex;
   flex-direction: column;
-  margin: auto;
   justify-content: space-evenly;
+  margin: auto;
 }
 
 .lobby-avatar {
+  background-position: center;
+  background-size: 55px 55px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  margin: auto;
   height: 55px;
+  margin: auto;
   width: 55px;
-  border: 3px solid #fff;
-  background-size: 55px 55px;
-  background-position: center;
-  color: #fff;
-  border-radius: 50%;
 }
 
 .player-list {
-  text-align: center;
   margin: auto;
+  text-align: center;
 }
 
 .player1 {

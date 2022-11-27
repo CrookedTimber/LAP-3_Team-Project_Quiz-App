@@ -82,15 +82,15 @@ div {
 .answer-letter {
   align-items: center;
   background-color: #6d6ee6;
+  border-radius: 25%;
   color: #fff;
   display: flex;
-  position: absolute;
   font-size: 2.5vh;
   justify-content: center;
-  border-radius: 25%;
-  width: 8vw;
-  top: -22px;
   left: -5px;
+  position: absolute;
+  top: -30px;
+  width: 8vw;
   z-index: 100;
 }
 
@@ -102,9 +102,9 @@ div {
 }
 
 .answer-text {
-  font-weight: 600;
-  display: flex;
   align-items: center;
+  display: flex;
+  font-weight: 600;
   margin-left: 20px;
 }
 
@@ -169,24 +169,24 @@ div .correct-answer {
 
 .player1 {
   background-image: url('../../assets/player-1.png');
-  right: -2px;
+  right: -4px;
   z-index: 204;
 }
 
 .player2 {
   background-image: url('../../assets/player-2.png');
-  right: -8px;
+  right: -14px;
   z-index: 203;
 }
 
 .player3 {
   background-image: url('../../assets/player-3.png');
-  right: -14px;
+  right: -24px;
   z-index: 202;
 }
 .player4 {
   background-image: url('../../assets/player-4.png');
-  right: -20px;
+  right: -34px;
   z-index: 201;
 }
 .player0 {
@@ -214,8 +214,8 @@ div .correct-answer {
 }
 
 .round-control-text {
-  font-size: 1rem;
   font-family: 'Share Tech Mono', monospace;
-  margin: auto;
+  font-size: 1rem;
   font-weight: bold;
+  margin: auto;
 }
