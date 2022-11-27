@@ -85,11 +85,11 @@ div {
   color: #fff;
   display: flex;
   position: absolute;
-  font-size: 2vh;
-  justify-content: center; 
+  font-size: 2.5vh;
+  justify-content: center;
   border-radius: 25%;
-  width: 6vw;
-  top: -20px;
+  width: 8vw;
+  top: -22px;
   left: -5px;
   z-index: 100;
 }
@@ -98,6 +98,7 @@ div {
   font-size: 1.8rem;
   font-family: 'Share Tech Mono', monospace;
   margin: auto;
+  z-index: 200;
 }
 
 .answer-text {
@@ -107,7 +108,6 @@ div {
   margin-left: 20px;
 }
 
-
 div .correct-answer {
   background-color: #1ea55b;
   color: #fff;
@@ -116,8 +116,6 @@ div .correct-answer {
 .selected-answer .answer-letter {
   background: purple;
 }
-
-
 
 .wrong-answer .answer-letter {
   background: #dc0a0a;
@@ -160,7 +158,7 @@ div .correct-answer {
   background-size: 30px 30px;
   border-radius: 50%;
   border: 3px solid yellow;
-  bottom: -10px;
+  bottom: -22px;
   color: #fff;
   display: flex;
   height: 30px;
@@ -171,20 +169,30 @@ div .correct-answer {
 
 .player1 {
   background-image: url('../../assets/player-1.png');
+  right: -2px;
+  z-index: 204;
 }
 
 .player2 {
   background-image: url('../../assets/player-2.png');
+  right: -8px;
+  z-index: 203;
 }
 
 .player3 {
   background-image: url('../../assets/player-3.png');
+  right: -14px;
+  z-index: 202;
 }
 .player4 {
   background-image: url('../../assets/player-4.png');
+  right: -20px;
+  z-index: 201;
 }
 .player0 {
   background-image: url('../../assets/player-4.png');
+  right: 4px;
+  z-index: 200;
 }
 
 @media only screen and (max-width: 400px) {
@@ -199,13 +207,13 @@ div .correct-answer {
   border: 6px solid #6d6ee6;
   font-family: 'Share Tech Mono', monospace;
   font-size: 1rem;
-  margin: auto;
+  margin: 20px auto 10px;
   padding: 10px;
   text-transform: uppercase;
   width: 60vw;
 }
 
-.round-control-text{
+.round-control-text {
   font-size: 1rem;
   font-family: 'Share Tech Mono', monospace;
   margin: auto;

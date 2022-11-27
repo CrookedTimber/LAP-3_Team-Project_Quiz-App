@@ -58,7 +58,7 @@ export default function Answers(props) {
         {timeout &&
           roundAnswers[props.id].length > 0 &&
           roundAnswers[props.id].map((item, index) => (
-            <div key={`av${index}`} className={`avatar player${item}`} style={{ right: `${-8-(item*1.5)}px` }}></div>
+            <div key={`av${index}`} className={`avatar player${item}`}></div>
           ))}
       </div>
     </>
