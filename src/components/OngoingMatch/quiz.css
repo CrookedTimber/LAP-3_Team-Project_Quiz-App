@@ -84,13 +84,18 @@ div {
   background-color: #6d6ee6;
   color: #fff;
   display: flex;
-  font-size: 3vh;
-  justify-content: center;
-  width: 70px;
+  position: absolute;
+  font-size: 2vh;
+  justify-content: center; 
+  border-radius: 25%;
+  width: 6vw;
+  top: -5px;
+  left: -5px;
+  z-index: 100;
 }
 
 .answer-text {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-family: 'Share Tech Mono', monospace;
   margin: auto;
 }
@@ -102,9 +107,6 @@ div {
   margin-left: 20px;
 }
 
-.correct-answer {
-  border: 2px solid #1ea55b;
-}
 
 div .correct-answer {
   background-color: #1ea55b;
@@ -115,9 +117,7 @@ div .correct-answer {
   background: purple;
 }
 
-.wrong-answer {
-  border: 2px solid #dc0a0a;
-}
+
 
 .wrong-answer .answer-letter {
   background: #dc0a0a;
@@ -157,16 +157,17 @@ div .correct-answer {
 .avatar {
   align-items: flex-end;
   background-position: center;
-  background-size: 40px 40px;
+  background-size: 30px 30px;
   border-radius: 50%;
   border: 3px solid yellow;
-  bottom: 0px;
+  bottom: -10px;
   color: #fff;
   display: flex;
-  height: 40px;
+  height: 30px;
   position: absolute;
-  right: 0px;
-  width: 40px;
+  right: -10px;
+  width: 30px;
+  z-index: 100;
 }
 
 .player1 {
