@@ -171,7 +171,9 @@ input {
     letter-spacing: 1.5px;
     padding: 10px;
     border: none;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
+    width: 150px;
+    margin: auto;
     text-align: center;
     font-weight: bold;
 }
@@ -183,7 +185,11 @@ input {
     background-color: yellow;
     color: #000;
     font-weight: bold;
-    border-radius: 0 0 10px 10px;
+    margin: auto;
+    display: inline block;
+    width: 120px;
+    text-align: center;
+    border-radius: 10px;
 }
 
 @media only screen and (max-width: 400px) {
