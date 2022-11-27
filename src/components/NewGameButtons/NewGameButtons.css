@@ -2,6 +2,7 @@
     position: relative;
     display: block;
     margin: auto;
+    height: 2vh;
 }
 
 .welcome-user {
@@ -22,6 +23,7 @@
     letter-spacing: 1.6px;
     text-transform: uppercase;
     text-decoration: none;   
+    margin: 1%;
 }
 
 .btn:hover {
@@ -31,17 +33,13 @@
 
 @media only screen and (max-width: 400px) {
     .welcome-user {
-        font-size: 16px;
+        font-size: 12px;
     }
 
-    .btn-container {
-        display: flex;
-        flex-direction: column;
-    }
-
+   
     .btn {
         display: flex;
-        margin: 0;    
+        margin: .2vw;    
         justify-content: space-evenly;
          
     }

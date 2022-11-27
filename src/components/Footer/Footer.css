@@ -1,6 +1,7 @@
 footer {
-    position: fixed;
     bottom: 0;
+    position: fixed;
+    margin-bottom: 0;
     width: 100%;
     background-color: #6D6EE6;
     color: #fff;

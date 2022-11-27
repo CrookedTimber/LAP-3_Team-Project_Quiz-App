@@ -6,39 +6,35 @@ div {
   height: auto;
   width: 100%;
   margin: auto;
-  background-image: url("../../assets/neon-bg.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0 0 20px 20px;
+ 
 }
 
 .ongoing-title {
   font-family: 'Press Start 2P', cursive;
   color: white;
   background-color: #6D6EE6;
-  padding: 10px;
   margin: auto;
   border: 6px yellow solid;
   border-radius: 20px 20px 0 0;
 }
 
-/* .quiz {
-  width: 975px;
-  margin: 0 auto;
-  margin-top: 100px;
-} */
 
 .question {
   background-color:#6D6EE6;
   color: white;
   padding: 10px;
-  min-height: 60px;
+  min-height: 10%;
+  max-height: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .results {
@@ -66,30 +62,40 @@ div {
   background: yellow;
   border: 6px solid #6D6EE6;
   border-radius: 10px;
-  min-height: 60px;
+  max-height: 20vh;
   cursor: pointer;
-  margin: auto auto 30px ;
+  margin: auto auto 2% ;
   display: flex;
   flex-direction: column;
+  position: relative;
+  padding-right: 1%;
+  text-align: center;
 }
 
 .answers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 50px;
-  position: relative;
+  height: 50%;
+  text-align: center;
+  margin: auto;
 }
 
 .answer-letter {
-  font-size: 30px;
+  font-size: 3vh;
   background-color: #6D6EE6;
   color: #fff;
   width: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 5px;
+
+}
+
+.answer-text {
+  font-size: 1.5rem;
+  font-family: 'Share Tech Mono', monospace;
+  margin: auto;
 }
 
 .answer-text {
@@ -103,9 +109,12 @@ div {
   border: 2px solid #1ea55b;
 }
 
-.correct-answer .answer-letter {
-  background: #1ea55b;
+div .correct-answer {
+  background-color: #1ea55b;
+  color: #fff;
 }
+
+
 
 .selected-answer .answer-letter {
   background: purple;
@@ -114,6 +123,7 @@ div {
 .wrong-answer {
   border: 2px solid #dc0a0a;
 }
+
 
 .wrong-answer .answer-letter {
   background: #dc0a0a;
@@ -154,10 +164,12 @@ div {
   position: absolute;
   display: flex;
   align-items: flex-end;
-  height: 75px;
-  width: 75px;
+  height: 40px;
+  width: 40px;
+  right: 0px;
+  bottom: 0px;
   border: 3px solid yellow;
-  background-size: 100px 100px;
+  background-size: 40px 40px;
   background-position: center;
   color: #fff;
   border-radius: 50%;
@@ -191,10 +203,12 @@ div {
 
 .time-remaining-container {
   background-color: yellow;
-  border: 6px solid #6D6EE6;
   border-radius: 10px;
+  border: 6px solid #6D6EE6;
   font-family: 'Share Tech Mono', monospace;
-  text-transform: uppercase;
+  margin: auto;
   padding: 10px;
-  width: 100%;
+  font-size: 1rem;
+  text-transform: uppercase;
+  width: 65vw;
 }

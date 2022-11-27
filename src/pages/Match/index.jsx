@@ -161,8 +161,7 @@ export default function Match() {
   return (
     <>
     <Container className="match-container">
-      <h3 className="username-header">{`Username: ${username}`}</h3>
-
+      
       {!gameStarted && <Lobby roomNum={roomNum} roomHost={roomHost} isHost={isHost} socket={socket} players={players}/>}
 
       {!gameStarted && 

@@ -53,7 +53,7 @@ export default function Answers(props) {
         }`}
       >
         <h3 className="answer-letter">{options[props.option]}</h3>
-        <h2 dangerouslySetInnerHTML={{ __html: props.answer }}></h2>
+        <h2 className="answer-text" dangerouslySetInnerHTML={{ __html: props.answer }}></h2>
 
         {timeout &&
           roundAnswers[props.id].length > 0 &&
