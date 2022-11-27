@@ -3,38 +3,36 @@ div {
 }
 
 .ongoing-container {
-  height: auto;
-  width: 100%;
-  margin: auto;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0 0 20px 20px;
- 
+  height: auto;
+  margin: auto;
+  width: 100%;
 }
 
 .ongoing-title {
-  font-family: 'Press Start 2P', cursive;
-  color: white;
-  background-color: #6D6EE6;
-  margin: auto;
-  border: 6px yellow solid;
+  background-color: #6d6ee6;
   border-radius: 20px 20px 0 0;
+  border: 6px yellow solid;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  margin: auto;
 }
 
-
 .question {
-  background-color:#6D6EE6;
-  color: white;
-  padding: 10px;
-  min-height: 10%;
-  max-height: 30%;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  background-color: #6d6ee6;
+  color: white;
+  display: flex;
   font-size: 24px;
+  justify-content: center;
   margin-bottom: 10px;
+  max-height: 30%;
+  min-height: 10%;
+  padding: 10px;
 }
 
 .results {
@@ -45,51 +43,50 @@ div {
 
 .congratulations {
   background-color: #0094da;
-  padding: 20px;
-  font-size: 36px;
   color: #fff;
+  font-size: 36px;
+  padding: 20px;
 }
 
 .results-info {
-  margin-top: 40px;
-  margin-bottom: 40px;
   font-size: 18px;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 .answer {
-  min-width: 48%;
-  max-width: 90%;
   background: yellow;
-  border: 6px solid #6D6EE6;
   border-radius: 10px;
-  max-height: 20vh;
+  border: 6px solid #6d6ee6;
   cursor: pointer;
-  margin: auto auto 2% ;
   display: flex;
   flex-direction: column;
-  position: relative;
+  margin: auto auto 2%;
+  max-height: 20vh;
+  max-width: 90%;
+  min-width: 48%;
   padding-right: 1%;
+  position: relative;
   text-align: center;
 }
 
 .answers {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   height: 50%;
-  text-align: center;
+  justify-content: space-between;
   margin: auto;
+  text-align: center;
 }
 
 .answer-letter {
-  font-size: 3vh;
-  background-color: #6D6EE6;
-  color: #fff;
-  width: 70px;
-  display: flex;
   align-items: center;
+  background-color: #6d6ee6;
+  color: #fff;
+  display: flex;
+  font-size: 3vh;
   justify-content: center;
-
+  width: 70px;
 }
 
 .answer-text {
@@ -114,8 +111,6 @@ div .correct-answer {
   color: #fff;
 }
 
-
-
 .selected-answer .answer-letter {
   background: purple;
 }
@@ -124,36 +119,35 @@ div .correct-answer {
   border: 2px solid #dc0a0a;
 }
 
-
 .wrong-answer .answer-letter {
   background: #dc0a0a;
 }
 
 .next-button {
-  margin: 0 auto;
-  color: #fff;
   background: #0b0e21;
-  width: 300px;
+  color: #fff;
+  cursor: pointer;
   font-size: 18px;
   font-weight: 600;
+  margin: 0 auto;
   padding: 14px 75px;
-  text-transform: uppercase;
-  cursor: pointer;
   text-align: center;
+  text-transform: uppercase;
+  width: 300px;
 }
 
 .score {
+  align-items: center;
   background: #fff;
   color: 000;
+  display: flex;
   font-size: 18px;
-  width: 200px;
-  margin: 0 auto;
   font-weight: 600;
   height: 40px;
-  margin-bottom: 30px;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  margin-bottom: 30px;
+  margin: 0 auto;
+  width: 200px;
 }
 
 .disabled-answer {
@@ -161,20 +155,19 @@ div .correct-answer {
 }
 
 .avatar {
-  position: absolute;
-  display: flex;
   align-items: flex-end;
-  height: 40px;
-  width: 40px;
-  right: 0px;
-  bottom: 0px;
-  border: 3px solid yellow;
-  background-size: 40px 40px;
   background-position: center;
-  color: #fff;
+  background-size: 40px 40px;
   border-radius: 50%;
+  border: 3px solid yellow;
+  bottom: 0px;
+  color: #fff;
+  display: flex;
+  height: 40px;
+  position: absolute;
+  right: 0px;
+  width: 40px;
 }
-
 
 .player1 {
   background-image: url('../../assets/player-1.png');
@@ -200,15 +193,21 @@ div .correct-answer {
   }
 }
 
-
 .time-remaining-container {
   background-color: yellow;
   border-radius: 10px;
-  border: 6px solid #6D6EE6;
+  border: 6px solid #6d6ee6;
   font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
   margin: auto;
   padding: 10px;
-  font-size: 1rem;
   text-transform: uppercase;
-  width: 65vw;
+  width: 60vw;
+}
+
+.round-control-text{
+  font-size: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  margin: auto;
+  font-weight: bold;
 }

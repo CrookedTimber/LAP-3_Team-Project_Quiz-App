@@ -83,16 +83,16 @@ export default function OngoingMatch({ socket, roomNum }) {
 
         <div className="d-flex justify-content-center time-remaining-container">
           {!showAnswers && (
-            <h2>{`Choices appearing in ${timerDigit}s`}</h2>
+            <h2 className='round-control-text'>{`Choices appearing in ${timerDigit}s`}</h2>
           )}
           {showAnswers && !timeout && (
             <>
               <Timer remaining={timerDigit} done="100" />
-              <h1>{`Time remaining: ${timerDigit}s`}</h1>
+              <h1 className='round-control-text'>{`Time remaining: ${timerDigit}s`}</h1>
             </>
           )}
           {showAnswers && timeout && <h2>Time's Up!</h2> && (
-            !matchEnds ? <h2>{`New round in ${timerDigit}s`}</h2> : <h2>{`Showing results in ${timerDigit}s`}</h2>
+            !matchEnds ? <h2 className='round-control-text'>{`New round in ${timerDigit}s`}</h2> : <h2>{`Showing results in ${timerDigit}s`}</h2>
           )}
         </div>
       </Container>
